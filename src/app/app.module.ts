@@ -8,13 +8,15 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { EventListPage } from '../pages/event-list/event-list';
 import { NoteListPage } from '../pages/note-list/note-list';
+import { TaskListPage } from '../pages/task-list/task-list';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     EventListPage,
-    NoteListPage
+    NoteListPage,
+    TaskListPage
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import { NoteListPage } from '../pages/note-list/note-list';
     MyApp,
     HomePage,
     EventListPage,
-    NoteListPage
+    NoteListPage,
+    TaskListPage
   ],
   providers: [
     StatusBar,
