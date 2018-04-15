@@ -1,1 +1,17 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content">
+  <ion-content>
+    <ion-list>
+      <ion-item menuClose
+        class="menu-item"
+        *ngFor="let page of pages"
+        (tap)="openPage(page.component)">
+
+        <ion-icon name="{{ page.icon }}"></ion-icon>
+        {{ page.title }}
+
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #content [root]="rootPage"></ion-nav>
