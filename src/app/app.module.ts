@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { ComponentsModule } from '../components/components.module';
 
 import { HomePage } from '../pages/home/home';
+import { SignUpPage } from '../pages/sign-up/sign-up';
 import { EventListPage } from '../pages/event-list/event-list';
 import { NoteListPage } from '../pages/note-list/note-list';
 import { TaskListPage } from '../pages/task-list/task-list';
@@ -18,6 +19,7 @@ import { TaskListPage } from '../pages/task-list/task-list';
   declarations: [
     MyApp,
     HomePage,
+    SignUpPage,
     EventListPage,
     NoteListPage,
     TaskListPage,
@@ -31,6 +33,7 @@ import { TaskListPage } from '../pages/task-list/task-list';
   entryComponents: [
     MyApp,
     HomePage,
+    SignUpPage,
     EventListPage,
     NoteListPage,
     TaskListPage
