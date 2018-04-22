@@ -10,6 +10,7 @@ import { ComponentsModule } from '../components/components.module';
 
 import { HomePage } from '../pages/home/home';
 import { SignUpPage } from '../pages/sign-up/sign-up';
+import { SignInPage } from '../pages/sign-in/sign-in';
 import { EventListPage } from '../pages/event-list/event-list';
 import { NoteListPage } from '../pages/note-list/note-list';
 import { TaskListPage } from '../pages/task-list/task-list';
@@ -20,6 +21,7 @@ import { TaskListPage } from '../pages/task-list/task-list';
     MyApp,
     HomePage,
     SignUpPage,
+    SignInPage,
     EventListPage,
     NoteListPage,
     TaskListPage,
@@ -34,6 +36,7 @@ import { TaskListPage } from '../pages/task-list/task-list';
     MyApp,
     HomePage,
     SignUpPage,
+    SignInPage,
     EventListPage,
     NoteListPage,
     TaskListPage
