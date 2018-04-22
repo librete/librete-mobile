@@ -62,5 +62,8 @@
     "typescript": "~2.6.2",
     "webpack-cli": "^2.0.14"
   },
-  "description": "Librete Mobile App"
+  "description": "Librete Mobile App",
+  "config": {
+    "ionic_webpack": "./config/webpack.config.js"
+  }
 }

@@ -1,10 +1,15 @@
 var webpack = require('webpack');
 var path = require('path');
+var fs = require('fs');
+var chalk = require("chalk");
 
 module.exports = {
   devtool: 'inline-source-map',
 
   resolve: {
+    alias: {
+      "@app/env": path.resolve(environmentPath('test'))
+    },
     extensions: ['.ts', '.js']
   },
 
@@ -47,4 +52,13 @@ module.exports = {
 
 function root(localPath) {
   return path.resolve(__dirname, localPath);
+}
+
+function environmentPath(env) {
+  var filePath = './src/environments/environment' + (env === 'prod' ? '' : '.' + env) + '.ts';
+  if (!fs.existsSync(filePath)) {
+    console.log(chalk.red('\n' + filePath + ' does not exist!'));
+  } else {
+    return filePath;
+  }
 }
