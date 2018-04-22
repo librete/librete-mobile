@@ -15,6 +15,7 @@ import { EventListPage } from '../pages/event-list/event-list';
 import { NoteListPage } from '../pages/note-list/note-list';
 import { TaskListPage } from '../pages/task-list/task-list';
 
+import { CommonProvider } from '../providers/common/common';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { TaskListPage } from '../pages/task-list/task-list';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CommonProvider
   ]
 })
 export class AppModule {}
