@@ -4,9 +4,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
+import { SignInPage } from '../pages/sign-in/sign-in';
 import { EventListPage } from '../pages/event-list/event-list';
 import { NoteListPage } from '../pages/note-list/note-list';
 import { TaskListPage } from '../pages/task-list/task-list';
+
+import { CommonProvider } from '../providers/common/common';
 
 import { IPage } from './../interfaces/page';
 
@@ -16,10 +19,13 @@ import { IPage } from './../interfaces/page';
 export class MyApp {
   @ViewChild(Nav) public nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = this.commonProvider.isAuthenticated ? HomePage : SignInPage;
   public pages: Array<IPage>;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(platform: Platform,
+      statusBar: StatusBar,
+      splashScreen: SplashScreen,
+      private commonProvider: CommonProvider) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
