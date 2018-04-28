@@ -28,3 +28,19 @@ ion-menu {
     }
   }
 }
+
+/* Forms */
+ion-label {
+  font-size: 1.5em;
+}
+ion-input {
+  font-size: 1.5em;
+}
+.form-error-message {
+  font-size: 1.25em;
+  color: color($colors, danger);
+}
+.submit-button {
+  font-size: 1.25em;
+  height: 50px;
+}
