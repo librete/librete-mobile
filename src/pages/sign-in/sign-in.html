@@ -3,5 +3,45 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-list>
+    <form [formGroup]="form" (ngSubmit)="signIn()">
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input formControlName="username"
+          id="username"
+          type="text">
+        </ion-input>
+        <i class="icon ion-alert-circled error"></i>
+      </ion-item>
 
+      <div *ngIf="username.touched && username.invalid" class="form-error-message">
+        <div *ngIf="username.errors.required">
+            Username is required.
+        </div>
+        <div *ngIf="username.errors.minlength">
+          Username should be minimum {{ username.errors.minlength.requiredLength }} characters.
+        </div>
+      </div>
+
+      <ion-item class="input-item">
+        <ion-label floating>Password</ion-label>
+        <ion-input
+          formControlName="password"
+          id="password"
+          type="password">
+        </ion-input>
+      </ion-item>
+
+      <div *ngIf="password.touched && password.invalid" class="form-error-message">
+        <div *ngIf="password.errors.required">
+          Password is required.
+        </div>
+        <div *ngIf="password.errors.minlength">
+          Password should be minimum {{ password.errors.minlength.requiredLength }} characters.
+        </div>
+      </div>
+
+      <button ion-button block type="submit" class="submit-button" [disabled]="!form.valid">Log in</button>
+    </form>
+  </ion-list>
 </ion-content>
