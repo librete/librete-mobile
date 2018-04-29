@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { ComponentsModule } from '../components/components.module';
 
@@ -33,6 +34,7 @@ import { AuthProvider } from '../providers/auth/auth';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     ComponentsModule
   ],
   bootstrap: [IonicApp],

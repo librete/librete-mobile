@@ -65,5 +65,10 @@
   "description": "Librete Mobile App",
   "config": {
     "ionic_webpack": "./config/webpack.config.js"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-sqlite-storage": {}
+    }
   }
 }
