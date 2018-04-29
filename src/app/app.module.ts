@@ -19,6 +19,7 @@ import { TaskListPage } from '../pages/task-list/task-list';
 
 import { CommonProvider } from '../providers/common/common';
 import { AuthProvider } from '../providers/auth/auth';
+import { EventsProvider } from '../providers/events/events';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { AuthProvider } from '../providers/auth/auth';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CommonProvider,
-    AuthProvider
+    AuthProvider,
+    EventsProvider
   ]
 })
 export class AppModule {}
