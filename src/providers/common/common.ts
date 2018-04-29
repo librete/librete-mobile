@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
 
 import { ENV } from '@app/env';
 
@@ -10,7 +11,8 @@ export class CommonProvider {
   private _refreshToken: string;
   private _scope: string;
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient,
+    private storage: Storage) {
   }
 
   get isAuthenticated() {
@@ -21,6 +23,26 @@ export class CommonProvider {
     this._accessToken = data.access_token;
     this._refreshToken = data.refresh_token;
     this._scope = data.scope;
+
+    const storageObject = {
+      'accessToken': data.access_token,
+      'refreshToken': data.refresh_token
+    };
+    this.storage.set('authenticationData', storageObject);
+  }
+
+  public readAuthenticationData(): Promise<boolean> {
+    return new Promise (resolve => {
+      this.storage.ready().then(() => {
+        this.storage.get('authenticationData').then((authenticationData) => {
+          if (authenticationData) {
+            this._accessToken = authenticationData.accessToken;
+            this._refreshToken = authenticationData.refreshToken;
+          }
+          resolve(true);
+        });
+      });
+    });
   }
 
   public performRequest(relativeUrl: string,

@@ -20,7 +20,7 @@ import { IPage } from './../interfaces/page';
 export class MyApp {
   @ViewChild(Nav) public nav: Nav;
 
-  rootPage: any = this.commonProvider.isAuthenticated ? HomePage : SignInPage;
+  rootPage: any;
 
   constructor(platform: Platform,
       statusBar: StatusBar,
@@ -32,6 +32,12 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+
+    commonProvider.readAuthenticationData().then(
+      data => {
+        this.rootPage = this.commonProvider.isAuthenticated ? HomePage : SignInPage;
+      }
+    );
   }
 
   get pages() {
