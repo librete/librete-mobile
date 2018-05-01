@@ -11,6 +11,7 @@ import { NoteListPage } from '../pages/note-list/note-list';
 import { TaskListPage } from '../pages/task-list/task-list';
 
 import { CommonProvider } from '../providers/common/common';
+import { AuthProvider } from '../providers/auth/auth';
 
 import { IPage } from './../interfaces/page';
 
@@ -25,7 +26,9 @@ export class MyApp {
   constructor(platform: Platform,
       statusBar: StatusBar,
       splashScreen: SplashScreen,
-      private commonProvider: CommonProvider) {
+      private commonProvider: CommonProvider,
+      private authProvider: AuthProvider
+    ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -35,7 +38,15 @@ export class MyApp {
 
     commonProvider.readAuthenticationData().then(
       data => {
-        this.rootPage = this.commonProvider.isAuthenticated ? HomePage : SignInPage;
+        this.authProvider.refreshToken().subscribe(
+          data => {
+            this.commonProvider.setAuthenticationData(data);
+            this.rootPage = this.commonProvider.isAuthenticated ? HomePage : SignInPage;
+          },
+          error => {
+            this.rootPage = SignInPage;
+          }
+        );
       }
     );
   }
