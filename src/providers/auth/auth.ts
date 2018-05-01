@@ -32,4 +32,14 @@ export class AuthProvider {
     return this.commonProvider.performRequest('oauth2/token/', 'POST', data);
   }
 
+  public refreshToken() {
+    const data = {
+      'grant_type': 'refresh_token',
+      'client_id': this._env.clientID,
+      'client_secret': this._env.clientSecret,
+      'refresh_token': this.commonProvider.refreshToken
+    };
+    return this.commonProvider.performRequest('oauth2/token/', 'POST', data);
+  }
+
 }
