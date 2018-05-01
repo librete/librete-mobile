@@ -3,5 +3,17 @@
 </ion-header>
 
 <ion-content padding>
-
+  <ion-card *ngFor="let event of events">
+    <ion-item>
+      <ion-icon name="md-calendar" item-start large></ion-icon>
+      <h2> {{ event.name }}</h2>
+      <p> {{ event.location }}</p>
+    </ion-item>
+    <ion-item>
+      <span item-left>
+        {{ event.startDate | date:'yyyy.MM.dd HH:mm' }} -
+        {{ event.endDate | date:'yyyy.MM.dd HH:mm' }}
+      </span>
+    </ion-item>
+  </ion-card>
 </ion-content>
