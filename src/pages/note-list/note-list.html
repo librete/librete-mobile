@@ -3,5 +3,11 @@
 </ion-header>
 
 <ion-content padding>
-
+  <ion-card *ngFor="let note of notes">
+    <ion-item>
+      <ion-icon name="md-calendar" item-start large></ion-icon>
+      <h2> {{ note.name }}</h2>
+      <p> {{ note.text }}</p>
+    </ion-item>
+  </ion-card>
 </ion-content>
