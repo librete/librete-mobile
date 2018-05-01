@@ -20,6 +20,7 @@ import { TaskListPage } from '../pages/task-list/task-list';
 import { CommonProvider } from '../providers/common/common';
 import { AuthProvider } from '../providers/auth/auth';
 import { EventsProvider } from '../providers/events/events';
+import { NotesProvider } from '../providers/notes/notes';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { EventsProvider } from '../providers/events/events';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CommonProvider,
     AuthProvider,
-    EventsProvider
+    EventsProvider,
+    NotesProvider
   ]
 })
 export class AppModule {}
