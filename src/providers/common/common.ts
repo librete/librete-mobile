@@ -19,6 +19,10 @@ export class CommonProvider {
      return this._accessToken ? true : false;
   }
 
+  get refreshToken() {
+    return this._refreshToken;
+  }
+
   public setAuthenticationData(data) {
     this._accessToken = data.access_token;
     this._refreshToken = data.refresh_token;
