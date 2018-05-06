@@ -1,0 +1,6 @@
+{
+  "extends": "tslint-ionic-rules",
+  "rules": {
+    "interface-name": [true, "always-prefix"]
+  }
+}

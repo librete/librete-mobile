@@ -1,0 +1,35 @@
+# Python CircleCI 2.0 configuration file
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8-browsers
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - project-dependencies-{{ checksum "package.json" }}
+          - project-dependencies-
+
+      - run:
+          name: install dependencies
+          command: |
+            npm install
+
+      - save_cache:
+          paths:
+            - ~/repo/node_modules
+          key: project-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: run tests
+          command: |
+            npm run test-ci
+
+      - store_artifacts:
+          path: test-reports
+          destination: test-reports

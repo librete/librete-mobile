@@ -1,0 +1,92 @@
+<ion-header>
+  <header pageTitle="Sign up"></header>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <form [formGroup]="form" (ngSubmit)="signUp()">
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input formControlName="username" id="username" type="text">
+        </ion-input>
+        <i class="icon ion-alert-circled error"></i>
+      </ion-item>
+      <div *ngIf="username.touched && username.invalid" class="form-error-message">
+        <div *ngIf="username.errors.required">
+          Username is required.
+        </div>
+        <div *ngIf="username.errors.minlength">
+          Username should be minimum {{ username.errors.minlength.requiredLength }} characters.
+        </div>
+        <div *ngIf="username.errors?.remote">
+          {{ username.errors.remote }}
+        </div>
+      </div>
+
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input formControlName="email" id="email" type="text">
+        </ion-input>
+        <i class="icon ion-alert-circled error"></i>
+      </ion-item>
+      <div *ngIf="email.touched && email.invalid" class="form-error-message">
+        <div *ngIf="email.errors.required">
+          Email is required.
+        </div>
+        <div *ngIf="email.errors.email">
+          Email is invalid.
+        </div>
+        <div *ngIf="email.errors?.remote">
+          {{ email.errors.remote }}
+        </div>
+      </div>
+
+      <ion-item class="input-item">
+        <ion-label floating>Password</ion-label>
+        <ion-input formControlName="password" id="password" type="password">
+        </ion-input>
+      </ion-item>
+      <div *ngIf="password.touched && password.invalid" class="form-error-message">
+        <div *ngIf="password.errors.required">
+          Password is required.
+        </div>
+        <div *ngIf="password.errors.minlength">
+          Password should be minimum {{ password.errors.minlength.requiredLength }} characters.
+        </div>
+        <div *ngIf="password.errors?.remote">
+          {{ password.errors.remote }}
+        </div>
+      </div>
+
+      <ion-item class="input-item">
+        <ion-label floating>First name</ion-label>
+        <ion-input formControlName="firstName" id="firstName" type="text">
+        </ion-input>
+      </ion-item>
+      <div *ngIf="firstName.touched && firstName.invalid" class="form-error-message">
+        <div *ngIf="firstName.errors.required">
+          First name is required.
+        </div>
+        <div *ngIf="firsName.errors?.remote">
+          {{ firsName.errors.remote }}
+        </div>
+      </div>
+
+      <ion-item class="input-item">
+        <ion-label floating>Last name</ion-label>
+        <ion-input formControlName="lastName" id="lastName" type="text">
+        </ion-input>
+      </ion-item>
+      <div *ngIf="lastName.touched && lastName.invalid" class="form-error-message">
+        <div *ngIf="lastName.errors.required">
+          Last name is required.
+        </div>
+        <div *ngIf="lastName.errors?.remote">
+          {{ lastName.errors.remote }}
+        </div>
+      </div>
+
+      <button ion-button block type="submit" class="submit-button" [disabled]="!form.valid">Register</button>
+    </form>
+  </ion-list>
+</ion-content>
