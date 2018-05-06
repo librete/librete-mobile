@@ -3,7 +3,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let event of events">
+  <ion-card *ngFor="let event of events" (click)="navigateToDetail(event)">
     <ion-item>
       <ion-icon name="md-calendar" item-start large></ion-icon>
       <h2> {{ event.name }}</h2>

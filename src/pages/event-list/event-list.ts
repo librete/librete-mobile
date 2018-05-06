@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { EventsProvider } from './../../providers/events/events';
+import { EventDetailPage } from '../event-detail/event-detail';
+import { Event } from '../../models/event';
 
 @Component({
   selector: 'page-event-list',
@@ -18,5 +20,9 @@ export class EventListPage {
 
   get events() {
     return this.eventsProvider.events.getValue();
+  }
+
+  public navigateToDetail(event: Event) {
+    this.navCtrl.push(EventDetailPage, { event: event });
   }
 }
