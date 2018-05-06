@@ -4,13 +4,15 @@ import { BehaviorSubject } from 'rxjs';
 import { JsonConvert } from 'json2typescript';
 
 import { CommonProvider } from './../common/common';
+import { CategoriesProvider } from './../categories/categories';
 import { Event } from './../../models/event';
 
 @Injectable()
 export class EventsProvider {
   private _events = new BehaviorSubject<Array<Event>>([]);
 
-  constructor(private commonProvider: CommonProvider) {
+  constructor(private commonProvider: CommonProvider,
+    private categoriesProvider: CategoriesProvider) {
   }
 
   get events() {
@@ -22,7 +24,13 @@ export class EventsProvider {
       this.getEvents().subscribe(
         (data: any) => {
           const jsonConvert: JsonConvert = new JsonConvert();
-          this._events.next(jsonConvert.deserializeArray(data.results, Event));
+          const events: Array<Event> = jsonConvert.deserializeArray(data.results, Event);
+          for (const event of events) {
+            event.category = this.categoriesProvider.categories.getValue().filter(
+              category => category.url === event.categoryUrl
+            )[0];
+          }
+          this._events.next(events);
           resolve();
         },
         error => {
