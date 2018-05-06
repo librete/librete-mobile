@@ -1,5 +1,7 @@
 import {JsonObject, JsonProperty} from 'json2typescript';
 
+import { Category } from './category';
+
 @JsonObject
 export class Event {
   @JsonProperty('url')
@@ -31,4 +33,6 @@ export class Event {
 
   @JsonProperty('description')
   description: string = undefined;
+
+  category: Category;
 }
