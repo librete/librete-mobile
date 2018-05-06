@@ -22,6 +22,7 @@ import { AuthProvider } from '../providers/auth/auth';
 import { EventsProvider } from '../providers/events/events';
 import { NotesProvider } from '../providers/notes/notes';
 import { TasksProvider } from '../providers/tasks/tasks';
+import { CategoriesProvider } from '../providers/categories/categories';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { TasksProvider } from '../providers/tasks/tasks';
     AuthProvider,
     EventsProvider,
     NotesProvider,
-    TasksProvider
+    TasksProvider,
+    CategoriesProvider
   ]
 })
 export class AppModule {}
