@@ -1,10 +1,14 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { HttpParams } from '@angular/common/http';
 
+import { BehaviorSubject } from 'rxjs';
 import { Observable } from 'rxjs/Observable';
 
 import { CommonProvider } from './../common/common';
+import { CategoriesProvider } from './../categories/categories';
 import { EventsProvider } from './events';
+
+import { Category } from './../../models/category';
 import { Event } from './../../models/event';
 
 const getEventsResponse = {
@@ -25,7 +29,7 @@ const getEventsResponse = {
       'url': 'https://example.com/api/events/2/',
       'name': 'Event name 2',
       'author': 'https://example.com/api/authors/1/',
-      'category': 'https://example.com/api/categories/1/',
+      'category': 'https://example.com/api/categories/2/',
       'start_date': '2018-04-02T04:00:00Z',
       'end_date': '2018-04-20T04:00:00Z',
       'created_at': '2018-04-01T06:26:01.288858Z',
@@ -45,6 +49,21 @@ class CommonProviderStub {
   }
 }
 
+class CategoriesProviderStub {
+
+  get categories() {
+    const categoryList: Array<Category> = [this.createCategory(1), this.createCategory(2)];
+    return new BehaviorSubject<Array<Category>>(categoryList);
+  }
+
+  private createCategory(id) {
+    const category = new Category();
+    category.url = `https://example.com/api/categories/${id}/`;
+    category.name = `Category ${id}`;
+    return category;
+  }
+}
+
 describe('Providers: EventsProvider', () => {
   let provider;
 
@@ -52,6 +71,7 @@ describe('Providers: EventsProvider', () => {
     providers: [
       EventsProvider,
       { provide: CommonProvider, useClass: CommonProviderStub },
+      { provide: CategoriesProvider, useClass: CategoriesProviderStub },
     ]
   }));
 
@@ -68,6 +88,8 @@ describe('Providers: EventsProvider', () => {
         expect(events.length).toBe(getEventsResponse.results.length);
         for (const event of events) {
           expect(event).toEqual(jasmine.any(Event));
+          expect(event.category).toEqual(jasmine.any(Category));
+          expect(event.categoryUrl).toEqual(event.category.url);
         }
         done();
       }
