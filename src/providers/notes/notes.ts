@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import { JsonConvert } from 'json2typescript';
 
 import { CommonProvider } from './../common/common';
+import { CategoriesProvider } from './../categories/categories';
 import { Note } from './../../models/note';
 
 
@@ -11,7 +12,8 @@ import { Note } from './../../models/note';
 export class NotesProvider {
   private _notes = new BehaviorSubject<Array<Note>>([]);
 
-  constructor(private commonProvider: CommonProvider) {
+  constructor(private commonProvider: CommonProvider,
+    private categoriesProvider: CategoriesProvider) {
   }
 
   get notes() {
@@ -23,7 +25,15 @@ export class NotesProvider {
       this.getNotes().subscribe(
         (data: any) => {
           const jsonConvert: JsonConvert = new JsonConvert();
-          this._notes.next(jsonConvert.deserializeArray(data.results, Note));
+
+          const notes: Array<Note> = jsonConvert.deserializeArray(data.results, Note);
+          for (const note of notes) {
+            note.category = this.categoriesProvider.categories.getValue().filter(
+              category => category.url === note.categoryUrl
+            )[0];
+          }
+          this._notes.next(notes);
+
           resolve();
         },
         error => {
