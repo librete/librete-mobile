@@ -16,6 +16,7 @@ import { SignInPage } from '../pages/sign-in/sign-in';
 import { EventListPage } from '../pages/event-list/event-list';
 import { EventDetailPage } from '../pages/event-detail/event-detail';
 import { NoteListPage } from '../pages/note-list/note-list';
+import { NoteDetailPage } from '../pages/note-detail/note-detail';
 import { TaskListPage } from '../pages/task-list/task-list';
 
 import { CommonProvider } from '../providers/common/common';
@@ -34,6 +35,7 @@ import { CategoriesProvider } from '../providers/categories/categories';
     EventListPage,
     EventDetailPage,
     NoteListPage,
+    NoteDetailPage,
     TaskListPage,
   ],
   imports: [
@@ -52,6 +54,7 @@ import { CategoriesProvider } from '../providers/categories/categories';
     EventListPage,
     EventDetailPage,
     NoteListPage,
+    NoteDetailPage,
     TaskListPage
   ],
   providers: [
