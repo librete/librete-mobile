@@ -18,6 +18,7 @@ import { EventDetailPage } from '../pages/event-detail/event-detail';
 import { NoteListPage } from '../pages/note-list/note-list';
 import { NoteDetailPage } from '../pages/note-detail/note-detail';
 import { TaskListPage } from '../pages/task-list/task-list';
+import { TaskDetailPage } from '../pages/task-detail/task-detail';
 
 import { CommonProvider } from '../providers/common/common';
 import { AuthProvider } from '../providers/auth/auth';
@@ -37,6 +38,7 @@ import { CategoriesProvider } from '../providers/categories/categories';
     NoteListPage,
     NoteDetailPage,
     TaskListPage,
+    TaskDetailPage
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ import { CategoriesProvider } from '../providers/categories/categories';
     EventDetailPage,
     NoteListPage,
     NoteDetailPage,
-    TaskListPage
+    TaskListPage,
+    TaskDetailPage
   ],
   providers: [
     StatusBar,

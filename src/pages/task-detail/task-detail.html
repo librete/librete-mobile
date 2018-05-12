@@ -1,0 +1,35 @@
+<ion-header *ngIf="task">
+  <header [pageTitle]="task.name"></header>
+</ion-header>
+
+<ion-content *ngIf="task" padding>
+
+  <ion-item>
+    <ion-icon name="md-checkbox-outline" item-start large></ion-icon>
+    <h2>{{ task.name }}</h2>
+    <p>{{ task.category.name }}</p>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="information-circle" item-start large></ion-icon>
+    <p>Priority: {{ task.priority }}</p>
+    <p>Status: {{ task.status }}</p>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="time" item-start large></ion-icon>
+    <p>
+      Date: {{ task.startDate | date:'yyyy.MM.dd' }}
+      at {{ task.startDate | date:'HH:mm' }}
+    </p>
+    <p>
+      Due date: {{ task.endDate | date:'yyyy.MM.dd' }}
+      at {{ task.endDate | date:'HH:mm' }}
+    </p>
+  </ion-item>
+
+  <ion-item *ngIf="task.description">
+    <p>{{ task.description }}</p>
+  </ion-item>
+
+</ion-content>
