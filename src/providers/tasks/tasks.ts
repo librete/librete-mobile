@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import { JsonConvert } from 'json2typescript';
 
 import { CommonProvider } from './../common/common';
+import { CategoriesProvider } from './../categories/categories';
 import { Task } from './../../models/task';
 
 @Injectable()
@@ -11,7 +12,8 @@ export class TasksProvider {
   private _tasks = new BehaviorSubject<Array<Task>>([]);
 
 
-  constructor(private commonProvider: CommonProvider) {
+  constructor(private commonProvider: CommonProvider,
+    private categoriesProvider: CategoriesProvider) {
   }
 
   get tasks() {
@@ -23,7 +25,13 @@ export class TasksProvider {
       this.getTasks().subscribe(
         (data: any) => {
           const jsonConvert: JsonConvert = new JsonConvert();
-          this._tasks.next(jsonConvert.deserializeArray(data.results, Task));
+          const tasks: Array<Task> = jsonConvert.deserializeArray(data.results, Task);
+          for (const task of tasks) {
+            task.category = this.categoriesProvider.categories.getValue().filter(
+              category => category.url === task.categoryUrl
+            )[0];
+          }
+          this._tasks.next(tasks);
           resolve();
         },
         error => {
