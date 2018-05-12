@@ -1,0 +1,17 @@
+<ion-header *ngIf="note">
+  <header [pageTitle]="note.name"></header>
+</ion-header>
+
+<ion-content *ngIf="note" padding>
+
+  <ion-item>
+    <ion-icon name="md-clipboard" item-start large></ion-icon>
+    <h2>{{ note.name }}</h2>
+    <p>{{ note.category.name }}</p>
+  </ion-item>
+
+  <ion-item *ngIf="note.text">
+    <p>{{ note.text }}gi</p>
+  </ion-item>
+
+</ion-content>
