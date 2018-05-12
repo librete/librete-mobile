@@ -3,7 +3,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let task of tasks">
+  <ion-card *ngFor="let task of tasks" (click)="navigateToDetail(task)">
     <ion-item>
       <ion-icon name="md-calendar" item-start large></ion-icon>
       <h2> {{ task.name }}</h2>
