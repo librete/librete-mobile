@@ -1,5 +1,7 @@
 import {JsonObject, JsonProperty} from 'json2typescript';
 
+import { Category } from './category';
+
 @JsonObject
 export class Task {
   @JsonProperty('url')
@@ -37,4 +39,6 @@ export class Task {
 
   @JsonProperty('updated_at')
   updatedAt: Date = undefined;
+
+  category: Category;
 }
