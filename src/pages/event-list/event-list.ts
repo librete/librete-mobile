@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { EventsProvider } from './../../providers/events/events';
 import { EventDetailPage } from '../event-detail/event-detail';
+import { EventCreatePage } from '../event-create/event-create';
 import { Event } from '../../models/event';
 
 @Component({
@@ -25,4 +26,9 @@ export class EventListPage {
   public navigateToDetail(event: Event) {
     this.navCtrl.push(EventDetailPage, { event: event });
   }
+
+  public navigateToEventCreatePage() {
+    this.navCtrl.push(EventCreatePage);
+  }
+
 }
