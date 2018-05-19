@@ -10,4 +10,9 @@
       <p> {{ note.text }}</p>
     </ion-item>
   </ion-card>
+  <ion-fab right bottom>
+    <button ion-fab (click)="navigateToNoteCreatePage()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

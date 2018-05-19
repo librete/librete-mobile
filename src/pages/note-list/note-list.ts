@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { NotesProvider } from './../../providers/notes/notes';
 import { NoteDetailPage } from './../note-detail/note-detail';
+import { NoteCreatePage } from './../note-create/note-create';
 import { Note } from '../../models/note';
 
 @Component({
@@ -25,4 +26,9 @@ export class NoteListPage {
   public navigateToDetail(note: Note) {
     this.navCtrl.push(NoteDetailPage, { note: note });
   }
+
+  public navigateToNoteCreatePage() {
+    this.navCtrl.push(NoteCreatePage);
+  }
+
 }
