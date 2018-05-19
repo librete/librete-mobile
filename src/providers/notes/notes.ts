@@ -20,6 +20,24 @@ export class NotesProvider {
     return this._notes;
   }
 
+  public createNote(data: any) {
+    return new Promise ((resolve, reject) => {
+      this.commonProvider.performRequest('notes/', 'POST', data).subscribe(
+        (data: any) => {
+          const jsonConvert: JsonConvert = new JsonConvert();
+          const note: Note = jsonConvert.deserialize(data, Note);
+          const notes: Array<Note> = this._notes.getValue();
+          this.setCategory(note);
+          notes.push(note);
+          resolve(note);
+        },
+        error => {
+          reject(error);
+        }
+      );
+    });
+  }
+
   public updateNotes(): Promise<boolean> {
     return new Promise ((resolve, reject) => {
       this.getNotes().subscribe(
@@ -28,9 +46,7 @@ export class NotesProvider {
 
           const notes: Array<Note> = jsonConvert.deserializeArray(data.results, Note);
           for (const note of notes) {
-            note.category = this.categoriesProvider.categories.getValue().filter(
-              category => category.url === note.categoryUrl
-            )[0];
+            this.setCategory(note);
           }
           this._notes.next(notes);
 
@@ -45,5 +61,11 @@ export class NotesProvider {
 
   private getNotes() {
     return this.commonProvider.performRequest('notes/', 'GET');
+  }
+
+  private setCategory(note) {
+    note.category = this.categoriesProvider.categories.getValue().filter(
+      category => category.url === note.categoryUrl
+    )[0];
   }
 }
