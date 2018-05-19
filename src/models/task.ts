@@ -1,6 +1,7 @@
 import {JsonObject, JsonProperty} from 'json2typescript';
 
 import { Category } from './category';
+import { Priority, Status } from '../custom-types';
 
 @JsonObject
 export class Task {
@@ -29,10 +30,10 @@ export class Task {
   description: string = undefined;
 
   @JsonProperty('priority')
-  priority: string = undefined;
+  priority: Priority = undefined;
 
   @JsonProperty('status')
-  status: string = undefined;
+  status: Status = undefined;
 
   @JsonProperty('created_at')
   createdAt: Date = undefined;
