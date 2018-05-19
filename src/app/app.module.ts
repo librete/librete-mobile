@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
+import { DatePipe } from '@angular/common';
+
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -15,6 +17,7 @@ import { SignUpPage } from '../pages/sign-up/sign-up';
 import { SignInPage } from '../pages/sign-in/sign-in';
 import { EventListPage } from '../pages/event-list/event-list';
 import { EventDetailPage } from '../pages/event-detail/event-detail';
+import { EventCreatePage } from '../pages/event-create/event-create';
 import { NoteListPage } from '../pages/note-list/note-list';
 import { NoteDetailPage } from '../pages/note-detail/note-detail';
 import { TaskListPage } from '../pages/task-list/task-list';
@@ -35,6 +38,7 @@ import { CategoriesProvider } from '../providers/categories/categories';
     SignInPage,
     EventListPage,
     EventDetailPage,
+    EventCreatePage,
     NoteListPage,
     NoteDetailPage,
     TaskListPage,
@@ -55,6 +59,7 @@ import { CategoriesProvider } from '../providers/categories/categories';
     SignInPage,
     EventListPage,
     EventDetailPage,
+    EventCreatePage,
     NoteListPage,
     NoteDetailPage,
     TaskListPage,
@@ -64,6 +69,7 @@ import { CategoriesProvider } from '../providers/categories/categories';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DatePipe,
     CommonProvider,
     AuthProvider,
     EventsProvider,

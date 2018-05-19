@@ -19,6 +19,26 @@ export class EventsProvider {
     return this._events;
   }
 
+  public createEvent(data: any) {
+    return new Promise ((resolve, reject) => {
+      data.start_date = new Date(data.startDate);
+      data.end_date = new Date(data.endDate);
+      this.commonProvider.performRequest('events/', 'POST', data).subscribe(
+        (data: any) => {
+          const jsonConvert: JsonConvert = new JsonConvert();
+          const event: Event = jsonConvert.deserialize(data, Event);
+          const events: Array<Event> = this._events.getValue();
+          this.setCategory(event);
+          events.push(event);
+          resolve(event);
+        },
+        error => {
+          reject(error);
+        }
+      );
+    });
+  }
+
   public updateEvents(): Promise<boolean> {
     return new Promise ((resolve, reject) => {
       this.getEvents().subscribe(
@@ -26,9 +46,7 @@ export class EventsProvider {
           const jsonConvert: JsonConvert = new JsonConvert();
           const events: Array<Event> = jsonConvert.deserializeArray(data.results, Event);
           for (const event of events) {
-            event.category = this.categoriesProvider.categories.getValue().filter(
-              category => category.url === event.categoryUrl
-            )[0];
+            this.setCategory(event);
           }
           this._events.next(events);
           resolve();
@@ -44,4 +62,9 @@ export class EventsProvider {
     return this.commonProvider.performRequest('events/', 'GET');
   }
 
+  private setCategory(event) {
+    event.category = this.categoriesProvider.categories.getValue().filter(
+      category => category.url === event.categoryUrl
+    )[0];
+  }
 }
