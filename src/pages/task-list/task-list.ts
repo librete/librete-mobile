@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { TasksProvider } from './../../providers/tasks/tasks';
 import { TaskDetailPage } from '../task-detail/task-detail';
+import { TaskCreatePage } from '../task-create/task-create';
 import { Task } from '../../models/task';
 
 @Component({
@@ -25,4 +26,9 @@ export class TaskListPage {
   public navigateToDetail(task: Task) {
     this.navCtrl.push(TaskDetailPage, { task: task });
   }
+
+  public navigateToTaskCreatePage() {
+    this.navCtrl.push(TaskCreatePage);
+  }
+
 }
