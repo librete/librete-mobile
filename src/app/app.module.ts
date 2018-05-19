@@ -23,6 +23,7 @@ import { NoteDetailPage } from '../pages/note-detail/note-detail';
 import { NoteCreatePage } from '../pages/note-create/note-create';
 import { TaskListPage } from '../pages/task-list/task-list';
 import { TaskDetailPage } from '../pages/task-detail/task-detail';
+import { TaskCreatePage } from '../pages/task-create/task-create';
 
 import { CommonProvider } from '../providers/common/common';
 import { AuthProvider } from '../providers/auth/auth';
@@ -44,7 +45,8 @@ import { CategoriesProvider } from '../providers/categories/categories';
     NoteDetailPage,
     NoteCreatePage,
     TaskListPage,
-    TaskDetailPage
+    TaskDetailPage,
+    TaskCreatePage
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,8 @@ import { CategoriesProvider } from '../providers/categories/categories';
     NoteDetailPage,
     NoteCreatePage,
     TaskListPage,
-    TaskDetailPage
+    TaskDetailPage,
+    TaskCreatePage
   ],
   providers: [
     StatusBar,

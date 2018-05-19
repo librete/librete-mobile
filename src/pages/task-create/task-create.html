@@ -1,0 +1,125 @@
+<ion-header>
+    <header pageTitle="Create task"></header>
+  </ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <form [formGroup]="form" (ngSubmit)="createTask()">
+      <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input formControlName="name" id="name" type="text">
+        </ion-input>
+        <i class="icon ion-alert-circled error"></i>
+      </ion-item>
+      <div *ngIf="(name.dirty || isSubmitted) && name.invalid" class="form-error-message">
+        <div *ngIf="name.errors.required">
+          This field is required.
+        </div>
+        <div *ngIf="name.errors.remote">
+          {{ name.errors.remote }}
+        </div>
+      </div>
+
+      <ion-item>
+        <ion-label floating>Category</ion-label>
+        <ion-select formControlName="category" id="category">
+          <ion-option *ngFor="let category of categories" value="{{ category.url }}">
+            {{ category.name }}
+          </ion-option>
+        </ion-select>
+        <i class="icon ion-alert-circled error"></i>
+      </ion-item>
+      <div *ngIf="(category.dirty || isSubmitted) && category.invalid" class="form-error-message">
+        <div *ngIf="category.errors.required">
+          This field is required.
+        </div>
+        <div *ngIf="category.errors.remote">
+          {{ category.errors.remote }}
+        </div>
+      </div>
+
+      <ion-item>
+        <ion-label floating>Start date</ion-label>
+        <ion-datetime
+          formControlName="startDate"
+          id="startDate"
+          [min]="minDate"
+          [max]="maxDate">
+        </ion-datetime>
+        <i class="icon ion-alert-circled error"></i>
+      </ion-item>
+      <div *ngIf="(startDate.dirty || isSubmitted) && startDate.invalid" class="form-error-message">
+        <div *ngIf="startDate.errors.required">
+          This field is required.
+        </div>
+        <div *ngIf="startDate.errors.remote">
+          {{ startDate.errors.remote }}
+        </div>
+        <div *ngIf="startDate.errors.pastDate">
+          Date cannot be in the past.
+        </div>
+      </div>
+
+      <ion-item>
+        <ion-label floating>End date</ion-label>
+        <ion-datetime
+          formControlName="endDate"
+          id="endDate"
+          [min]="minDate"
+          [max]="maxDate">
+        </ion-datetime>
+        <i class="icon ion-alert-circled error"></i>
+      </ion-item>
+      <div *ngIf="(endDate.dirty || isSubmitted) && endDate.invalid" class="form-error-message">
+        <div *ngIf="endDate.errors.required">
+          This field is required.
+        </div>
+        <div *ngIf="endDate.errors.remote">
+          {{ endDate.errors.remote }}
+        </div>
+        <div *ngIf="endDate.errors.pastDate">
+          Date cannot be in the past.
+        </div>
+      </div>
+      <div *ngIf="form.errors && form.errors.swappedDates" class="form-error-message">
+        End date cannot be before start date.
+      </div>
+
+      <ion-item>
+        <ion-label floating>Description</ion-label>
+        <ion-input formControlName="description" id="description" type="text">
+        </ion-input>
+        <i class="icon ion-alert-circled error"></i>
+      </ion-item>
+      <div *ngIf="(description.dirty || isSubmitted) && description.invalid" class="form-error-message">
+        <div *ngIf="description.errors.remote">
+          {{ description.errors.remote }}
+        </div>
+      </div>
+
+      <ion-item>
+        <ion-label floating>Priority</ion-label>
+        <ion-select formControlName="priority" id="priority">
+          <ion-option *ngFor="let option of priorityOptions" value="{{ option.name }}">
+            {{ option.label }}
+          </ion-option>
+        </ion-select>
+        <i class="icon ion-alert-circled error"></i>
+      </ion-item>
+      <div *ngIf="(priority.dirty || isSubmitted) && priority.invalid" class="form-error-message">
+        <div *ngIf="priority.errors.required">
+          This field is required.
+        </div>
+        <div *ngIf="priority.errors.remote">
+          {{ priority.errors.remote }}
+        </div>
+      </div>
+
+      <button ion-button block type="submit"
+        class="submit-button"
+        [disabled]="!form.valid">
+        Create
+      </button>
+    </form>
+  </ion-list>
+</ion-content>
