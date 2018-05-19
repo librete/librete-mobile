@@ -9,8 +9,16 @@ import { Task } from './../../models/task';
 
 @Injectable()
 export class TasksProvider {
+  public statusOptions = [
+    { name: 'active', label: 'Active'},
+    { name: 'finished', label: 'Finished'}
+  ];
+  public priorityOptions = [
+    { name: 'high', label: 'High' },
+    { name: 'medium', label: 'Medium'},
+    { name: 'low', label: 'Low'}
+  ];
   private _tasks = new BehaviorSubject<Array<Task>>([]);
-
 
   constructor(private commonProvider: CommonProvider,
     private categoriesProvider: CategoriesProvider) {
@@ -20,6 +28,26 @@ export class TasksProvider {
     return this._tasks;
   }
 
+  public createTask(data: any) {
+    return new Promise ((resolve, reject) => {
+      data.start_date = new Date(data.startDate);
+      data.end_date = new Date(data.endDate);
+      this.commonProvider.performRequest('tasks/', 'POST', data).subscribe(
+        (data: any) => {
+          const jsonConvert: JsonConvert = new JsonConvert();
+          const task: Task = jsonConvert.deserialize(data, Task);
+          const tasks: Array<Task> = this._tasks.getValue();
+          this.setCategory(task);
+          tasks.push(task);
+          resolve(task);
+        },
+        error => {
+          reject(error);
+        }
+      );
+    });
+  }
+
   public updateTasks(): Promise<boolean> {
     return new Promise ((resolve, reject) => {
       this.getTasks().subscribe(
@@ -27,9 +55,7 @@ export class TasksProvider {
           const jsonConvert: JsonConvert = new JsonConvert();
           const tasks: Array<Task> = jsonConvert.deserializeArray(data.results, Task);
           for (const task of tasks) {
-            task.category = this.categoriesProvider.categories.getValue().filter(
-              category => category.url === task.categoryUrl
-            )[0];
+            this.setCategory(task);
           }
           this._tasks.next(tasks);
           resolve();
@@ -43,5 +69,11 @@ export class TasksProvider {
 
   private getTasks() {
     return this.commonProvider.performRequest('tasks/', 'GET');
+  }
+
+  private setCategory(task) {
+    task.category = this.categoriesProvider.categories.getValue().filter(
+      category => category.url === task.categoryUrl
+    )[0];
   }
 }
