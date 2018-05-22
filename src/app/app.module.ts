@@ -18,6 +18,7 @@ import { SignInPage } from '../pages/sign-in/sign-in';
 import { EventListPage } from '../pages/event-list/event-list';
 import { EventDetailPage } from '../pages/event-detail/event-detail';
 import { EventCreatePage } from '../pages/event-create/event-create';
+import { EventUpdatePage } from '../pages/event-update/event-update';
 import { NoteListPage } from '../pages/note-list/note-list';
 import { NoteDetailPage } from '../pages/note-detail/note-detail';
 import { NoteCreatePage } from '../pages/note-create/note-create';
@@ -41,6 +42,7 @@ import { CategoriesProvider } from '../providers/categories/categories';
     EventListPage,
     EventDetailPage,
     EventCreatePage,
+    EventUpdatePage,
     NoteListPage,
     NoteDetailPage,
     NoteCreatePage,
@@ -64,6 +66,7 @@ import { CategoriesProvider } from '../providers/categories/categories';
     EventListPage,
     EventDetailPage,
     EventCreatePage,
+    EventUpdatePage,
     NoteListPage,
     NoteDetailPage,
     NoteCreatePage,

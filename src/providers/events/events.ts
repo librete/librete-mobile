@@ -19,6 +19,29 @@ export class EventsProvider {
     return this._events;
   }
 
+  public updateEvent(url: string, data: any) {
+    return new Promise ((resolve, reject) => {
+      data.start_date = new Date(data.startDate);
+      data.end_date = new Date(data.endDate);
+      this.commonProvider.performRequest(url, 'PUT', data).subscribe(
+        (data: any) => {
+          const jsonConvert: JsonConvert = new JsonConvert();
+          const event: Event = jsonConvert.deserialize(data, Event);
+          const events: Array<Event> = this._events.getValue();
+          const index = events.findIndex(x => x.url === url);
+
+          this.setCategory(event);
+          events[index] = Object.assign(events[index], event);
+
+          resolve(event);
+        },
+        error => {
+          reject(error);
+        }
+      );
+    });
+  }
+
   public createEvent(data: any) {
     return new Promise ((resolve, reject) => {
       data.start_date = new Date(data.startDate);

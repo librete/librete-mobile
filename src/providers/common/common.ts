@@ -49,11 +49,15 @@ export class CommonProvider {
     });
   }
 
-  public performRequest(relativeUrl: string,
+  public performRequest(
+    url: string,
     requestMethod: string,
-    requestData?: object | HttpParams) {
+    requestData?: object | HttpParams
+  ) {
 
-    const url = `${this._env.apiUrl}/${relativeUrl}`;
+    if (!url.includes(this._env.apiUrl)) {
+      url = `${this._env.apiUrl}/${url}`;
+    }
     const data = JSON.stringify(requestData);
     const headers = this.getHeaders(requestMethod);
     const options = {
