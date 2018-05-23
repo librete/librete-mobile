@@ -22,6 +22,7 @@ import { EventUpdatePage } from '../pages/event-update/event-update';
 import { NoteListPage } from '../pages/note-list/note-list';
 import { NoteDetailPage } from '../pages/note-detail/note-detail';
 import { NoteCreatePage } from '../pages/note-create/note-create';
+import { NoteUpdatePage } from './../pages/note-update/note-update';
 import { TaskListPage } from '../pages/task-list/task-list';
 import { TaskDetailPage } from '../pages/task-detail/task-detail';
 import { TaskCreatePage } from '../pages/task-create/task-create';
@@ -46,6 +47,7 @@ import { CategoriesProvider } from '../providers/categories/categories';
     NoteListPage,
     NoteDetailPage,
     NoteCreatePage,
+    NoteUpdatePage,
     TaskListPage,
     TaskDetailPage,
     TaskCreatePage
@@ -70,6 +72,7 @@ import { CategoriesProvider } from '../providers/categories/categories';
     NoteListPage,
     NoteDetailPage,
     NoteCreatePage,
+    NoteUpdatePage,
     TaskListPage,
     TaskDetailPage,
     TaskCreatePage
