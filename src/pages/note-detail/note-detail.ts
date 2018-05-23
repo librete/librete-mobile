@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { NoteUpdatePage } from '../note-update/note-update';
 import { Note } from '../../models/note';
 
 @Component({
@@ -12,6 +13,10 @@ export class NoteDetailPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.note = this.navParams.get('note');
+  }
+
+  public navigateToNoteUpdatePage() {
+    this.navCtrl.push(NoteUpdatePage, { note: this.note });
   }
 
 }
