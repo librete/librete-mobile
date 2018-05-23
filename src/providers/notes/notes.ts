@@ -20,6 +20,29 @@ export class NotesProvider {
     return this._notes;
   }
 
+  public updateNote(url: string, data: any) {
+    return new Promise ((resolve, reject) => {
+      data.start_date = new Date(data.startDate);
+      data.end_date = new Date(data.endDate);
+      this.commonProvider.performRequest(url, 'PUT', data).subscribe(
+        (data: any) => {
+          const jsonConvert: JsonConvert = new JsonConvert();
+          const note: Note = jsonConvert.deserialize(data, Note);
+          const notes: Array<Note> = this._notes.getValue();
+          const index = notes.findIndex(x => x.url === url);
+
+          this.setCategory(note);
+          notes[index] = Object.assign(notes[index], note);
+
+          resolve(note);
+        },
+        error => {
+          reject(error);
+        }
+      );
+    });
+  }
+
   public createNote(data: any) {
     return new Promise ((resolve, reject) => {
       this.commonProvider.performRequest('notes/', 'POST', data).subscribe(
