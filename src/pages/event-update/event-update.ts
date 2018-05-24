@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { Event } from '../../models/event';
+
 import { CommonProvider } from '../../providers/common/common';
 import { EventsProvider } from '../../providers/events/events';
 import { CategoriesProvider } from '../../providers/categories/categories';
@@ -22,25 +23,26 @@ export class EventUpdatePage {
   public isSubmitted = false;
 
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    private formBuilder: FormBuilder,
-    private commonProvider: CommonProvider,
-    private eventsProvider: EventsProvider,
-    private categoriesProvider: CategoriesProvider,
-    private datePipe: DatePipe
+    private _datePipe: DatePipe,
+    private _formBuilder: FormBuilder,
+    private _navCtrl: NavController,
+    private _navParams: NavParams,
+    private _commonProvider: CommonProvider,
+    private _eventsProvider: EventsProvider,
+    private _categoriesProvider: CategoriesProvider
   ) {
-    this.event = this.navParams.get('event');
-    this.createForm();
+    this.event = this._navParams.get('event');
+    this._createForm();
 
     const minDateObject = new Date();
     const maxDateObject = new Date();
     maxDateObject.setFullYear(maxDateObject.getFullYear() + 10);
-    this.minDate = this.datePipe.transform(minDateObject, 'yyyy-MM-dd');
-    this.maxDate = this.datePipe.transform(maxDateObject, 'yyyy-MM-dd');
+    this.minDate = this._datePipe.transform(minDateObject, 'yyyy-MM-dd');
+    this.maxDate = this._datePipe.transform(maxDateObject, 'yyyy-MM-dd');
   }
+
   public get categories() {
-    return this.categoriesProvider.categories.getValue();
+    return this._categoriesProvider.categories.getValue();
   }
 
   public get name() {
@@ -69,23 +71,25 @@ export class EventUpdatePage {
 
   public updateEvent() {
     this.isSubmitted = true;
-    this.eventsProvider.updateEvent(this.event.url, this.form.value).then(
+    this._eventsProvider.updateEvent(this.event.url, this.form.value).then(
       data => {
-        this.navCtrl.pop();
+        this._navCtrl.pop();
       },
       error => {
         for (let key in error.error) {
-          key = this.commonProvider.toCamelCase(key);
+          key = this._commonProvider.toCamelCase(key);
           if (this.form.get(key)) {
-            this.form.get(key).setErrors({remote: error.error[key]});
+            this.form.get(key).setErrors({
+              remote: error.error[key]
+            });
           }
         }
       }
     );
   }
 
-  private createForm() {
-    this.form = this.formBuilder.group({
+  private _createForm() {
+    this.form = this._formBuilder.group({
       name: [this.event.name, [Validators.required]],
       category: [this.event.categoryUrl, [Validators.required]],
       startDate: [this.event.startDate, [Validators.required, DateValidators.pastDate]],
