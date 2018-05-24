@@ -15,8 +15,8 @@ import { EventsProvider } from '../../providers/events/events';
 export class EventListPage {
 
   constructor(
-    private _navCtrl: NavController,
     private _alertCtrl: AlertController,
+    private _navCtrl: NavController,
     private _eventsProvider: EventsProvider
   ) {
     _eventsProvider.readEvents();
