@@ -1,14 +1,14 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
 import { SignInPage } from './sign-in';
-import { CommonProvider } from './../../providers/common/common';
-import { AuthProvider } from './../../providers/auth/auth';
+
+import { CommonProvider } from '../../providers/common/common';
+import { AuthProvider } from '../../providers/auth/auth';
 
 class NavControllerStub {}
-class NavParamsStup {}
 class CommonProviderStub {}
 class AuthProviderStub {}
 
@@ -23,7 +23,6 @@ describe('Pages: SignInPage', () => {
       providers: [
         FormBuilder,
         { provide: NavController, useClass: NavControllerStub },
-        { provide: NavParams, useClass: NavParamsStup },
         { provide: CommonProvider, useClass: CommonProviderStub },
         { provide: AuthProvider, useClass: AuthProviderStub }
       ],
@@ -45,8 +44,8 @@ describe('Pages: SignInPage', () => {
     updateForm('test_username', 'test_password');
     expect(component.form.valid).toBeTruthy();
     expect(component.form.value).toEqual({
-      'username': 'test_username',
-      'password': 'test_password'
+      username: 'test_username',
+      password: 'test_password'
     });
   });
 
