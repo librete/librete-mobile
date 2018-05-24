@@ -3,7 +3,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let note of notes" (click)="navigateToDetail(note)">
+  <ion-card *ngFor="let note of notes" (click)="navigateToDetailPage(note)">
     <ion-item>
       <ion-icon name="md-calendar" item-start large></ion-icon>
       <h2> {{ note.name }}</h2>
@@ -11,7 +11,7 @@
     </ion-item>
   </ion-card>
   <ion-fab right bottom>
-    <button ion-fab (click)="navigateToNoteCreatePage()">
+    <button ion-fab (click)="navigateToCreatePage()">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>
