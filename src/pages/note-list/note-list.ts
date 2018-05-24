@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { AlertController, NavController } from 'ionic-angular';
+import { AlertController, ItemSliding, NavController } from 'ionic-angular';
 
 import { Note } from '../../models/note';
 
 import { NoteDetailPage } from '../note-detail/note-detail';
 import { NoteCreatePage } from '../note-create/note-create';
+import { NoteUpdatePage } from '../note-update/note-update';
 
 import { NotesProvider } from '../../providers/notes/notes';
 
@@ -32,6 +33,11 @@ export class NoteListPage {
 
   public navigateToCreatePage() {
     this._navCtrl.push(NoteCreatePage);
+  }
+
+  public navigateToUpdatePage(note: Note, item: ItemSliding) {
+    this._navCtrl.push(NoteUpdatePage, { note: note });
+    item.close();
   }
 
   public deleteNote(note) {

@@ -4,13 +4,17 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item-sliding *ngFor="let note of notes">
+    <ion-item-sliding #item *ngFor="let note of notes">
       <ion-item (click)="navigateToDetailPage(note)">
         <ion-icon name="md-calendar" item-start large></ion-icon>
         <h2>{{ note.name }}</h2>
         <p>{{ note.createdAt | date:'dd.MM HH:mm' }}</p>
       </ion-item>
       <ion-item-options side="right">
+        <button ion-button color="primary" (click)="navigateToUpdatePage(note, item)">
+          <ion-icon name="md-create"></ion-icon>
+          Edit
+        </button>
         <button ion-button color="danger" (click)="deleteNote(note)">
           <ion-icon name="md-trash"></ion-icon>
           Delete
