@@ -91,6 +91,22 @@ export class TasksProvider {
     });
   }
 
+  public deleteTask(url: string) {
+    return new Promise ((resolve, reject) => {
+      this._commonProvider.performRequest(url, 'DELETE').subscribe(
+        (data: any) => {
+          const tasks: Array<Task> = this._tasks.getValue();
+          const index = tasks.findIndex(x => x.url === url);
+          tasks.splice(index, 1);
+          resolve();
+        },
+        error => {
+          reject(error);
+        }
+      );
+    });
+  }
+
   private _setCategory(task) {
     task.category = this._categoriesProvider.categories.getValue().find(
       category => category.url === task.categoryUrl
