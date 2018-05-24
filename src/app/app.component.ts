@@ -13,7 +13,7 @@ import { TaskListPage } from '../pages/task-list/task-list';
 import { CommonProvider } from '../providers/common/common';
 import { AuthProvider } from '../providers/auth/auth';
 
-import { IPage } from './../interfaces/page';
+import { IPage } from '../interfaces/page';
 
 @Component({
   templateUrl: 'app.html'
@@ -23,12 +23,13 @@ export class MyApp {
 
   rootPage: any;
 
-  constructor(platform: Platform,
-      statusBar: StatusBar,
-      splashScreen: SplashScreen,
-      private commonProvider: CommonProvider,
-      private authProvider: AuthProvider
-    ) {
+  constructor(
+    platform: Platform,
+    statusBar: StatusBar,
+    splashScreen: SplashScreen,
+    private _commonProvider: CommonProvider,
+    private _authProvider: AuthProvider
+  ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -36,12 +37,12 @@ export class MyApp {
       splashScreen.hide();
     });
 
-    commonProvider.readAuthenticationData().then(
+    _commonProvider.readAuthenticationData().then(
       data => {
-        this.authProvider.refreshToken().subscribe(
+        this._authProvider.refreshToken().subscribe(
           data => {
-            this.commonProvider.setAuthenticationData(data);
-            this.rootPage = this.commonProvider.isAuthenticated ? HomePage : SignInPage;
+            this._commonProvider.setAuthenticationData(data);
+            this.rootPage = this._commonProvider.isAuthenticated ? HomePage : SignInPage;
           },
           error => {
             this.rootPage = SignInPage;
@@ -51,9 +52,9 @@ export class MyApp {
     );
   }
 
-  get pages() {
+  public get pages() {
     let pageList: Array<IPage>;
-    if (this.commonProvider.isAuthenticated) {
+    if (this._commonProvider.isAuthenticated) {
       pageList = [
         { title: 'Home', component: HomePage, icon: 'md-home' },
         { title: 'Events', component: EventListPage, icon: 'md-calendar' },
@@ -72,5 +73,5 @@ export class MyApp {
   public openPage(page) {
     this.nav.setRoot(page);
   }
-}
 
+}

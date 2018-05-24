@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
-import { TasksProvider } from './../../providers/tasks/tasks';
+import { Task } from '../../models/task';
+
 import { TaskDetailPage } from '../task-detail/task-detail';
 import { TaskCreatePage } from '../task-create/task-create';
-import { Task } from '../../models/task';
+
+import { TasksProvider } from '../../providers/tasks/tasks';
 
 @Component({
   selector: 'page-task-list',
@@ -12,23 +14,23 @@ import { Task } from '../../models/task';
 })
 export class TaskListPage {
 
-  constructor(public navCtrl: NavController,
-    public navParams: NavParams,
-    private tasksProvider: TasksProvider) {
+  constructor(
+    private _navCtrl: NavController,
+    private _tasksProvider: TasksProvider
+  ) {
+    _tasksProvider.readTasks();
 
-      tasksProvider.updateTasks();
-    }
-
-    get tasks() {
-      return this.tasksProvider.tasks.getValue();
-    }
-
-  public navigateToDetail(task: Task) {
-    this.navCtrl.push(TaskDetailPage, { task: task });
+  }
+  public get tasks() {
+    return this._tasksProvider.tasks.getValue();
   }
 
-  public navigateToTaskCreatePage() {
-    this.navCtrl.push(TaskCreatePage);
+  public navigateToDetailPage(task: Task) {
+    this._navCtrl.push(TaskDetailPage, { task: task });
+  }
+
+  public navigateToCreatePage() {
+    this._navCtrl.push(TaskCreatePage);
   }
 
 }

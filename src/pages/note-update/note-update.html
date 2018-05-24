@@ -1,5 +1,5 @@
 <ion-header>
-  <header pageTitle="Create note"></header>
+  <header pageTitle="Change note"></header>
 </ion-header>
 
 <ion-content padding>
@@ -46,16 +46,14 @@
       </ion-item>
       <div *ngIf="(text.dirty || isSubmitted) && text.invalid" class="form-error-message">
         <div *ngIf="text.errors.required">
-            This field is required.
+          This field is required.
         </div>
         <div *ngIf="text.errors.remote">
           {{ text.errors.remote }}
         </div>
       </div>
 
-      <button ion-button block type="submit"
-        class="submit-button"
-        [disabled]="!form.valid">
+      <button ion-button block type="submit" class="submit-button" [disabled]="!form.valid">
         Save
       </button>
     </form>

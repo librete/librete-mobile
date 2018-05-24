@@ -2,15 +2,15 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DatePipe } from '@angular/common';
 import { FormBuilder } from '@angular/forms';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
 import { EventCreatePage } from './event-create';
+
 import { CommonProvider } from '../../providers/common/common';
 import { EventsProvider } from '../../providers/events/events';
 import { CategoriesProvider } from '../../providers/categories/categories';
 
 class NavControllerStub {}
-class NavParamsStup {}
 class CommonProviderStub {}
 class EventsProviderStub {}
 class CategoriesProviderStub {}
@@ -24,10 +24,9 @@ describe('Pages: EventCreatePage', () => {
     TestBed.configureTestingModule({
       declarations: [EventCreatePage],
       providers: [
-        FormBuilder,
         DatePipe,
+        FormBuilder,
         { provide: NavController, useClass: NavControllerStub },
-        { provide: NavParams, useClass: NavParamsStup },
         { provide: CommonProvider, useClass: CommonProviderStub },
         { provide: EventsProvider, useClass: EventsProviderStub },
         { provide: CategoriesProvider, useClass: CategoriesProviderStub }

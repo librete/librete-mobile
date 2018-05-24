@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
-import { EventsProvider } from './../../providers/events/events';
+import { Event } from '../../models/event';
+
 import { EventDetailPage } from '../event-detail/event-detail';
 import { EventCreatePage } from '../event-create/event-create';
-import { Event } from '../../models/event';
+
+import { EventsProvider } from '../../providers/events/events';
 
 @Component({
   selector: 'page-event-list',
@@ -12,23 +14,23 @@ import { Event } from '../../models/event';
 })
 export class EventListPage {
 
-  constructor(public navCtrl: NavController,
-    public navParams: NavParams,
-    private eventsProvider: EventsProvider) {
-
-    eventsProvider.updateEvents();
+  constructor(
+    private _navCtrl: NavController,
+    private _eventsProvider: EventsProvider
+  ) {
+    _eventsProvider.readEvents();
   }
 
-  get events() {
-    return this.eventsProvider.events.getValue();
+  public get events() {
+    return this._eventsProvider.events.getValue();
   }
 
-  public navigateToDetail(event: Event) {
-    this.navCtrl.push(EventDetailPage, { event: event });
+  public navigateToDetailPage(event: Event) {
+    this._navCtrl.push(EventDetailPage, { event: event });
   }
 
-  public navigateToEventCreatePage() {
-    this.navCtrl.push(EventCreatePage);
+  public navigateToCreatePage() {
+    this._navCtrl.push(EventCreatePage);
   }
 
 }

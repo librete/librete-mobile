@@ -4,12 +4,13 @@ import { DatePipe } from '@angular/common';
 import { FormBuilder } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { TaskUpdatePage } from './task-update';
 import { Task } from '../../models/task';
+
+import { TaskUpdatePage } from './task-update';
+
 import { CommonProvider } from '../../providers/common/common';
 import { TasksProvider } from '../../providers/tasks/tasks';
 import { CategoriesProvider } from '../../providers/categories/categories';
-
 
 const date = new Date().toISOString().substr(0, 10);
 const task = {
@@ -40,8 +41,8 @@ describe('Pages: TaskUpdatePage', () => {
     TestBed.configureTestingModule({
       declarations: [TaskUpdatePage],
       providers: [
-        FormBuilder,
         DatePipe,
+        FormBuilder,
         { provide: NavController, useClass: NavControllerStub },
         { provide: NavParams, useClass: NavParamsStub },
         { provide: CommonProvider, useClass: CommonProviderStub },

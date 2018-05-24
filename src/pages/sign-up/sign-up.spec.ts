@@ -1,14 +1,14 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
 import { SignUpPage } from './sign-up';
-import { CommonProvider } from './../../providers/common/common';
-import { AuthProvider } from './../../providers/auth/auth';
+
+import { CommonProvider } from '../../providers/common/common';
+import { AuthProvider } from '../../providers/auth/auth';
 
 class NavControllerStub {}
-class NavParamsStup {}
 class CommonProviderStub {}
 class AuthProviderStub {}
 
@@ -23,7 +23,6 @@ describe('Pages: SignUpPage', () => {
       providers: [
         FormBuilder,
         { provide: NavController, useClass: NavControllerStub },
-        { provide: NavParams, useClass: NavParamsStup },
         { provide: CommonProvider, useClass: CommonProviderStub },
         { provide: AuthProvider, useClass: AuthProviderStub }
       ],
@@ -48,11 +47,11 @@ describe('Pages: SignUpPage', () => {
     updateForm('john.doe', 'doe.john', 'john.doe@example.com', 'John', 'Doe');
     expect(component.form.valid).toBeTruthy();
     expect(component.form.value).toEqual({
-      'username': 'john.doe',
-      'password': 'doe.john',
-      'email': 'john.doe@example.com',
-      'firstName': 'John',
-      'lastName': 'Doe'
+      username: 'john.doe',
+      password: 'doe.john',
+      email: 'john.doe@example.com',
+      firstName: 'John',
+      lastName: 'Doe'
     });
   });
 

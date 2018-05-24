@@ -4,21 +4,22 @@ import { DatePipe } from '@angular/common';
 import { FormBuilder } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { EventUpdatePage } from './event-update';
 import { Event } from '../../models/event';
+
+import { EventUpdatePage } from './event-update';
+
 import { CommonProvider } from '../../providers/common/common';
 import { EventsProvider } from '../../providers/events/events';
 import { CategoriesProvider } from '../../providers/categories/categories';
 
-
 const date = new Date().toISOString().substr(0, 10);
 const event = {
-  'name': 'Event name',
-  'categoryUrl': 'https://example.com/api/categories/1/',
-  'startDate': date,
-  'endDate': date,
-  'location': 'Location',
-  'description': 'Description'
+  name: 'Event name',
+  categoryUrl: 'https://example.com/api/categories/1/',
+  startDate: date,
+  endDate: date,
+  location: 'Location',
+  description: 'Description'
 };
 
 class NavControllerStub {}
@@ -40,8 +41,8 @@ describe('Pages: EventUpdatePage', () => {
     TestBed.configureTestingModule({
       declarations: [EventUpdatePage],
       providers: [
-        FormBuilder,
         DatePipe,
+        FormBuilder,
         { provide: NavController, useClass: NavControllerStub },
         { provide: NavParams, useClass: NavParamsStub },
         { provide: CommonProvider, useClass: CommonProviderStub },

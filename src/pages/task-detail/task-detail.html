@@ -19,12 +19,10 @@
   <ion-item>
     <ion-icon name="time" item-start large></ion-icon>
     <p>
-      Date: {{ task.startDate | date:'yyyy.MM.dd' }}
-      at {{ task.startDate | date:'HH:mm' }}
+      Date: {{ task.startDate | date:'yyyy.MM.dd' }} at {{ task.startDate | date:'HH:mm' }}
     </p>
     <p>
-      Due date: {{ task.endDate | date:'yyyy.MM.dd' }}
-      at {{ task.endDate | date:'HH:mm' }}
+      Due date: {{ task.endDate | date:'yyyy.MM.dd' }} at {{ task.endDate | date:'HH:mm' }}
     </p>
   </ion-item>
 
@@ -33,7 +31,7 @@
   </ion-item>
 
   <ion-fab right bottom>
-    <button ion-fab (click)="navigateToTaskUpdatePage()">
+    <button ion-fab (click)="navigateToUpdatePage()">
       <ion-icon name="md-create"></ion-icon>
     </button>
   </ion-fab>

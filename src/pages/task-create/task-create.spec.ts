@@ -2,15 +2,15 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DatePipe } from '@angular/common';
 import { FormBuilder } from '@angular/forms';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
 import { TaskCreatePage } from './task-create';
+
 import { CommonProvider } from '../../providers/common/common';
 import { TasksProvider } from '../../providers/tasks/tasks';
 import { CategoriesProvider } from '../../providers/categories/categories';
 
 class NavControllerStub {}
-class NavParamsStup {}
 class CommonProviderStub {}
 class TasksProviderStub {}
 class CategoriesProviderStub {}
@@ -24,10 +24,9 @@ describe('Pages: TaskCreatePage', () => {
     TestBed.configureTestingModule({
       declarations: [TaskCreatePage],
       providers: [
-        FormBuilder,
         DatePipe,
+        FormBuilder,
         { provide: NavController, useClass: NavControllerStub },
-        { provide: NavParams, useClass: NavParamsStup },
         { provide: CommonProvider, useClass: CommonProviderStub },
         { provide: TasksProvider, useClass: TasksProviderStub },
         { provide: CategoriesProvider, useClass: CategoriesProviderStub }

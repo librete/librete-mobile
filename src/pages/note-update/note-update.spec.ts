@@ -3,18 +3,19 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { NoteUpdatePage } from './note-update';
 import { Note } from '../../models/note';
+
+import { NoteUpdatePage } from './note-update';
+
 import { CommonProvider } from '../../providers/common/common';
 import { NotesProvider } from '../../providers/notes/notes';
 import { CategoriesProvider } from '../../providers/categories/categories';
 
-
 const date = new Date().toISOString().substr(0, 10);
 const note = {
-  'name': 'Note name',
-  'categoryUrl': 'https://example.com/api/categories/1/',
-  'text': 'Note text'
+  name: 'Note name',
+  categoryUrl: 'https://example.com/api/categories/1/',
+  text: 'Note text'
 };
 
 class NavControllerStub {}

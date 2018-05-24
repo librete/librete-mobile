@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
-import { TaskDetailPage } from './../task-detail/task-detail';
+import { TaskDetailPage } from '../task-detail/task-detail';
 
 import { CommonProvider } from '../../providers/common/common';
 import { TasksProvider } from '../../providers/tasks/tasks';
 import { CategoriesProvider } from '../../providers/categories/categories';
 
-import { DateValidators } from './../../validators/date';
+import { DateValidators } from '../../validators/date';
 
 @Component({
   selector: 'page-task-create',
@@ -21,33 +21,29 @@ export class TaskCreatePage {
   public minDate: string;
   public isSubmitted = false;
 
-  constructor(public navCtrl: NavController,
-    public navParams: NavParams,
-    private formBuilder: FormBuilder,
-    private commonProvider: CommonProvider,
-    private tasksProvider: TasksProvider,
-    private categoriesProvider: CategoriesProvider,
-    private datePipe: DatePipe
+  constructor(
+    private _datePipe: DatePipe,
+    private _formBuilder: FormBuilder,
+    private _navCtrl: NavController,
+    private _commonProvider: CommonProvider,
+    private _tasksProvider: TasksProvider,
+    private _categoriesProvider: CategoriesProvider
   ) {
-    this.createForm();
+    this._createForm();
 
     const minDateObject = new Date();
     const maxDateObject = new Date();
     maxDateObject.setFullYear(maxDateObject.getFullYear() + 10);
-    this.minDate = this.datePipe.transform(minDateObject, 'yyyy-MM-dd');
-    this.maxDate = this.datePipe.transform(maxDateObject, 'yyyy-MM-dd');
-  }
-
-  public get statusOptions() {
-    return this.tasksProvider.statusOptions;
+    this.minDate = this._datePipe.transform(minDateObject, 'yyyy-MM-dd');
+    this.maxDate = this._datePipe.transform(maxDateObject, 'yyyy-MM-dd');
   }
 
   public get priorityOptions() {
-    return this.tasksProvider.priorityOptions;
+    return this._tasksProvider.priorityOptions;
   }
 
   public get categories() {
-    return this.categoriesProvider.categories.getValue();
+    return this._categoriesProvider.categories.getValue();
   }
 
   public get name() {
@@ -80,13 +76,13 @@ export class TaskCreatePage {
 
   public createTask() {
     this.isSubmitted = true;
-    this.tasksProvider.createTask(this.form.value).then(
+    this._tasksProvider.createTask(this.form.value).then(
       data => {
-        this.navCtrl.push(TaskDetailPage, {'task': data});
+        this._navCtrl.push(TaskDetailPage, {'task': data});
       },
       error => {
         for (const key in error.error) {
-          const formKey = this.commonProvider.toCamelCase(key);
+          const formKey = this._commonProvider.toCamelCase(key);
           if (this.form.get(formKey)) {
             this.form.get(formKey).setErrors({remote: error.error[key]});
           }
@@ -95,8 +91,8 @@ export class TaskCreatePage {
     );
   }
 
-  private createForm() {
-    this.form = this.formBuilder.group({
+  private _createForm() {
+    this.form = this._formBuilder.group({
       name: ['', [Validators.required]],
       category: ['', [Validators.required]],
       startDate: ['', [DateValidators.pastDate]],

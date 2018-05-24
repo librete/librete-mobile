@@ -18,12 +18,10 @@
   <ion-item>
     <ion-icon name="time" item-start large></ion-icon>
     <p>
-      Starts on {{ event.startDate | date:'yyyy.MM.dd' }}
-      at {{ event.startDate | date:'HH:mm' }}
+      Starts on {{ event.startDate | date:'yyyy.MM.dd' }} at {{ event.startDate | date:'HH:mm' }}
     </p>
     <p>
-      Ends on {{ event.endDate | date:'yyyy.MM.dd' }}
-      at {{ event.endDate | date:'HH:mm' }}
+      Ends on {{ event.endDate | date:'yyyy.MM.dd' }} at {{ event.endDate | date:'HH:mm' }}
     </p>
   </ion-item>
 
@@ -32,7 +30,7 @@
   </ion-item>
 
   <ion-fab right bottom>
-    <button ion-fab (click)="navigateToEventUpdatePage()">
+    <button ion-fab (click)="navigateToUpdatePage()">
       <ion-icon name="md-create"></ion-icon>
     </button>
   </ion-fab>

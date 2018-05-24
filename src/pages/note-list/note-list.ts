@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
-import { NotesProvider } from './../../providers/notes/notes';
-import { NoteDetailPage } from './../note-detail/note-detail';
-import { NoteCreatePage } from './../note-create/note-create';
 import { Note } from '../../models/note';
+
+import { NoteDetailPage } from '../note-detail/note-detail';
+import { NoteCreatePage } from '../note-create/note-create';
+
+import { NotesProvider } from '../../providers/notes/notes';
 
 @Component({
   selector: 'page-note-list',
@@ -12,23 +14,23 @@ import { Note } from '../../models/note';
 })
 export class NoteListPage {
 
-  constructor(public navCtrl: NavController,
-    public navParams: NavParams,
-    private notesProvider: NotesProvider) {
-
-    notesProvider.updateNotes();
+  constructor(
+    private _navCtrl: NavController,
+    private _notesProvider: NotesProvider
+  ) {
+    _notesProvider.readNotes();
   }
 
-  get notes() {
-    return this.notesProvider.notes.getValue();
+  public get notes() {
+    return this._notesProvider.notes.getValue();
   }
 
-  public navigateToDetail(note: Note) {
-    this.navCtrl.push(NoteDetailPage, { note: note });
+  public navigateToDetailPage(note: Note) {
+    this._navCtrl.push(NoteDetailPage, { note: note });
   }
 
-  public navigateToNoteCreatePage() {
-    this.navCtrl.push(NoteCreatePage);
+  public navigateToCreatePage() {
+    this._navCtrl.push(NoteCreatePage);
   }
 
 }

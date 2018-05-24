@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 
-import { CommonProvider } from './../common/common';
+import { CommonProvider } from '../common/common';
 import { ENV } from '@app/env';
 
 @Injectable()
 export class AuthProvider {
   private _env = ENV;
 
-  constructor(private commonProvider: CommonProvider) {
+  constructor(private _commonProvider: CommonProvider) {
   }
 
   public signUp(data) {
@@ -18,7 +18,7 @@ export class AuthProvider {
       'first_name': data.firstName,
       'last_name': data.lastName
     };
-    return this.commonProvider.performRequest('users/', 'POST', request_data);
+    return this._commonProvider.performRequest('users/', 'POST', request_data);
   }
 
   public signIn(username, password) {
@@ -29,7 +29,7 @@ export class AuthProvider {
       'username': username,
       'password': password
     };
-    return this.commonProvider.performRequest('oauth2/token/', 'POST', data);
+    return this._commonProvider.performRequest('oauth2/token/', 'POST', data);
   }
 
   public refreshToken() {
@@ -37,9 +37,9 @@ export class AuthProvider {
       'grant_type': 'refresh_token',
       'client_id': this._env.clientID,
       'client_secret': this._env.clientSecret,
-      'refresh_token': this.commonProvider.refreshToken
+      'refresh_token': this._commonProvider.refreshToken
     };
-    return this.commonProvider.performRequest('oauth2/token/', 'POST', data);
+    return this._commonProvider.performRequest('oauth2/token/', 'POST', data);
   }
 
 }

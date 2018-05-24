@@ -3,7 +3,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let task of tasks" (click)="navigateToDetail(task)">
+  <ion-card *ngFor="let task of tasks" (click)="navigateToDetailPage(task)">
     <ion-item>
       <ion-icon name="md-calendar" item-start large></ion-icon>
       <h2> {{ task.name }}</h2>
@@ -11,13 +11,12 @@
     </ion-item>
     <ion-item>
       <span item-left>
-        {{ task.startDate | date:'yyyy.MM.dd HH:mm' }} -
-        {{ task.endDate | date:'yyyy.MM.dd HH:mm' }}
+        {{ task.startDate | date:'yyyy.MM.dd HH:mm' }} - {{ task.endDate | date:'yyyy.MM.dd HH:mm' }}
       </span>
     </ion-item>
   </ion-card>
   <ion-fab right bottom>
-    <button ion-fab (click)="navigateToTaskCreatePage()">
+    <button ion-fab (click)="navigateToCreatePage()">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>

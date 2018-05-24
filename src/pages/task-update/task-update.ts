@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { Task } from '../../models/task';
+
 import { CommonProvider } from '../../providers/common/common';
 import { TasksProvider } from '../../providers/tasks/tasks';
 import { CategoriesProvider } from '../../providers/categories/categories';
@@ -22,30 +23,30 @@ export class TaskUpdatePage {
   public isSubmitted = false;
 
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    private formBuilder: FormBuilder,
-    private commonProvider: CommonProvider,
-    private tasksProvider: TasksProvider,
-    private categoriesProvider: CategoriesProvider,
-    private datePipe: DatePipe
+    private _datePipe: DatePipe,
+    private _formBuilder: FormBuilder,
+    private _navCtrl: NavController,
+    private _navParams: NavParams,
+    private _commonProvider: CommonProvider,
+    private _tasksProvider: TasksProvider,
+    private _categoriesProvider: CategoriesProvider
   ) {
-    this.task = this.navParams.get('task');
-    this.createForm();
+    this.task = this._navParams.get('task');
+    this._createForm();
 
     const minDateObject = new Date();
     const maxDateObject = new Date();
     maxDateObject.setFullYear(maxDateObject.getFullYear() + 10);
-    this.minDate = this.datePipe.transform(minDateObject, 'yyyy-MM-dd');
-    this.maxDate = this.datePipe.transform(maxDateObject, 'yyyy-MM-dd');
+    this.minDate = this._datePipe.transform(minDateObject, 'yyyy-MM-dd');
+    this.maxDate = this._datePipe.transform(maxDateObject, 'yyyy-MM-dd');
   }
 
   public get priorityOptions() {
-    return this.tasksProvider.priorityOptions;
+    return this._tasksProvider.priorityOptions;
   }
 
   public get categories() {
-    return this.categoriesProvider.categories.getValue();
+    return this._categoriesProvider.categories.getValue();
   }
 
   public get name() {
@@ -74,23 +75,25 @@ export class TaskUpdatePage {
 
   public updateTask() {
     this.isSubmitted = true;
-    this.tasksProvider.updateTask(this.task.url, this.form.value).then(
+    this._tasksProvider.updateTask(this.task.url, this.form.value).then(
       data => {
-        this.navCtrl.pop();
+        this._navCtrl.pop();
       },
       error => {
         for (let key in error.error) {
-          key = this.commonProvider.toCamelCase(key);
+          key = this._commonProvider.toCamelCase(key);
           if (this.form.get(key)) {
-            this.form.get(key).setErrors({remote: error.error[key]});
+            this.form.get(key).setErrors({
+              remote: error.error[key]
+            });
           }
         }
       }
     );
   }
 
-  private createForm() {
-    this.form = this.formBuilder.group({
+  private _createForm() {
+    this.form = this._formBuilder.group({
       name: [this.task.name, [Validators.required]],
       category: [this.task.categoryUrl, [Validators.required]],
       startDate: [this.task.startDate, [Validators.required, DateValidators.pastDate]],
