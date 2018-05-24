@@ -4,7 +4,7 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item-sliding *ngFor="let event of events">
+    <ion-item-sliding #item *ngFor="let event of events">
       <ion-item (click)="navigateToDetailPage(event)">
         <ion-icon name="md-calendar" item-start large></ion-icon>
         <h2>{{ event.name }}</h2>
@@ -16,6 +16,10 @@
         </p>
       </ion-item>
       <ion-item-options side="right">
+        <button ion-button color="primary" (click)="navigateToUpdatePage(event, item)">
+          <ion-icon name="md-create"></ion-icon>
+          Edit
+        </button>
         <button ion-button color="danger" (click)="deleteEvent(event)">
           <ion-icon name="md-trash"></ion-icon>
           Delete

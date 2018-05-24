@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { AlertController, NavController } from 'ionic-angular';
+import { AlertController, ItemSliding, NavController } from 'ionic-angular';
 
 import { Event } from '../../models/event';
 
 import { EventDetailPage } from '../event-detail/event-detail';
 import { EventCreatePage } from '../event-create/event-create';
+import { EventUpdatePage } from '../event-update/event-update';
 
 import { EventsProvider } from '../../providers/events/events';
 
@@ -32,6 +33,11 @@ export class EventListPage {
 
   public navigateToCreatePage() {
     this._navCtrl.push(EventCreatePage);
+  }
+
+  public navigateToUpdatePage(event: Event, item: ItemSliding) {
+    this._navCtrl.push(EventUpdatePage, { event: event });
+    item.close();
   }
 
   public deleteEvent(event) {
