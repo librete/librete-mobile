@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { AlertController, NavController } from 'ionic-angular';
+import { AlertController, ItemSliding, NavController } from 'ionic-angular';
 
 import { Task } from '../../models/task';
 
 import { TaskDetailPage } from '../task-detail/task-detail';
 import { TaskCreatePage } from '../task-create/task-create';
+import { TaskUpdatePage } from '../task-update/task-update';
 
 import { TasksProvider } from '../../providers/tasks/tasks';
 
@@ -32,6 +33,11 @@ export class TaskListPage {
 
   public navigateToCreatePage() {
     this._navCtrl.push(TaskCreatePage);
+  }
+
+  public navigateToUpdatePage(task: Task, item: ItemSliding) {
+    this._navCtrl.push(TaskUpdatePage, { task: task });
+    item.close();
   }
 
   public deleteTask(task) {

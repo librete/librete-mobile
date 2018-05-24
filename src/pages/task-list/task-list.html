@@ -4,7 +4,7 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item-sliding *ngFor="let task of tasks">
+    <ion-item-sliding #item *ngFor="let task of tasks">
       <ion-item (click)="navigateToDetailPage(task)">
         <ion-icon name="md-calendar" item-start large></ion-icon>
         <h2>{{ task.name }}</h2>
@@ -16,6 +16,10 @@
         </p>
       </ion-item>
       <ion-item-options side="right">
+        <button ion-button color="primary" (click)="navigateToUpdatePage(task, item)">
+          <ion-icon name="md-create"></ion-icon>
+          Edit
+        </button>
         <button ion-button color="danger" (click)="deleteTask(task)">
           <ion-icon name="md-trash"></ion-icon>
           Delete
