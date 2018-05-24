@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { AlertController, NavController } from 'ionic-angular';
 
 import { Task } from '../../models/task';
 
@@ -15,6 +15,7 @@ import { TasksProvider } from '../../providers/tasks/tasks';
 export class TaskListPage {
 
   constructor(
+    private _alertCtrl: AlertController,
     private _navCtrl: NavController,
     private _tasksProvider: TasksProvider
   ) {
@@ -31,6 +32,25 @@ export class TaskListPage {
 
   public navigateToCreatePage() {
     this._navCtrl.push(TaskCreatePage);
+  }
+
+  public deleteTask(task) {
+    const confirm = this._alertCtrl.create({
+      title: 'Are you sure?',
+      message: `Are you sure that you want to delete "${task.name}"`,
+      buttons: [
+        {
+          text: 'Cancel',
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            this._tasksProvider.deleteTask(task.url);
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
 }

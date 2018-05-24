@@ -3,18 +3,27 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let task of tasks" (click)="navigateToDetailPage(task)">
-    <ion-item>
-      <ion-icon name="md-calendar" item-start large></ion-icon>
-      <h2> {{ task.name }}</h2>
-      <p> {{ task.description }}</p>
-    </ion-item>
-    <ion-item>
-      <span item-left>
-        {{ task.startDate | date:'yyyy.MM.dd HH:mm' }} - {{ task.endDate | date:'yyyy.MM.dd HH:mm' }}
-      </span>
-    </ion-item>
-  </ion-card>
+  <ion-list>
+    <ion-item-sliding *ngFor="let task of tasks">
+      <ion-item (click)="navigateToDetailPage(task)">
+        <ion-icon name="md-calendar" item-start large></ion-icon>
+        <h2>{{ task.name }}</h2>
+        <p>
+          {{ task.startDate | date:'dd.MM HH:mm' }}
+          <span *ngIf="task.endDate !== task.startDate">
+            - {{ task.endDate | date:'dd.MM HH:mm' }}
+          </span>
+        </p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="deleteTask(task)">
+          <ion-icon name="md-trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
   <ion-fab right bottom>
     <button ion-fab (click)="navigateToCreatePage()">
       <ion-icon name="add"></ion-icon>
