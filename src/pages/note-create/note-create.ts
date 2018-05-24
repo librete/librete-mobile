@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
-import { NoteDetailPage } from './../note-detail/note-detail';
+import { NoteDetailPage } from '../note-detail/note-detail';
 
 import { CommonProvider } from '../../providers/common/common';
 import { NotesProvider } from '../../providers/notes/notes';
@@ -14,22 +14,20 @@ import { CategoriesProvider } from '../../providers/categories/categories';
 })
 export class NoteCreatePage {
   public form: FormGroup;
-  public maxDate: string;
-  public minDate: string;
   public isSubmitted = false;
 
-  constructor(public navCtrl: NavController,
-    public navParams: NavParams,
-    private formBuilder: FormBuilder,
-    private commonProvider: CommonProvider,
-    private notesProvider: NotesProvider,
-    private categoriesProvider: CategoriesProvider,
+  constructor(
+    private _formBuilder: FormBuilder,
+    private _navCtrl: NavController,
+    private _commonProvider: CommonProvider,
+    private _notesProvider: NotesProvider,
+    private _categoriesProvider: CategoriesProvider,
   ) {
-    this.createForm();
+    this._createForm();
   }
 
   public get categories() {
-    return this.categoriesProvider.categories.getValue();
+    return this._categoriesProvider.categories.getValue();
   }
 
   public get name() {
@@ -46,23 +44,25 @@ export class NoteCreatePage {
 
   public createNote() {
     this.isSubmitted = true;
-    this.notesProvider.createNote(this.form.value).then(
+    this._notesProvider.createNote(this.form.value).then(
       data => {
-        this.navCtrl.push(NoteDetailPage, {'note': data});
+        this._navCtrl.push(NoteDetailPage, {'note': data});
       },
       error => {
         for (let key in error.error) {
-          key = this.commonProvider.toCamelCase(key);
+          key = this._commonProvider.toCamelCase(key);
           if (this.form.get(key)) {
-            this.form.get(key).setErrors({remote: error.error[key]});
+            this.form.get(key).setErrors({
+              remote: error.error[key]
+            });
           }
         }
       }
     );
   }
 
-  private createForm() {
-    this.form = this.formBuilder.group({
+  private _createForm() {
+    this.form = this._formBuilder.group({
       name: ['', [Validators.required]],
       category: ['', [Validators.required]],
       text: ['', [Validators.required]],
