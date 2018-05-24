@@ -11,15 +11,16 @@ export class CommonProvider {
   private _refreshToken: string;
   private _scope: string;
 
-  constructor(public http: HttpClient,
-    private storage: Storage) {
-  }
+  constructor(
+    public http: HttpClient,
+    private _storage: Storage
+  ) {}
 
-  get isAuthenticated() {
+  public get isAuthenticated() {
      return this._accessToken ? true : false;
   }
 
-  get refreshToken() {
+  public get refreshToken() {
     return this._refreshToken;
   }
 
@@ -28,17 +29,17 @@ export class CommonProvider {
     this._refreshToken = data.refresh_token;
     this._scope = data.scope;
 
-    const storageObject = {
+    const _storageObject = {
       'accessToken': data.access_token,
       'refreshToken': data.refresh_token
     };
-    this.storage.set('authenticationData', storageObject);
+    this._storage.set('authenticationData', _storageObject);
   }
 
   public readAuthenticationData(): Promise<boolean> {
     return new Promise (resolve => {
-      this.storage.ready().then(() => {
-        this.storage.get('authenticationData').then((authenticationData) => {
+      this._storage.ready().then(() => {
+        this._storage.get('authenticationData').then((authenticationData) => {
           if (authenticationData) {
             this._accessToken = authenticationData.accessToken;
             this._refreshToken = authenticationData.refreshToken;
@@ -59,7 +60,7 @@ export class CommonProvider {
       url = `${this._env.apiUrl}/${url}`;
     }
     const data = JSON.stringify(requestData);
-    const headers = this.getHeaders(requestMethod);
+    const headers = this._getHeaders(requestMethod);
     const options = {
       headers: headers
     };
@@ -87,7 +88,7 @@ export class CommonProvider {
     });
   }
 
-  private getHeaders(requestMethod: string) {
+  private _getHeaders(requestMethod: string) {
     let headers: HttpHeaders = new HttpHeaders();
 
     headers = headers.append('Content-Type', 'application/json');
@@ -98,4 +99,5 @@ export class CommonProvider {
 
     return headers;
   }
+
 }
