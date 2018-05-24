@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { EventUpdatePage } from '../event-update/event-update';
 import { Event } from '../../models/event';
+
+import { EventUpdatePage } from '../event-update/event-update';
 
 @Component({
   selector: 'page-event-detail',
@@ -11,12 +12,15 @@ import { Event } from '../../models/event';
 export class EventDetailPage {
   public event: Event;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.event = this.navParams.get('event');
+  constructor(
+    private _navCtrl: NavController,
+    private _navParams: NavParams
+  ) {
+    this.event = this._navParams.get('event');
   }
 
-  public navigateToEventUpdatePage() {
-    this.navCtrl.push(EventUpdatePage, { event: this.event });
+  public navigateToUpdatePage() {
+    this._navCtrl.push(EventUpdatePage, { event: this.event });
   }
 
 }
