@@ -28,6 +28,29 @@ export class TasksProvider {
     return this._tasks;
   }
 
+  public updateTask(url: string, data: any) {
+    return new Promise ((resolve, reject) => {
+      data.start_date = new Date(data.startDate);
+      data.end_date = new Date(data.endDate);
+      this.commonProvider.performRequest(url, 'PUT', data).subscribe(
+        (data: any) => {
+          const jsonConvert: JsonConvert = new JsonConvert();
+          const task: Task = jsonConvert.deserialize(data, Task);
+          const tasks: Array<Task> = this._tasks.getValue();
+          const index = tasks.findIndex(x => x.url === url);
+
+          this.setCategory(task);
+          tasks[index] = Object.assign(tasks[index], task);
+
+          resolve(task);
+        },
+        error => {
+          reject(error);
+        }
+      );
+    });
+  }
+
   public createTask(data: any) {
     return new Promise ((resolve, reject) => {
       data.start_date = new Date(data.startDate);
