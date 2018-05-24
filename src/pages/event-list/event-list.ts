@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { AlertController, NavController } from 'ionic-angular';
 
 import { Event } from '../../models/event';
 
@@ -16,6 +16,7 @@ export class EventListPage {
 
   constructor(
     private _navCtrl: NavController,
+    private _alertCtrl: AlertController,
     private _eventsProvider: EventsProvider
   ) {
     _eventsProvider.readEvents();
@@ -31,6 +32,25 @@ export class EventListPage {
 
   public navigateToCreatePage() {
     this._navCtrl.push(EventCreatePage);
+  }
+
+  public deleteEvent(event) {
+    const confirm = this._alertCtrl.create({
+      title: 'Are you sure?',
+      message: `Are you sure that you want to delete "${event.name}"`,
+      buttons: [
+        {
+          text: 'Cancel',
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            this._eventsProvider.deleteEvent(event.url);
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
 }
