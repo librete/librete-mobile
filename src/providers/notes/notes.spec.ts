@@ -4,32 +4,32 @@ import { HttpParams } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { Observable } from 'rxjs/Observable';
 
-import { CommonProvider } from './../common/common';
-import { CategoriesProvider } from './../categories/categories';
+import { CommonProvider } from '../common/common';
+import { CategoriesProvider } from '../categories/categories';
 import { NotesProvider } from './notes';
 
-import { Category } from './../../models/category';
-import { Note } from './../../models/note';
+import { Category } from '../../models/category';
+import { Note } from '../../models/note';
 
 const getNotesResponse = {
   'results': [
     {
-      'url': 'https://example.com/api/notes/1/',
-      'name': 'Note name',
-      'author': 'https://example.com/api/authors/1/',
-      'category': 'https://example.com/api/categories/1/',
-      'created_at': '2018-04-01T06:23:05.288858Z',
-      'updated_at': '2018-04-01T06:23:05.288906Z',
-      'text': 'Text',
+      url: 'https://example.com/api/notes/1/',
+      name: 'Note name',
+      author: 'https://example.com/api/authors/1/',
+      category: 'https://example.com/api/categories/1/',
+      created_at: '2018-04-01T06:23:05.288858Z',
+      updated_at: '2018-04-01T06:23:05.288906Z',
+      text: 'Text',
     },
     {
-      'url': 'https://example.com/api/notes/2/',
-      'name': 'Note name 2',
-      'author': 'https://example.com/api/authors/1/',
-      'category': 'https://example.com/api/categories/2/',
-      'created_at': '2018-04-01T06:26:01.288858Z',
-      'updated_at': '2018-04-01T06:26:01.288858Z',
-      'text': 'Text 2'
+      url: 'https://example.com/api/notes/2/',
+      name: 'Note name 2',
+      author: 'https://example.com/api/authors/1/',
+      category: 'https://example.com/api/categories/2/',
+      created_at: '2018-04-01T06:26:01.288858Z',
+      updated_at: '2018-04-01T06:26:01.288858Z',
+      text: 'Text 2'
     }
   ]
 };
@@ -45,12 +45,12 @@ class CommonProviderStub {
 
 class CategoriesProviderStub {
 
-  get categories() {
-    const categoryList: Array<Category> = [this.createCategory(1), this.createCategory(2)];
+  public get categories() {
+    const categoryList: Array<Category> = [this._createCategory(1), this._createCategory(2)];
     return new BehaviorSubject<Array<Category>>(categoryList);
   }
 
-  private createCategory(id) {
+  private _createCategory(id) {
     const category = new Category();
     category.url = `https://example.com/api/categories/${id}/`;
     category.name = `Category ${id}`;
@@ -69,14 +69,14 @@ describe('Providers: NotesProvider', () => {
     ]
   }));
 
-  beforeEach(inject([NotesProvider], notesProvider => {
-    provider = notesProvider;
+  beforeEach(inject([NotesProvider], _notesProvider => {
+    provider = _notesProvider;
   }));
 
 
   it('Should update notes', (done) => {
 
-    provider.updateNotes().then(
+    provider.readNotes().then(
       data => {
         const notes = provider.notes.getValue();
         expect(notes.length).toBe(getNotesResponse.results.length);
