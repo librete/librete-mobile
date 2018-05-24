@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
 import { SignInPage } from '../sign-in/sign-in';
 
-import { CommonProvider } from './../../providers/common/common';
-import { AuthProvider } from './../../providers/auth/auth';
+import { CommonProvider } from '../../providers/common/common';
+import { AuthProvider } from '../../providers/auth/auth';
 
 @Component({
   selector: 'page-sign-up',
@@ -14,13 +14,13 @@ import { AuthProvider } from './../../providers/auth/auth';
 export class SignUpPage {
   public form: FormGroup;
 
-  constructor(public navCtrl: NavController,
-    public navParams: NavParams,
-    private formBuilder: FormBuilder,
-    private commonProvider: CommonProvider,
-    private authProvider: AuthProvider) {
-
-    this.form = this.formBuilder.group({
+  constructor(
+    private _formBuilder: FormBuilder,
+    private _navCtrl: NavController,
+    private _commonProvider: CommonProvider,
+    private _authProvider: AuthProvider
+  ) {
+    this.form = this._formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(4)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(4)]],
@@ -50,15 +50,17 @@ export class SignUpPage {
   }
 
   public signUp() {
-    this.authProvider.signUp(this.form.value).subscribe(
+    this._authProvider.signUp(this.form.value).subscribe(
       data => {
-        this.navCtrl.setRoot(SignInPage);
+        this._navCtrl.setRoot(SignInPage);
       },
       error => {
         for (let key in error.error) {
-          key = this.commonProvider.toCamelCase(key);
+          key = this._commonProvider.toCamelCase(key);
           if (this.form.get(key)) {
-            this.form.get(key).setErrors({remote: error.error[key]});
+            this.form.get(key).setErrors({
+              remote: error.error[key]
+            });
           }
         }
       }
