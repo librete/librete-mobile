@@ -82,6 +82,22 @@ export class EventsProvider {
     });
   }
 
+  public deleteEvent(url: string) {
+    return new Promise ((resolve, reject) => {
+      this._commonProvider.performRequest(url, 'DELETE').subscribe(
+        (data: any) => {
+          const events: Array<Event> = this._events.getValue();
+          const index = events.findIndex(x => x.url === url);
+          events.splice(index, 1);
+          resolve();
+        },
+        error => {
+          reject(error);
+        }
+      );
+    });
+  }
+
   private _setCategory(event) {
     event.category = this._categoriesProvider.categories.getValue().find(
       category => category.url === event.categoryUrl
