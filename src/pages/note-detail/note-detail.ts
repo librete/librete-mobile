@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { NoteUpdatePage } from '../note-update/note-update';
 import { Note } from '../../models/note';
+
+import { NoteUpdatePage } from '../note-update/note-update';
 
 @Component({
   selector: 'page-note-detail',
@@ -11,12 +12,15 @@ import { Note } from '../../models/note';
 export class NoteDetailPage {
   public note: Note;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.note = this.navParams.get('note');
+  constructor(
+    private _navCtrl: NavController,
+    private _navParams: NavParams
+  ) {
+    this.note = this._navParams.get('note');
   }
 
-  public navigateToNoteUpdatePage() {
-    this.navCtrl.push(NoteUpdatePage, { note: this.note });
+  public navigateToUpdatePage() {
+    this._navCtrl.push(NoteUpdatePage, { note: this.note });
   }
 
 }
