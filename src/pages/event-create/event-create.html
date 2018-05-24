@@ -40,11 +40,7 @@
 
       <ion-item>
         <ion-label floating>Start date</ion-label>
-        <ion-datetime
-          formControlName="startDate"
-          id="startDate"
-          [min]="minDate"
-          [max]="maxDate">
+        <ion-datetime formControlName="startDate" id="startDate" [min]="minDate" [max]="maxDate">
         </ion-datetime>
         <i class="icon ion-alert-circled error"></i>
       </ion-item>
@@ -62,11 +58,7 @@
 
       <ion-item>
         <ion-label floating>End date</ion-label>
-        <ion-datetime
-          formControlName="endDate"
-          id="endDate"
-          [min]="minDate"
-          [max]="maxDate">
+        <ion-datetime formControlName="endDate" id="endDate" [min]="minDate" [max]="maxDate">
         </ion-datetime>
         <i class="icon ion-alert-circled error"></i>
       </ion-item>
@@ -108,10 +100,8 @@
           {{ description.errors.remote }}
         </div>
       </div>
-
-      <button ion-button block type="submit"
-        class="submit-button"
-        [disabled]="!form.valid">
+      <input type="text" class="test-calss-gegwegwegweg" id="tetetet-tettet" data-test="tgetwetwet" name="tetetette">
+      <button ion-button block type="submit" class="submit-button" [disabled]="!form.valid">
         Create
       </button>
     </form>
