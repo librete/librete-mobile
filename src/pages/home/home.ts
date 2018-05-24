@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
 
-import { CategoriesProvider } from './../../providers/categories/categories';
+import { CategoriesProvider } from '../../providers/categories/categories';
 
 @Component({
   selector: 'page-home',
@@ -9,10 +8,8 @@ import { CategoriesProvider } from './../../providers/categories/categories';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController,
-    categoriesProvider: CategoriesProvider) {
-
-    categoriesProvider.updateCategories();
+  constructor(_categoriesProvider: CategoriesProvider) {
+    _categoriesProvider.readCategories();
   }
 
 }
