@@ -1,6 +1,7 @@
 import {JsonObject, JsonProperty} from 'json2typescript';
 
 import { Category } from './category';
+
 import { Priority, Status } from '../custom-types';
 
 @JsonObject
