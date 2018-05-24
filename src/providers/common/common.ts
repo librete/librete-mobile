@@ -72,6 +72,9 @@ export class CommonProvider {
       case 'POST': {
         return this.http.post(url, data, options);
       }
+      case 'DELETE': {
+        return this.http.delete(url, options);
+      }
       default: {  // GET
         const options = {
           params: <HttpParams>requestData,
