@@ -82,6 +82,22 @@ export class NotesProvider {
     });
   }
 
+  public deleteNote(url: string) {
+    return new Promise ((resolve, reject) => {
+      this._commonProvider.performRequest(url, 'DELETE').subscribe(
+        (data: any) => {
+          const notes: Array<Note> = this._notes.getValue();
+          const index = notes.findIndex(x => x.url === url);
+          notes.splice(index, 1);
+          resolve();
+        },
+        error => {
+          reject(error);
+        }
+      );
+    });
+  }
+
   private _setCategory(note) {
     note.category = this._categoriesProvider.categories.getValue().find(
       category => category.url === note.categoryUrl
