@@ -14,14 +14,14 @@ export class NotesProvider {
   constructor(
     private _commonProvider: CommonProvider,
     private _categoriesProvider: CategoriesProvider
-  ) {}
+  ) { }
 
   public get notes() {
     return this._notes;
   }
 
   public readNotes(): Promise<boolean> {
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       this._commonProvider.performRequest('notes/', 'GET').subscribe(
         (data: any) => {
           const jsonConvert: JsonConvert = new JsonConvert();
@@ -42,7 +42,7 @@ export class NotesProvider {
   }
 
   public createNote(data: any) {
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       this._commonProvider.performRequest('notes/', 'POST', data).subscribe(
         (data: any) => {
           const jsonConvert: JsonConvert = new JsonConvert();
@@ -60,7 +60,7 @@ export class NotesProvider {
   }
 
   public updateNote(url: string, data: any) {
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       data.start_date = new Date(data.startDate);
       data.end_date = new Date(data.endDate);
       this._commonProvider.performRequest(url, 'PUT', data).subscribe(
@@ -83,7 +83,7 @@ export class NotesProvider {
   }
 
   public deleteNote(url: string) {
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       this._commonProvider.performRequest(url, 'DELETE').subscribe(
         (data: any) => {
           const notes: Array<Note> = this._notes.getValue();
