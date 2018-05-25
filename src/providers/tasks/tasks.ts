@@ -10,27 +10,27 @@ import { Task } from '../../models/task';
 @Injectable()
 export class TasksProvider {
   public statusOptions = [
-    { name: 'active', label: 'Active'},
-    { name: 'finished', label: 'Finished'}
+    { name: 'active', label: 'Active' },
+    { name: 'finished', label: 'Finished' }
   ];
   public priorityOptions = [
     { name: 'high', label: 'High' },
-    { name: 'medium', label: 'Medium'},
-    { name: 'low', label: 'Low'}
+    { name: 'medium', label: 'Medium' },
+    { name: 'low', label: 'Low' }
   ];
   private _tasks = new BehaviorSubject<Array<Task>>([]);
 
   constructor(
     private _commonProvider: CommonProvider,
     private _categoriesProvider: CategoriesProvider
-  ) {}
+  ) { }
 
   public get tasks() {
     return this._tasks;
   }
 
   public readTasks(): Promise<boolean> {
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       this._commonProvider.performRequest('tasks/', 'GET').subscribe(
         (data: any) => {
           const jsonConvert: JsonConvert = new JsonConvert();
@@ -49,7 +49,7 @@ export class TasksProvider {
   }
 
   public createTask(data: any) {
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       data.start_date = new Date(data.startDate);
       data.end_date = new Date(data.endDate);
       this._commonProvider.performRequest('tasks/', 'POST', data).subscribe(
@@ -69,7 +69,7 @@ export class TasksProvider {
   }
 
   public updateTask(url: string, data: any) {
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       data.start_date = new Date(data.startDate);
       data.end_date = new Date(data.endDate);
       this._commonProvider.performRequest(url, 'PUT', data).subscribe(
@@ -92,7 +92,7 @@ export class TasksProvider {
   }
 
   public deleteTask(url: string) {
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       this._commonProvider.performRequest(url, 'DELETE').subscribe(
         (data: any) => {
           const tasks: Array<Task> = this._tasks.getValue();

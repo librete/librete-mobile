@@ -14,10 +14,10 @@ export class CommonProvider {
   constructor(
     public http: HttpClient,
     private _storage: Storage
-  ) {}
+  ) { }
 
   public get isAuthenticated() {
-     return this._accessToken ? true : false;
+    return this._accessToken ? true : false;
   }
 
   public get refreshToken() {
@@ -37,7 +37,7 @@ export class CommonProvider {
   }
 
   public readAuthenticationData(): Promise<boolean> {
-    return new Promise (resolve => {
+    return new Promise(resolve => {
       this._storage.ready().then(() => {
         this._storage.get('authenticationData').then((authenticationData) => {
           if (authenticationData) {
@@ -86,7 +86,7 @@ export class CommonProvider {
   }
 
   public toCamelCase(s) {
-    return s.replace(/([\-_]\w)/g, function(m) {
+    return s.replace(/([\-_]\w)/g, function (m) {
       return m[1].toUpperCase();
     });
   }

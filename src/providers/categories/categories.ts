@@ -18,7 +18,7 @@ export class CategoriesProvider {
   }
 
   public readCategories(): Promise<boolean> {
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       this._commonProvider.performRequest('categories/', 'GET').subscribe(
         (data: any) => {
           const jsonConvert: JsonConvert = new JsonConvert();
