@@ -14,14 +14,14 @@ export class EventsProvider {
   constructor(
     private _commonProvider: CommonProvider,
     private _categoriesProvider: CategoriesProvider
-  ) {}
+  ) { }
 
   public get events() {
     return this._events;
   }
 
   public readEvents(): Promise<boolean> {
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       this._commonProvider.performRequest('events/', 'GET').subscribe(
         (data: any) => {
           const jsonConvert: JsonConvert = new JsonConvert();
@@ -40,7 +40,7 @@ export class EventsProvider {
   }
 
   public createEvent(data: any) {
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       data.start_date = new Date(data.startDate);
       data.end_date = new Date(data.endDate);
       this._commonProvider.performRequest('events/', 'POST', data).subscribe(
@@ -60,7 +60,7 @@ export class EventsProvider {
   }
 
   public updateEvent(url: string, data: any) {
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       data.start_date = new Date(data.startDate);
       data.end_date = new Date(data.endDate);
       this._commonProvider.performRequest(url, 'PUT', data).subscribe(
@@ -83,7 +83,7 @@ export class EventsProvider {
   }
 
   public deleteEvent(url: string) {
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       this._commonProvider.performRequest(url, 'DELETE').subscribe(
         (data: any) => {
           const events: Array<Event> = this._events.getValue();
