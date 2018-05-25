@@ -3,6 +3,10 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { TranslateService } from '@ngx-translate/core';
+
+import { ENV } from '@app/env';
+
 import { HomePage } from '../pages/home/home';
 import { SignUpPage } from '../pages/sign-up/sign-up';
 import { SignInPage } from '../pages/sign-in/sign-in';
@@ -20,6 +24,7 @@ import { IPage } from '../interfaces/page';
 })
 export class MyApp {
   @ViewChild(Nav) public nav: Nav;
+  private _env = ENV;
 
   rootPage: any;
 
@@ -27,6 +32,7 @@ export class MyApp {
     platform: Platform,
     statusBar: StatusBar,
     splashScreen: SplashScreen,
+    private _translateService: TranslateService,
     private _commonProvider: CommonProvider,
     private _authProvider: AuthProvider
   ) {
@@ -36,6 +42,8 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+
+    _translateService.setDefaultLang(this._env.language);
 
     _commonProvider.readAuthenticationData().then(
       data => {
