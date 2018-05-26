@@ -3,6 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
 import { NavController } from 'ionic-angular';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 import { NoteCreatePage } from './note-create';
 
 import { CommonProvider } from '../../providers/common/common';
@@ -22,6 +24,7 @@ describe('Pages: NoteCreatePage', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [NoteCreatePage],
+      imports: [TranslateModule.forRoot()],
       providers: [
         FormBuilder,
         { provide: NavController, useClass: NavControllerStub },

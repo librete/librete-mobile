@@ -4,6 +4,8 @@ import { DatePipe } from '@angular/common';
 import { FormBuilder } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 import { Task } from '../../models/task';
 
 import { TaskUpdatePage } from './task-update';
@@ -40,6 +42,7 @@ describe('Pages: TaskUpdatePage', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [TaskUpdatePage],
+      imports: [TranslateModule.forRoot()],
       providers: [
         DatePipe,
         FormBuilder,
