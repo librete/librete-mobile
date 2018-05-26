@@ -18,10 +18,10 @@
   <ion-item>
     <ion-icon name="time" item-start large></ion-icon>
     <p>
-      Starts on {{ event.startDate | date:'yyyy.MM.dd' }} at {{ event.startDate | date:'HH:mm' }}
+      {{ 'events.detail.startDate' | translate:translationParams.startDate }}
     </p>
     <p>
-      Ends on {{ event.endDate | date:'yyyy.MM.dd' }} at {{ event.endDate | date:'HH:mm' }}
+      {{ 'events.detail.endDate' | translate:translationParams.endDate }}
     </p>
   </ion-item>
 

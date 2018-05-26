@@ -1,22 +1,22 @@
 <ion-header>
-  <header pageTitle="Sign up"></header>
+  <header [pageTitle]="'auth.signUp.title' | translate"></header>
 </ion-header>
 
 <ion-content padding>
   <ion-list>
     <form [formGroup]="form" (ngSubmit)="signUp()">
       <ion-item>
-        <ion-label floating>Username</ion-label>
+        <ion-label floating>{{ 'auth.signUp.form.fields.username' | translate }}</ion-label>
         <ion-input formControlName="username" id="username" type="text">
         </ion-input>
         <i class="icon ion-alert-circled error"></i>
       </ion-item>
       <div *ngIf="username.touched && username.invalid" class="form-error-message">
         <div *ngIf="username.errors.required">
-          Username is required.
+          {{ 'common.forms.errors.required' | translate }}
         </div>
         <div *ngIf="username.errors.minlength">
-          Username should be minimum {{ username.errors.minlength.requiredLength }} characters.
+          {{ 'common.forms.errors.minLength' | translate:{length: username.errors.minlength.requiredLength} }}
         </div>
         <div *ngIf="username.errors?.remote">
           {{ username.errors.remote }}
@@ -24,17 +24,17 @@
       </div>
 
       <ion-item>
-        <ion-label floating>Email</ion-label>
+        <ion-label floating>{{ 'auth.signUp.form.fields.email' | translate }}</ion-label>
         <ion-input formControlName="email" id="email" type="text">
         </ion-input>
         <i class="icon ion-alert-circled error"></i>
       </ion-item>
       <div *ngIf="email.touched && email.invalid" class="form-error-message">
         <div *ngIf="email.errors.required">
-          Email is required.
+          {{ 'common.forms.errors.required' | translate }}
         </div>
         <div *ngIf="email.errors.email">
-          Email is invalid.
+          {{ 'common.forms.errors.invalid' | translate }}
         </div>
         <div *ngIf="email.errors?.remote">
           {{ email.errors.remote }}
@@ -42,16 +42,16 @@
       </div>
 
       <ion-item class="input-item">
-        <ion-label floating>Password</ion-label>
+        <ion-label floating>{{ 'auth.signUp.form.fields.password' | translate }}</ion-label>
         <ion-input formControlName="password" id="password" type="password">
         </ion-input>
       </ion-item>
       <div *ngIf="password.touched && password.invalid" class="form-error-message">
         <div *ngIf="password.errors.required">
-          Password is required.
+          {{ 'common.forms.errors.required' | translate }}
         </div>
         <div *ngIf="password.errors.minlength">
-          Password should be minimum {{ password.errors.minlength.requiredLength }} characters.
+          {{ 'common.forms.errors.minLength' | translate:{length: password.errors.minlength.requiredLength} }}
         </div>
         <div *ngIf="password.errors?.remote">
           {{ password.errors.remote }}
@@ -59,13 +59,13 @@
       </div>
 
       <ion-item class="input-item">
-        <ion-label floating>First name</ion-label>
+        <ion-label floating>{{ 'auth.signUp.form.fields.firstName' | translate }}</ion-label>
         <ion-input formControlName="firstName" id="firstName" type="text">
         </ion-input>
       </ion-item>
       <div *ngIf="firstName.touched && firstName.invalid" class="form-error-message">
         <div *ngIf="firstName.errors.required">
-          First name is required.
+          {{ 'common.forms.errors.required' | translate }}
         </div>
         <div *ngIf="firsName.errors?.remote">
           {{ firsName.errors.remote }}
@@ -73,20 +73,22 @@
       </div>
 
       <ion-item class="input-item">
-        <ion-label floating>Last name</ion-label>
+        <ion-label floating>{{ 'common.forms.errors.required' | translate }}</ion-label>
         <ion-input formControlName="lastName" id="lastName" type="text">
         </ion-input>
       </ion-item>
       <div *ngIf="lastName.touched && lastName.invalid" class="form-error-message">
         <div *ngIf="lastName.errors.required">
-          Last name is required.
+          {{ 'common.forms.errors.required' | translate }}
         </div>
         <div *ngIf="lastName.errors?.remote">
           {{ lastName.errors.remote }}
         </div>
       </div>
 
-      <button ion-button block type="submit" class="submit-button" [disabled]="!form.valid">Register</button>
+      <button ion-button block type="submit" class="submit-button" [disabled]="!form.valid">
+        {{ 'auth.signUp.form.submitButton' | translate }}
+      </button>
     </form>
   </ion-list>
 </ion-content>

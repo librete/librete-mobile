@@ -10,13 +10,13 @@ import { Task } from '../../models/task';
 @Injectable()
 export class TasksProvider {
   public statusOptions = [
-    { name: 'active', label: 'Active' },
-    { name: 'finished', label: 'Finished' }
+    { name: 'active', label: 'tasks.common.statuses.active' },
+    { name: 'finished', label: 'tasks.common.statues.finished' }
   ];
   public priorityOptions = [
-    { name: 'high', label: 'High' },
-    { name: 'medium', label: 'Medium' },
-    { name: 'low', label: 'Low' }
+    { name: 'high', label: 'tasks.common.priorities.high' },
+    { name: 'medium', label: 'tasks.common.priorities.medium' },
+    { name: 'low', label: 'tasks.common.priorities.low' }
   ];
   private _tasks = new BehaviorSubject<Array<Task>>([]);
 

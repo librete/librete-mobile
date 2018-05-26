@@ -1,19 +1,19 @@
 <ion-header>
-  <header pageTitle="Change note"></header>
+  <header [pageTitle]="'notes.update.title' | translate"></header>
 </ion-header>
 
 <ion-content padding>
   <ion-list>
     <form [formGroup]="form" (ngSubmit)="updateNote()">
       <ion-item>
-        <ion-label floating>Name</ion-label>
+        <ion-label floating>{{ 'notes.update.form.fields.name' | translate }}</ion-label>
         <ion-input formControlName="name" id="name" type="text">
         </ion-input>
         <i class="icon ion-alert-circled error"></i>
       </ion-item>
       <div *ngIf="(name.dirty || isSubmitted) && name.invalid" class="form-error-message">
         <div *ngIf="name.errors.required">
-          This field is required.
+          {{ 'common.forms.errors.required' | translate }}
         </div>
         <div *ngIf="name.errors.remote">
           {{ name.errors.remote }}
@@ -21,7 +21,7 @@
       </div>
 
       <ion-item>
-        <ion-label floating>Category</ion-label>
+        <ion-label floating>{{ 'notes.update.form.fields.category' | translate }}</ion-label>
         <ion-select formControlName="category" id="category">
           <ion-option *ngFor="let category of categories" value="{{ category.url }}">
             {{ category.name }}
@@ -31,7 +31,7 @@
       </ion-item>
       <div *ngIf="(category.dirty || isSubmitted) && category.invalid" class="form-error-message">
         <div *ngIf="category.errors.required">
-          This field is required.
+          {{ 'common.forms.errors.required' | translate }}
         </div>
         <div *ngIf="category.errors.remote">
           {{ category.errors.remote }}
@@ -39,14 +39,14 @@
       </div>
 
       <ion-item>
-        <ion-label floating>Text</ion-label>
+        <ion-label floating>{{ 'notes.update.form.fields.text' | translate }}</ion-label>
         <ion-input formControlName="text" id="text" type="text">
         </ion-input>
         <i class="icon ion-alert-circled error"></i>
       </ion-item>
       <div *ngIf="(text.dirty || isSubmitted) && text.invalid" class="form-error-message">
         <div *ngIf="text.errors.required">
-          This field is required.
+          {{ 'common.forms.errors.required' | translate }}
         </div>
         <div *ngIf="text.errors.remote">
           {{ text.errors.remote }}
@@ -54,7 +54,7 @@
       </div>
 
       <button ion-button block type="submit" class="submit-button" [disabled]="!form.valid">
-        Save
+        {{ 'notes.update.form.submitButton' | translate }}
       </button>
     </form>
   </ion-list>

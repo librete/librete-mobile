@@ -1,0 +1,177 @@
+{
+  "common": {
+    "menu": {
+      "home": "Home",
+      "signIn": "Log in",
+      "signUp": "Register",
+      "events": "Events",
+      "notes": "Notes",
+      "tasks": "Tasks"
+    },
+    "forms": {
+      "errors": {
+        "required": "This field is required",
+        "invalid": "This field is invalid",
+        "minLength": "This field should be at least {{ length }} characters.",
+        "pastDate": "Date cannot be in the past",
+        "swappedDates": "End date cannot be before start date"
+      }
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "Log in",
+      "form": {
+        "submitButton": "Log in",
+        "fields": {
+          "username": "Username",
+          "password": "Password"
+        }
+      }
+    },
+    "signUp": {
+      "title": "Register",
+      "form": {
+        "submitButton": "Register",
+        "fields": {
+          "username": "Username",
+          "password": "Password",
+          "email": "Email",
+          "firstName": "First name",
+          "lastName": "Last name"
+        }
+      }
+    }
+  },
+  "events": {
+    "list": {
+      "title": "Events",
+      "options": {
+        "remove": "Delete",
+        "update": "Edit"
+      }
+    },
+    "detail": {
+      "title": "Event details",
+      "startDate": "Starts on {{ date }} at {{ time }}",
+      "endDate": "Ends on {{ date }} at {{ time }}"
+    },
+    "create": {
+      "title": "Create new event",
+      "form": {
+        "submitButton" : "Save",
+        "fields": {
+          "name": "Name",
+          "category": "Category",
+          "startDate": "Start Date",
+          "endDate": "Start Date",
+          "location": "Location",
+          "description": "Description"
+        }
+      }
+    },
+    "update": {
+      "title": "Edit event",
+      "form": {
+        "submitButton" : "Save",
+        "fields": {
+          "name": "Name",
+          "category": "Category",
+          "startDate": "Start Date",
+          "endDate": "Start Date",
+          "location": "Location",
+          "description": "Description"
+        }
+      }
+    }
+  },
+  "notes": {
+    "list": {
+      "title": "Notes",
+      "options": {
+        "remove": "Delete",
+        "update": "Edit"
+      }
+    },
+    "detail": {
+      "title": "Note details"
+    },
+    "create": {
+      "title": "Create new note",
+      "form": {
+        "submitButton" : "Save",
+        "fields": {
+          "name": "Name",
+          "category": "Category",
+          "text": "Text"
+        }
+      }
+    },
+    "update": {
+      "title": "Edit note",
+      "form": {
+        "submitButton" : "Save",
+        "fields": {
+          "name": "Name",
+          "category": "Category",
+          "text": "Text"
+        }
+      }
+    }
+  },
+  "tasks": {
+    "common": {
+      "priorities": {
+        "high": "High",
+        "medium": "Medium",
+        "low": "Low"
+      },
+      "statuses": {
+        "active": "Active",
+        "finished": "Finished"
+      }
+    },
+    "list": {
+      "title": "Tasks",
+      "options": {
+        "remove": "Delete",
+        "update": "Edit"
+      }
+    },
+    "detail": {
+      "title": "Task details",
+      "status": "Status",
+      "priority": "Priority",
+      "date": "Date",
+      "dueDate": "Due date"
+    },
+    "create": {
+      "title": "Create new task",
+      "form": {
+        "submitButton" : "Save",
+        "fields": {
+          "name": "Name",
+          "category": "Category",
+          "startDate": "Start Date",
+          "endDate": "Start Date",
+          "description": "Description",
+          "priority": "Priority"
+        }
+      }
+    },
+    "update": {
+      "title": "Edit task",
+      "form": {
+        "submitButton" : "Save",
+        "fields": {
+          "name": "Name",
+          "category": "Category",
+          "startDate": "Start Date",
+          "endDate": "Start Date",
+          "description": "Description",
+          "priority": "Priority"
+        }
+      }
+    }
+  }
+}

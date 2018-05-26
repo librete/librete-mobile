@@ -1,5 +1,5 @@
 <ion-header>
-  <header pageTitle="Tasks"></header>
+  <header [pageTitle]="'tasks.list.title' | translate"></header>
 </ion-header>
 
 <ion-content padding>
@@ -18,11 +18,11 @@
       <ion-item-options side="right">
         <button ion-button color="primary" (click)="navigateToUpdatePage(task, item)">
           <ion-icon name="md-create"></ion-icon>
-          Edit
+          {{ 'tasks.list.options.update' | translate }}
         </button>
         <button ion-button color="danger" (click)="deleteTask(task)">
           <ion-icon name="md-trash"></ion-icon>
-          Delete
+          {{ 'tasks.list.options.remove' | translate }}
         </button>
       </ion-item-options>
     </ion-item-sliding>
