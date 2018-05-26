@@ -1,0 +1,177 @@
+{
+  "common": {
+    "menu": {
+      "home": "Начало",
+      "signIn": "Вход",
+      "signUp": "Регистрация",
+      "events": "Събития",
+      "notes": "Бележки",
+      "tasks": "Задачи"
+    },
+    "forms": {
+      "errors": {
+        "required": "Това поле е задължително",
+        "invalid": "Това поле е навалидно",
+        "minLength": "Това поле трябва да бъде поне {{ length }} символа",
+        "pastDate": "Датата не може да бъде в миналото",
+        "swappedDates": "Крайната дата не може да бъде преди началната"
+      }
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "Вход",
+      "form": {
+        "submitButton": "Вход",
+        "fields": {
+          "username": "Потребителско име",
+          "password": "Парола"
+        }
+      }
+    },
+    "signUp": {
+      "title": "Регистрация",
+      "form": {
+        "submitButton": "Регистрация",
+        "fields": {
+          "username": "Потребителско име",
+          "password": "Парола",
+          "email": "Email",
+          "firstName": "Име",
+          "lastName": "Фамилия"
+        }
+      }
+    }
+  },
+  "events": {
+    "list": {
+      "title": "Събития",
+      "options": {
+        "remove": "Изтриване",
+        "update": "Промяна"
+      }
+    },
+    "detail": {
+      "title": "Детайли за събитие",
+      "startDate": "Започва на {{ date }} от {{ time }}",
+      "endDate": "Приключва на {{ date }} от {{ time }}"
+    },
+    "create": {
+      "title": "Създаване на събитие",
+      "form": {
+        "submitButton" : "Запазване",
+        "fields": {
+          "name": "Име",
+          "category": "Категория",
+          "startDate": "Начална дата",
+          "endDate": "Крайна дата",
+          "location": "Адрес",
+          "description": "Описание"
+        }
+      }
+    },
+    "update": {
+      "title": "Промяна на събитие",
+      "form": {
+        "submitButton" : "Запазване",
+        "fields": {
+          "name": "Име",
+          "category": "Категория",
+          "startDate": "Начална дата",
+          "endDate": "Крайна дата",
+          "location": "Адрес",
+          "description": "Описание"
+        }
+      }
+    }
+  },
+  "notes": {
+    "list": {
+      "title": "Бележки",
+      "options": {
+        "remove": "Изтриване",
+        "update": "Промяна"
+      }
+    },
+    "detail": {
+      "title": "Детайли за бележка"
+    },
+    "create": {
+      "title": "Създаване на бележка",
+      "form": {
+        "submitButton" : "Запазване",
+        "fields": {
+          "name": "Име",
+          "category": "Категория",
+          "text": "Текст"
+        }
+      }
+    },
+    "update": {
+      "title": "Промяна на бележка",
+      "form": {
+        "submitButton" : "Запазване",
+        "fields": {
+          "name": "Име",
+          "category": "Категория",
+          "text": "Текст"
+        }
+      }
+    }
+  },
+  "tasks": {
+    "common": {
+      "priorities": {
+        "high": "Висок",
+        "medium": "Среден",
+        "low": "Нисък"
+      },
+      "statuses": {
+        "active": "Активна",
+        "finished": "Завършена"
+      }
+    },
+    "list": {
+      "title": "Задачи",
+      "options": {
+        "remove": "Изтриване",
+        "update": "Промяна"
+      }
+    },
+    "detail": {
+      "title": "Детайли за задача",
+      "status": "Статус",
+      "priority": "Приоритет",
+      "date": "Дата",
+      "dueDate": "Краен срок"
+    },
+    "create": {
+      "title": "Създаване на задача",
+      "form": {
+        "submitButton" : "Запазване",
+        "fields": {
+          "name": "Име",
+          "category": "Категория",
+          "startDate": "Начална дата",
+          "endDate": "Крайна дата",
+          "description": "Описание",
+          "priority": "Приоритет"
+        }
+      }
+    },
+    "update": {
+      "title": "Промяна на задача",
+      "form": {
+        "submitButton" : "Запазване",
+        "fields": {
+          "name": "Име",
+          "category": "Категория",
+          "startDate": "Начална дата",
+          "endDate": "Крайна дата",
+          "description": "Описание",
+          "priority": "Приоритет"
+        }
+      }
+    }
+  }
+}
