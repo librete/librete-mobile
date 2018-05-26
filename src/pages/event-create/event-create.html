@@ -1,19 +1,19 @@
 <ion-header>
-  <header pageTitle="Create event"></header>
+  <header [pageTitle]="'events.create.title' | translate"></header>
 </ion-header>
 
 <ion-content padding>
   <ion-list>
     <form [formGroup]="form" (ngSubmit)="createEvent()">
       <ion-item>
-        <ion-label floating>Name</ion-label>
+        <ion-label floating>{{ 'events.create.form.fields.name' | translate }}</ion-label>
         <ion-input formControlName="name" id="name" type="text">
         </ion-input>
         <i class="icon ion-alert-circled error"></i>
       </ion-item>
       <div *ngIf="(name.dirty || isSubmitted) && name.invalid" class="form-error-message">
         <div *ngIf="name.errors.required">
-          This field is required.
+          {{ 'common.forms.errors.required' | translate }}
         </div>
         <div *ngIf="name.errors.remote">
           {{ name.errors.remote }}
@@ -21,7 +21,7 @@
       </div>
 
       <ion-item>
-        <ion-label floating>Category</ion-label>
+        <ion-label floating>{{ 'events.create.form.fields.category' | translate }}</ion-label>
         <ion-select formControlName="category" id="category">
           <ion-option *ngFor="let category of categories" value="{{ category.url }}">
             {{ category.name }}
@@ -31,7 +31,7 @@
       </ion-item>
       <div *ngIf="(category.dirty || isSubmitted) && category.invalid" class="form-error-message">
         <div *ngIf="category.errors.required">
-          This field is required.
+          {{ 'common.forms.errors.required' | translate }}
         </div>
         <div *ngIf="category.errors.remote">
           {{ category.errors.remote }}
@@ -39,46 +39,46 @@
       </div>
 
       <ion-item>
-        <ion-label floating>Start date</ion-label>
+        <ion-label floating>{{ 'events.create.form.fields.startDate' | translate }}</ion-label>
         <ion-datetime formControlName="startDate" id="startDate" [min]="minDate" [max]="maxDate">
         </ion-datetime>
         <i class="icon ion-alert-circled error"></i>
       </ion-item>
       <div *ngIf="(startDate.dirty || isSubmitted) && startDate.invalid" class="form-error-message">
         <div *ngIf="startDate.errors.required">
-          This field is required.
+          {{ 'common.forms.errors.required' | translate }}
         </div>
         <div *ngIf="startDate.errors.remote">
           {{ startDate.errors.remote }}
         </div>
         <div *ngIf="startDate.errors.pastDate">
-          Date cannot be in the past.
+          {{ 'common.forms.errors.pastDate' | translate }}
         </div>
       </div>
 
       <ion-item>
-        <ion-label floating>End date</ion-label>
+        <ion-label floating>{{ 'events.create.form.fields.endDate' | translate }}</ion-label>
         <ion-datetime formControlName="endDate" id="endDate" [min]="minDate" [max]="maxDate">
         </ion-datetime>
         <i class="icon ion-alert-circled error"></i>
       </ion-item>
       <div *ngIf="(endDate.dirty || isSubmitted) && endDate.invalid" class="form-error-message">
         <div *ngIf="endDate.errors.required">
-          This field is required.
+          {{ 'common.forms.errors.required' | translate }}
         </div>
         <div *ngIf="endDate.errors.remote">
           {{ endDate.errors.remote }}
         </div>
         <div *ngIf="endDate.errors.pastDate">
-          Date cannot be in the past.
+          {{ 'common.forms.errors.pastDate' | translate }}
         </div>
       </div>
       <div *ngIf="form.errors && form.errors.swappedDates" class="form-error-message">
-        End date cannot be before start date.
+        {{ 'common.forms.errors.swappedDates' | translate }}
       </div>
 
       <ion-item>
-        <ion-label floating>Location</ion-label>
+        <ion-label floating>{{ 'events.create.form.fields.location' | translate }}</ion-label>
         <ion-input formControlName="location" id="location" type="text">
         </ion-input>
         <i class="icon ion-alert-circled error"></i>
@@ -90,7 +90,7 @@
       </div>
 
       <ion-item>
-        <ion-label floating>Description</ion-label>
+        <ion-label floating>{{ 'events.create.form.fields.description' | translate }}</ion-label>
         <ion-input formControlName="description" id="description" type="text">
         </ion-input>
         <i class="icon ion-alert-circled error"></i>
@@ -102,7 +102,7 @@
       </div>
 
       <button ion-button block type="submit" class="submit-button" [disabled]="!form.valid">
-        Create
+        {{ 'events.create.form.submitButton' | translate }}
       </button>
     </form>
   </ion-list>

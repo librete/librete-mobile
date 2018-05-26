@@ -64,15 +64,15 @@ export class MyApp {
     let pageList: Array<IPage>;
     if (this._commonProvider.isAuthenticated) {
       pageList = [
-        { title: 'Home', component: HomePage, icon: 'md-home' },
-        { title: 'Events', component: EventListPage, icon: 'md-calendar' },
-        { title: 'Notes', component: NoteListPage, icon: 'md-clipboard' },
-        { title: 'Tasks', component: TaskListPage, icon: 'md-checkbox-outline' },
+        { title: 'common.menu.home', component: HomePage, icon: 'md-home' },
+        { title: 'common.menu.events', component: EventListPage, icon: 'md-calendar' },
+        { title: 'common.menu.notes', component: NoteListPage, icon: 'md-clipboard' },
+        { title: 'common.menu.tasks', component: TaskListPage, icon: 'md-checkbox-outline' },
       ];
     } else {
       pageList = [
-        { title: 'Sign in', component: SignInPage, icon: 'md-person' },
-        { title: 'Sign up', component: SignUpPage, icon: 'md-person-add' },
+        { title: 'common.menu.signIn', component: SignInPage, icon: 'md-person' },
+        { title: 'common.menu.signUp', component: SignUpPage, icon: 'md-person-add' },
       ];
     }
     return pageList;

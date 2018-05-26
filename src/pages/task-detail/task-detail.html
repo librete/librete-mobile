@@ -12,17 +12,17 @@
 
   <ion-item>
     <ion-icon name="information-circle" item-start large></ion-icon>
-    <p>Priority: {{ task.priority }}</p>
-    <p>Status: {{ task.status }}</p>
+    <p>{{ 'tasks.detail.priority' | translate }}: {{ task.priority }}</p>
+    <p>{{ 'tasks.detail.status' | translate }}: {{ task.status }}</p>
   </ion-item>
 
   <ion-item>
     <ion-icon name="time" item-start large></ion-icon>
     <p>
-      Date: {{ task.startDate | date:'yyyy.MM.dd' }} at {{ task.startDate | date:'HH:mm' }}
+      {{ 'tasks.detail.date' | translate }}: {{ task.startDate | date:'yyyy.MM.dd' }} at {{ task.startDate | date:'HH:mm' }}
     </p>
     <p>
-      Due date: {{ task.endDate | date:'yyyy.MM.dd' }} at {{ task.endDate | date:'HH:mm' }}
+      {{ 'tasks.detail.dueDate' | translate }}: {{ task.endDate | date:'yyyy.MM.dd' }} at {{ task.endDate | date:'HH:mm' }}
     </p>
   </ion-item>
 

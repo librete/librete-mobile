@@ -4,7 +4,7 @@
       <ion-item menuClose class="menu-item" *ngFor="let page of pages" (tap)="openPage(page.component)">
 
         <ion-icon name="{{ page.icon }}"></ion-icon>
-        {{ page.title }}
+        {{ page.title | translate }}
 
       </ion-item>
     </ion-list>
