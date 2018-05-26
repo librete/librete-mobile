@@ -3,6 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 import { Note } from '../../models/note';
 
 import { NoteUpdatePage } from './note-update';
@@ -36,6 +38,7 @@ describe('Pages: NoteUpdatePage', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [NoteUpdatePage],
+      imports: [TranslateModule.forRoot()],
       providers: [
         FormBuilder,
         { provide: NavController, useClass: NavControllerStub },

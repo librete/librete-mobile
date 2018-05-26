@@ -4,6 +4,8 @@ import { DatePipe } from '@angular/common';
 import { FormBuilder } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 import { Event } from '../../models/event';
 
 import { EventUpdatePage } from './event-update';
@@ -40,6 +42,7 @@ describe('Pages: EventUpdatePage', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [EventUpdatePage],
+      imports: [TranslateModule.forRoot()],
       providers: [
         DatePipe,
         FormBuilder,

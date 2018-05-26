@@ -4,6 +4,8 @@ import { DatePipe } from '@angular/common';
 import { FormBuilder } from '@angular/forms';
 import { NavController } from 'ionic-angular';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 import { TaskCreatePage } from './task-create';
 
 import { CommonProvider } from '../../providers/common/common';
@@ -23,6 +25,7 @@ describe('Pages: TaskCreatePage', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [TaskCreatePage],
+      imports: [TranslateModule.forRoot()],
       providers: [
         DatePipe,
         FormBuilder,

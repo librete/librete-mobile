@@ -3,6 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
 import { NavController } from 'ionic-angular';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 import { SignUpPage } from './sign-up';
 
 import { CommonProvider } from '../../providers/common/common';
@@ -20,6 +22,7 @@ describe('Pages: SignUpPage', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [SignUpPage],
+      imports: [TranslateModule.forRoot()],
       providers: [
         FormBuilder,
         { provide: NavController, useClass: NavControllerStub },

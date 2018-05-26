@@ -6,6 +6,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 import { MyApp } from './app.component';
 import { PlatformMock, SplashScreenMock, StatusBarMock } from '../../test-config/mocks-ionic';
 
@@ -41,6 +43,7 @@ describe('MyApp Component', () => {
         IonicModule.forRoot(MyApp),
         IonicStorageModule.forRoot(),
         HttpClientModule,
+        TranslateModule.forRoot()
       ],
       providers: [
         { provide: StatusBar, useClass: StatusBarMock },
