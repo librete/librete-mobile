@@ -2,18 +2,13 @@
   <header [pageTitle]="'tasks.list.title' | translate"></header>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-list>
     <ion-item-sliding #item *ngFor="let task of tasks">
-      <ion-item (click)="navigateToDetailPage(task)">
-        <ion-icon name="md-calendar" item-start large></ion-icon>
+      <ion-item (click)="navigateToDetailPage(task)" no-lines class="list-item">
+        <ion-icon name="md-checkbox-outline" color="primary" item-start large></ion-icon>
         <h2>{{ task.name }}</h2>
-        <p>
-          {{ task.startDate | date:'dd.MM HH:mm' }}
-          <span *ngIf="task.endDate !== task.startDate">
-            - {{ task.endDate | date:'dd.MM HH:mm' }}
-          </span>
-        </p>
+        <p>{{ task.category.name }}</p>
       </ion-item>
       <ion-item-options side="right">
         <button ion-button color="primary" (click)="navigateToUpdatePage(task, item)">
