@@ -43,13 +43,12 @@ describe('Pages: EventCreatePage', () => {
     component = fixture.componentInstance;
   });
 
-  function updateForm(data) {
-    component.name.setValue(data.name);
-    component.category.setValue(data.category);
-    component.startDate.setValue(data.startDate);
-    component.endDate.setValue(data.endDate);
-    component.location.setValue(data.location);
-    component.description.setValue(data.description);
+  function updateForm(data, allowEmpty = false) {
+    for (const key in data) {
+      if (data[key] || allowEmpty) {
+        component.form.get(key).setValue(data[key]);
+      }
+    }
   }
 
   it('Should be valid', () => {
