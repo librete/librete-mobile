@@ -43,4 +43,30 @@ export class Task {
   updatedAt: Date = undefined;
 
   category: Category;
+
+  public static get statusOptions() {
+    return [
+      { name: 'active', label: 'tasks.common.statuses.active' },
+      { name: 'finished', label: 'tasks.common.statues.finished' }
+    ];
+  }
+
+  public static get priorityOptions() {
+    return [
+      { name: 'high', label: 'tasks.common.priorities.high' },
+      { name: 'medium', label: 'tasks.common.priorities.medium' },
+      { name: 'low', label: 'tasks.common.priorities.low' }
+    ];
+  }
+
+  public get statusLabel(): string {
+    const status = Task.statusOptions.find(status => status.name === this.status);
+    return status.label;
+  }
+
+  public get priorityLabel(): string {
+    const priority = Task.priorityOptions.find(priority => priority.name === this.priority);
+    return priority.label;
+  }
+
 }
