@@ -38,24 +38,26 @@ describe('Pages: SignUpPage', () => {
     component = fixture.componentInstance;
   });
 
-  function updateForm(username, password, email, firstName, lastName) {
-    component.username.setValue(username);
-    component.password.setValue(password);
-    component.email.setValue(email);
-    component.firstName.setValue(firstName);
-    component.lastName.setValue(lastName);
+  function updateForm(data, allowEmpty = false) {
+    for (const key in data) {
+      if (data[key] || allowEmpty) {
+        component.form.get(key).setValue(data[key]);
+      }
+    }
   }
 
   it('Should be valid', () => {
-    updateForm('john.doe', 'doe.john', 'john.doe@example.com', 'John', 'Doe');
-    expect(component.form.valid).toBeTruthy();
-    expect(component.form.value).toEqual({
+    const data = {
       username: 'john.doe',
       password: 'doe.john',
       email: 'john.doe@example.com',
       firstName: 'John',
-      lastName: 'Doe'
-    });
+      lastName: 'Doe',
+    };
+
+    updateForm(data);
+    expect(component.form.valid).toBeTruthy();
+    expect(component.form.value).toEqual(data);
   });
 
   it('Should be invalid due to missing required fields', () => {
@@ -68,7 +70,15 @@ describe('Pages: SignUpPage', () => {
   });
 
   it('Should be invalid due to short or invalid field values', () => {
-    updateForm('u', 'p', 'invalid_email', 'John', 'Doe');
+    const data = {
+      username: 'u',
+      password: 'p',
+      email: 'invali_email',
+      firstName: 'John',
+      lastName: 'Doe',
+    };
+
+    updateForm(data);
     expect(component.form.valid).toBeFalsy();
     expect(component.username.errors['minlength']).toBeTruthy();
     expect(component.password.errors['minlength']).toBeTruthy();

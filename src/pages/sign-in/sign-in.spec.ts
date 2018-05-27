@@ -38,18 +38,23 @@ describe('Pages: SignInPage', () => {
     component = fixture.componentInstance;
   });
 
-  function updateForm(username, password) {
-    component.username.setValue(username);
-    component.password.setValue(password);
+  function updateForm(data, allowEmpty = false) {
+    for (const key in data) {
+      if (data[key] || allowEmpty) {
+        component.form.get(key).setValue(data[key]);
+      }
+    }
   }
 
   it('Should be valid', () => {
-    updateForm('test_username', 'test_password');
+    const data = {
+      username: 'john.doe',
+      password: 'doe.john',
+    };
+
+    updateForm(data);
     expect(component.form.valid).toBeTruthy();
-    expect(component.form.value).toEqual({
-      username: 'test_username',
-      password: 'test_password'
-    });
+    expect(component.form.value).toEqual(data);
   });
 
   it('Should be invalid due to missing required fields', () => {
@@ -59,7 +64,12 @@ describe('Pages: SignInPage', () => {
   });
 
   it('Should be invalid due to short field values', () => {
-    updateForm('u', 'p');
+    const data = {
+      username: 'u',
+      password: 'p',
+    };
+
+    updateForm(data);
     expect(component.form.valid).toBeFalsy();
     expect(component.username.errors['minlength']).toBeTruthy();
     expect(component.password.errors['minlength']).toBeTruthy();
