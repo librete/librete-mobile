@@ -2,21 +2,16 @@
   <header [pageTitle]="event.name"></header>
 </ion-header>
 
-<ion-content *ngIf="event" padding>
+<ion-content *ngIf="event">
 
-  <ion-item>
-    <ion-icon name="md-calendar" item-start large></ion-icon>
+  <ion-item no-lines class="detail-item">
+    <ion-icon name="md-calendar" color="primary" item-start large></ion-icon>
     <h2>{{ event.name }}</h2>
     <p>{{ event.category.name }}</p>
   </ion-item>
 
-  <ion-item>
-    <ion-icon name="compass" item-start large></ion-icon>
-    <p>{{ event.location }}</p>
-  </ion-item>
-
-  <ion-item>
-    <ion-icon name="time" item-start large></ion-icon>
+  <ion-item no-lines class="detail-item">
+    <ion-icon name="time" color="primary" item-start large></ion-icon>
     <p>
       {{ 'events.detail.startDate' | translate:translationParams.startDate }}
     </p>
@@ -25,7 +20,22 @@
     </p>
   </ion-item>
 
-  <ion-item *ngIf="event.description">
+  <ion-item no-lines class="detail-item">
+    <ion-icon name="compass" color="primary" item-start large></ion-icon>
+    <p>{{ event.location }}</p>
+  </ion-item>
+
+  <ion-item no-lines class="detail-item">
+    <ion-icon name="create" color="primary" item-start large></ion-icon>
+    <p>
+      {{ 'events.detail.createdAt' | translate:translationParams.createdAt }}
+    </p>
+    <p>
+      {{ 'events.detail.updatedAt' | translate:translationParams.updatedAt }}
+    </p>
+  </ion-item>
+
+  <ion-item no-lines class="detail-item" *ngIf="event.description">
     <p>{{ event.description }}</p>
   </ion-item>
 

@@ -14,7 +14,9 @@ export class EventDetailPage {
   public event: Event;
   public translationParams = {
     startDate: {},
-    endDate: {}
+    endDate: {},
+    createdAt: {},
+    updatedAt: {}
   };
 
   constructor(
@@ -24,20 +26,24 @@ export class EventDetailPage {
   ) {
     this.event = this._navParams.get('event');
 
-    const dateFormat = 'dd.MM';
-    const timeFormat = 'HH:mm';
-    this.translationParams['startDate'] = {
-      date: this._datePipe.transform(this.event.startDate, dateFormat),
-      time: this._datePipe.transform(this.event.startDate, timeFormat),
-    };
-    this.translationParams['endDate'] = {
-      date: this._datePipe.transform(this.event.endDate, dateFormat),
-      time: this._datePipe.transform(this.event.endDate, timeFormat),
-    };
+    this.translationParams.startDate = this._formatDate(this.event.startDate);
+    this.translationParams.endDate = this._formatDate(this.event.endDate);
+    this.translationParams.createdAt = this._formatDate(this.event.createdAt);
+    this.translationParams.updatedAt = this._formatDate(this.event.updatedAt);
   }
 
   public navigateToUpdatePage() {
     this._navCtrl.push(EventUpdatePage, { event: this.event });
+  }
+
+  private _formatDate(date: Date): object {
+    const dateFormat = 'dd.MM';
+    const timeFormat = 'HH:mm';
+
+    return {
+      date: this._datePipe.transform(date, dateFormat),
+      time: this._datePipe.transform(date, timeFormat),
+    };
   }
 
 }
