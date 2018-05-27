@@ -12,8 +12,12 @@
 
   <ion-item no-lines class="detail-item">
     <ion-icon name="information-circle" color="primary" item-start large></ion-icon>
-    <p *ngIf="task.priority">{{ 'tasks.detail.priority' | translate }}: {{ task.priority }}</p>
-    <p>{{ 'tasks.detail.status' | translate }}: {{ task.status }}</p>
+    <p *ngIf="task.priority">
+      {{ 'tasks.detail.priority' | translate }}: {{ task.priorityLabel | translate }}
+    </p>
+    <p>
+      {{ 'tasks.detail.status' | translate }}: {{ task.statusLabel | translate }}
+    </p>
   </ion-item>
 
   <ion-item no-lines class="detail-item">
