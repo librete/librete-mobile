@@ -59,4 +59,14 @@ export class Task {
     ];
   }
 
+  public get statusLabel(): string {
+    const status = Task.statusOptions.find(status => status.name === this.status);
+    return status.label;
+  }
+
+  public get priorityLabel(): string {
+    const priority = Task.priorityOptions.find(priority => priority.name === this.priority);
+    return priority.label;
+  }
+
 }
