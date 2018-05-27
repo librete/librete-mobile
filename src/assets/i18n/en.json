@@ -54,7 +54,9 @@
     "detail": {
       "title": "Event details",
       "startDate": "Starts on {{ date }} at {{ time }}",
-      "endDate": "Ends on {{ date }} at {{ time }}"
+      "endDate": "Ends on {{ date }} at {{ time }}",
+      "createdAt": "Created on {{ date }} at {{ time }}",
+      "updatedAt": "Last update on {{ date }} at {{ time }}"
     },
     "create": {
       "title": "Create new event",
@@ -94,7 +96,9 @@
       }
     },
     "detail": {
-      "title": "Note details"
+      "title": "Note details",
+      "createdAt": "Created on {{ date }} at {{ time }}",
+      "updatedAt": "Last update on {{ date }} at {{ time }}"
     },
     "create": {
       "title": "Create new note",
@@ -142,8 +146,10 @@
       "title": "Task details",
       "status": "Status",
       "priority": "Priority",
-      "date": "Date",
-      "dueDate": "Due date"
+      "startDate": "Starts on {{ date }} at {{ time }}",
+      "endDate": "Ends on {{ date }} at {{ time }}",
+      "createdAt": "Created on {{ date }} at {{ time }}",
+      "updatedAt": "Last update on {{ date }} at {{ time }}"
     },
     "create": {
       "title": "Create new task",

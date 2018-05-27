@@ -2,15 +2,25 @@
   <header [pageTitle]="note.name"></header>
 </ion-header>
 
-<ion-content *ngIf="note" padding>
+<ion-content *ngIf="note">
 
-  <ion-item>
-    <ion-icon name="md-clipboard" item-start large></ion-icon>
+  <ion-item no-lines class="detail-item">
+    <ion-icon name="md-clipboard" color="primary" item-start large></ion-icon>
     <h2>{{ note.name }}</h2>
     <p>{{ note.category.name }}</p>
   </ion-item>
 
-  <ion-item *ngIf="note.text">
+  <ion-item no-lines class="detail-item">
+    <ion-icon name="create" color="primary" item-start large></ion-icon>
+    <p>
+      {{ 'notes.detail.createdAt' | translate:translationParams.createdAt }}
+    </p>
+    <p>
+      {{ 'notes.detail.updatedAt' | translate:translationParams.updatedAt }}
+    </p>
+  </ion-item>
+
+  <ion-item no-lines class="detail-item" *ngIf="note.text">
     <p>{{ note.text }}</p>
   </ion-item>
 

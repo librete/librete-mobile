@@ -18,7 +18,7 @@
         <div *ngIf="username.errors.minlength">
           {{ 'common.forms.errors.minLength' | translate:{length: username.errors.minlength.requiredLength} }}
         </div>
-        <div *ngIf="username.errors?.remote">
+        <div *ngIf="username.errors.remote">
           {{ username.errors.remote }}
         </div>
       </div>
@@ -36,7 +36,7 @@
         <div *ngIf="email.errors.email">
           {{ 'common.forms.errors.invalid' | translate }}
         </div>
-        <div *ngIf="email.errors?.remote">
+        <div *ngIf="email.errors.remote">
           {{ email.errors.remote }}
         </div>
       </div>
@@ -53,7 +53,7 @@
         <div *ngIf="password.errors.minlength">
           {{ 'common.forms.errors.minLength' | translate:{length: password.errors.minlength.requiredLength} }}
         </div>
-        <div *ngIf="password.errors?.remote">
+        <div *ngIf="password.errors.remote">
           {{ password.errors.remote }}
         </div>
       </div>
@@ -67,13 +67,13 @@
         <div *ngIf="firstName.errors.required">
           {{ 'common.forms.errors.required' | translate }}
         </div>
-        <div *ngIf="firsName.errors?.remote">
+        <div *ngIf="firstName.errors.remote">
           {{ firsName.errors.remote }}
         </div>
       </div>
 
       <ion-item class="input-item">
-        <ion-label floating>{{ 'common.forms.errors.required' | translate }}</ion-label>
+        <ion-label floating>{{ 'auth.signUp.form.fields.lastName' | translate }}</ion-label>
         <ion-input formControlName="lastName" id="lastName" type="text">
         </ion-input>
       </ion-item>
@@ -81,7 +81,7 @@
         <div *ngIf="lastName.errors.required">
           {{ 'common.forms.errors.required' | translate }}
         </div>
-        <div *ngIf="lastName.errors?.remote">
+        <div *ngIf="lastName.errors.remote">
           {{ lastName.errors.remote }}
         </div>
       </div>

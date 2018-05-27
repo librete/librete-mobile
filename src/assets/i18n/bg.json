@@ -54,7 +54,9 @@
     "detail": {
       "title": "Детайли за събитие",
       "startDate": "Започва на {{ date }} от {{ time }}",
-      "endDate": "Приключва на {{ date }} от {{ time }}"
+      "endDate": "Приключва на {{ date }} в {{ time }}",
+      "createdAt": "Създадено на {{ date }} в {{ time }}",
+      "updatedAt": "Последна промяна на {{ date }} в {{ time }}"
     },
     "create": {
       "title": "Създаване на събитие",
@@ -94,7 +96,9 @@
       }
     },
     "detail": {
-      "title": "Детайли за бележка"
+      "title": "Детайли за бележка",
+      "createdAt": "Създадена на {{ date }} в {{ time }}",
+      "updatedAt": "Последна промяна на {{ date }} в {{ time }}"
     },
     "create": {
       "title": "Създаване на бележка",
@@ -142,8 +146,10 @@
       "title": "Детайли за задача",
       "status": "Статус",
       "priority": "Приоритет",
-      "date": "Дата",
-      "dueDate": "Краен срок"
+      "startDate": "Започва на {{ date }} от {{ time }}",
+      "endDate": "Приключва на {{ date }} в {{ time }}",
+      "createdAt": "Създадено на {{ date }} в {{ time }}",
+      "updatedAt": "Последна промяна на {{ date }} в {{ time }}"
     },
     "create": {
       "title": "Създаване на задача",

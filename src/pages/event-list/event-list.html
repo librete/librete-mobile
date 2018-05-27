@@ -2,11 +2,11 @@
   <header [pageTitle]="'events.list.title' | translate"></header>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-list>
     <ion-item-sliding #item *ngFor="let event of events">
-      <ion-item (click)="navigateToDetailPage(event)">
-        <ion-icon name="md-calendar" item-start large></ion-icon>
+      <ion-item (click)="navigateToDetailPage(event)" no-lines class="list-item">
+        <ion-icon name="md-calendar" color="primary" item-start large></ion-icon>
         <h2>{{ event.name }}</h2>
         <p>
           {{ event.startDate | date:'dd.MM HH:mm' }}

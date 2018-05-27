@@ -3,8 +3,8 @@
     <ion-list>
       <ion-item menuClose class="menu-item" *ngFor="let page of pages" (tap)="openPage(page.component)">
 
-        <ion-icon name="{{ page.icon }}"></ion-icon>
-        {{ page.title | translate }}
+        <ion-icon color="primary" name="{{ page.icon }}"></ion-icon>
+        <span ion-text color="primary">{{ page.title | translate }}</span>
 
       </ion-item>
     </ion-list>

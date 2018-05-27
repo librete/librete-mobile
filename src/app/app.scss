@@ -14,6 +14,10 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+h2 {
+  color: color($colors, primary);
+}
+
 ion-menu {
   .menu-item {
     font-size: 1.25em;
@@ -38,6 +42,7 @@ ion-input {
 }
 .form-error-message {
   font-size: 1.25em;
+  margin: 0.625em 0 0 1em;
   color: color($colors, danger);
 }
 .submit-button {

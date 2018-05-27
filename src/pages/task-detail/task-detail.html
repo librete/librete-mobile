@@ -2,31 +2,41 @@
   <header [pageTitle]="task.name"></header>
 </ion-header>
 
-<ion-content *ngIf="task" padding>
+<ion-content *ngIf="task">
 
-  <ion-item>
-    <ion-icon name="md-checkbox-outline" item-start large></ion-icon>
+  <ion-item no-lines class="detail-item">
+    <ion-icon name="md-checkbox-outline" color="primary" item-start large></ion-icon>
     <h2>{{ task.name }}</h2>
     <p>{{ task.category.name }}</p>
   </ion-item>
 
-  <ion-item>
-    <ion-icon name="information-circle" item-start large></ion-icon>
-    <p>{{ 'tasks.detail.priority' | translate }}: {{ task.priority }}</p>
+  <ion-item no-lines class="detail-item">
+    <ion-icon name="information-circle" color="primary" item-start large></ion-icon>
+    <p *ngIf="task.priority">{{ 'tasks.detail.priority' | translate }}: {{ task.priority }}</p>
     <p>{{ 'tasks.detail.status' | translate }}: {{ task.status }}</p>
   </ion-item>
 
-  <ion-item>
-    <ion-icon name="time" item-start large></ion-icon>
+  <ion-item no-lines class="detail-item">
+    <ion-icon name="time" color="primary" item-start large></ion-icon>
     <p>
-      {{ 'tasks.detail.date' | translate }}: {{ task.startDate | date:'yyyy.MM.dd' }} at {{ task.startDate | date:'HH:mm' }}
+      {{ 'tasks.detail.startDate' | translate:translationParams.startDate }}
     </p>
     <p>
-      {{ 'tasks.detail.dueDate' | translate }}: {{ task.endDate | date:'yyyy.MM.dd' }} at {{ task.endDate | date:'HH:mm' }}
+      {{ 'tasks.detail.endDate' | translate:translationParams.endDate }}
     </p>
   </ion-item>
 
-  <ion-item *ngIf="task.description">
+  <ion-item no-lines class="detail-item">
+    <ion-icon name="create" color="primary" item-start large></ion-icon>
+    <p>
+      {{ 'events.detail.createdAt' | translate:translationParams.createdAt }}
+    </p>
+    <p>
+      {{ 'events.detail.updatedAt' | translate:translationParams.updatedAt }}
+    </p>
+  </ion-item>
+
+  <ion-item no-lines class="detail-item" *ngIf="task.description">
     <p>{{ task.description }}</p>
   </ion-item>
 

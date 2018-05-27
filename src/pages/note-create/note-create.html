@@ -2,7 +2,7 @@
   <header [pageTitle]="'notes.create.title' | translate"></header>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-list>
     <form [formGroup]="form" (ngSubmit)="createNote()">
       <ion-item>
@@ -40,8 +40,8 @@
 
       <ion-item>
         <ion-label floating>{{ 'notes.create.form.fields.text' | translate }}</ion-label>
-        <ion-input formControlName="text" id="text" type="text">
-        </ion-input>
+        <ion-textarea formControlName="text" id="text" type="text">
+        </ion-textarea>
         <i class="icon ion-alert-circled error"></i>
       </ion-item>
       <div *ngIf="(text.dirty || isSubmitted) && text.invalid" class="form-error-message">
@@ -52,10 +52,11 @@
           {{ text.errors.remote }}
         </div>
       </div>
-
-      <button ion-button block type="submit" class="submit-button" [disabled]="!form.valid">
-        {{ 'notes.create.form.submitButton' | translate }}
-      </button>
+      <div padding>
+        <button ion-button block type="submit" class="submit-button" [disabled]="!form.valid">
+          {{ 'notes.create.form.submitButton' | translate }}
+        </button>
+      </div>
     </form>
   </ion-list>
 </ion-content>

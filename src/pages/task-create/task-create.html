@@ -2,7 +2,7 @@
   <header [pageTitle]="'tasks.create.title' | translate"></header>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-list>
     <form [formGroup]="form" (ngSubmit)="createTask()">
       <ion-item>
@@ -79,8 +79,8 @@
 
       <ion-item>
         <ion-label floating>{{ 'tasks.create.form.fields.description' | translate }}</ion-label>
-        <ion-input formControlName="description" id="description" type="text">
-        </ion-input>
+        <ion-textarea formControlName="description" id="description" type="text">
+        </ion-textarea>
         <i class="icon ion-alert-circled error"></i>
       </ion-item>
       <div *ngIf="(description.dirty || isSubmitted) && description.invalid" class="form-error-message">
@@ -107,9 +107,11 @@
         </div>
       </div>
 
-      <button ion-button block type="submit" class="submit-button" [disabled]="!form.valid">
-        {{ 'tasks.create.form.submitButton' | translate }}
-      </button>
+      <div padding>
+        <button ion-button block type="submit" class="submit-button" [disabled]="!form.valid">
+          {{ 'tasks.create.form.submitButton' | translate }}
+        </button>
+      </div>
     </form>
   </ion-list>
 </ion-content>
