@@ -2,13 +2,13 @@
   <header [pageTitle]="'notes.list.title' | translate"></header>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-list>
     <ion-item-sliding #item *ngFor="let note of notes">
-      <ion-item (click)="navigateToDetailPage(note)">
-        <ion-icon name="md-calendar" item-start large></ion-icon>
+      <ion-item (click)="navigateToDetailPage(note)" no-lines class="list-item">
+        <ion-icon name="md-clipboard" color="primary" item-start large></ion-icon>
         <h2>{{ note.name }}</h2>
-        <p>{{ note.createdAt | date:'dd.MM HH:mm' }}</p>
+        <p>{{ note.category.name }}</p>
       </ion-item>
       <ion-item-options side="right">
         <button ion-button color="primary" (click)="navigateToUpdatePage(note, item)">
