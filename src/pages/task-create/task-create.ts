@@ -3,6 +3,8 @@ import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from 'ionic-angular';
 
+import { Task } from '../../models/task';
+
 import { TaskDetailPage } from '../task-detail/task-detail';
 
 import { CommonProvider } from '../../providers/common/common';
@@ -39,7 +41,7 @@ export class TaskCreatePage {
   }
 
   public get priorityOptions() {
-    return this._tasksProvider.priorityOptions;
+    return Task.priorityOptions;
   }
 
   public get categories() {

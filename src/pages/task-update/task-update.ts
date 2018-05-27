@@ -42,7 +42,7 @@ export class TaskUpdatePage {
   }
 
   public get priorityOptions() {
-    return this._tasksProvider.priorityOptions;
+    return Task.priorityOptions;
   }
 
   public get categories() {
