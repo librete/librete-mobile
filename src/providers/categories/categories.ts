@@ -32,4 +32,21 @@ export class CategoriesProvider {
     });
   }
 
+  public createCategory(data: any) {
+    return new Promise((resolve, reject) => {
+      this._commonProvider.performRequest('categories/', 'POST', data).subscribe(
+        (data: any) => {
+          const jsonConvert: JsonConvert = new JsonConvert();
+          const category: Category = jsonConvert.deserialize(data, Category);
+          const categories: Array<Category> = this._categories.getValue();
+          categories.push(category);
+          resolve(category);
+        },
+        error => {
+          reject(error);
+        }
+      );
+    });
+  }
+
 }
