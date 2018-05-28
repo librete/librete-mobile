@@ -69,4 +69,20 @@ export class CategoriesProvider {
     });
   }
 
+  public deleteCategory(url: string) {
+    return new Promise((resolve, reject) => {
+      this._commonProvider.performRequest(url, 'DELETE').subscribe(
+        (data: any) => {
+          const categories: Array<Category> = this._categories.getValue();
+          const index = categories.findIndex(x => x.url === url);
+          categories.splice(index, 1);
+          resolve();
+        },
+        error => {
+          reject(error);
+        }
+      );
+    });
+  }
+
 }
