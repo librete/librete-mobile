@@ -10,4 +10,10 @@
       <p>{{ category.createdAt | date:'dd.MM HH:mm' }}</p>
     </ion-item>
   </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab (click)="navigateToCreatePage()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

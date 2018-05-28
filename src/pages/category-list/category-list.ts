@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import { Category } from '../../models/category';
 
 import { CategoryDetailPage } from '../category-detail/category-detail';
+import { CategoryCreatePage } from '../category-create/category-create';
 
 import { CategoriesProvider } from '../../providers/categories/categories';
 
@@ -27,4 +28,9 @@ export class CategoryListPage {
   public navigateToDetailPage(category: Category) {
     this._navCtrl.push(CategoryDetailPage, { category: category });
   }
+
+  public navigateToCreatePage() {
+    this._navCtrl.push(CategoryCreatePage);
+  }
+
 }
