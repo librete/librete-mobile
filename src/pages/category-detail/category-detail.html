@@ -1,0 +1,22 @@
+<ion-header *ngIf="category">
+  <header [pageTitle]="category.name"></header>
+</ion-header>
+
+<ion-content *ngIf="category">
+
+  <ion-item no-lines class="detail-item">
+    <ion-icon name="md-clipboard" color="primary" item-start large></ion-icon>
+    <h2>{{ category.name }}</h2>
+  </ion-item>
+
+  <ion-item no-lines class="detail-item">
+    <ion-icon name="create" color="primary" item-start large></ion-icon>
+    <p>
+      {{ 'categories.detail.createdAt' | translate:translationParams.createdAt }}
+    </p>
+    <p>
+      {{ 'categories.detail.updatedAt' | translate:translationParams.updatedAt }}
+    </p>
+  </ion-item>
+
+</ion-content>
