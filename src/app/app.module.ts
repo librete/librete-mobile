@@ -32,6 +32,7 @@ import { TaskCreatePage } from '../pages/task-create/task-create';
 import { TaskUpdatePage } from '../pages/task-update/task-update';
 import { CategoryListPage } from '../pages/category-list/category-list';
 import { CategoryDetailPage } from '../pages/category-detail/category-detail';
+import { CategoryCreatePage } from '../pages/category-create/category-create';
 
 import { CommonProvider } from '../providers/common/common';
 import { AuthProvider } from '../providers/auth/auth';
@@ -63,7 +64,8 @@ export function createTranslateLoader(http: HttpClient) {
     TaskCreatePage,
     TaskUpdatePage,
     CategoryListPage,
-    CategoryDetailPage
+    CategoryDetailPage,
+    CategoryCreatePage
   ],
   imports: [
     BrowserModule,
@@ -98,7 +100,8 @@ export function createTranslateLoader(http: HttpClient) {
     TaskCreatePage,
     TaskUpdatePage,
     CategoryListPage,
-    CategoryDetailPage
+    CategoryDetailPage,
+    CategoryCreatePage
   ],
   providers: [
     StatusBar,
