@@ -13,6 +13,7 @@ import { SignInPage } from '../pages/sign-in/sign-in';
 import { EventListPage } from '../pages/event-list/event-list';
 import { NoteListPage } from '../pages/note-list/note-list';
 import { TaskListPage } from '../pages/task-list/task-list';
+import { CategoryListPage } from '../pages/category-list/category-list';
 
 import { CommonProvider } from '../providers/common/common';
 import { AuthProvider } from '../providers/auth/auth';
@@ -68,6 +69,7 @@ export class MyApp {
         { title: 'common.menu.events', component: EventListPage, icon: 'md-calendar' },
         { title: 'common.menu.notes', component: NoteListPage, icon: 'md-clipboard' },
         { title: 'common.menu.tasks', component: TaskListPage, icon: 'md-checkbox-outline' },
+        { title: 'common.menu.categories', component: CategoryListPage, icon: 'md-apps' },
       ];
     } else {
       pageList = [
