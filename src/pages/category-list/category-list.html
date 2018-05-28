@@ -4,7 +4,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let category of categories" no-lines class="list-item">
+    <ion-item *ngFor="let category of categories" (click)="navigateToDetailPage(category)" no-lines class="list-item">
       <ion-icon name="md-apps" color="primary" item-start large></ion-icon>
       <h2>{{ category.name }}</h2>
       <p>{{ category.createdAt | date:'dd.MM HH:mm' }}</p>

@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+
+import { Category } from '../../models/category';
+
+import { CategoryDetailPage } from '../category-detail/category-detail';
 
 import { CategoriesProvider } from '../../providers/categories/categories';
 
@@ -8,7 +13,10 @@ import { CategoriesProvider } from '../../providers/categories/categories';
 })
 export class CategoryListPage {
 
-  constructor(private _categoriesProvider: CategoriesProvider) {
+  constructor(
+    private _navCtrl: NavController,
+    private _categoriesProvider: CategoriesProvider
+  ) {
     _categoriesProvider.readCategories();
   }
 
@@ -16,4 +24,7 @@ export class CategoryListPage {
     return this._categoriesProvider.categories.getValue();
   }
 
+  public navigateToDetailPage(category: Category) {
+    this._navCtrl.push(CategoryDetailPage, { category: category });
+  }
 }
