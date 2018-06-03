@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ItemSliding, NavController } from 'ionic-angular';
+import { AlertController, ItemSliding, NavController } from 'ionic-angular';
 
 import { Category } from '../../models/category';
 
@@ -16,6 +16,7 @@ import { CategoriesProvider } from '../../providers/categories/categories';
 export class CategoryListPage {
 
   constructor(
+    private _alertCtrl: AlertController,
     private _navCtrl: NavController,
     private _categoriesProvider: CategoriesProvider
   ) {
@@ -37,6 +38,25 @@ export class CategoryListPage {
   public navigateToUpdatePage(category: Category, item: ItemSliding) {
     this._navCtrl.push(CategoryUpdatePage, { category: category });
     item.close();
+  }
+
+  public deleteCategory(category) {
+    const confirm = this._alertCtrl.create({
+      title: 'Are you sure?',
+      message: `Are you sure that you want to delete "${category.name}"`,
+      buttons: [
+        {
+          text: 'Cancel',
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            this._categoriesProvider.deleteCategory(category.url);
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
 }

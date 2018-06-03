@@ -15,6 +15,10 @@
           <ion-icon name="md-create"></ion-icon>
           {{ 'categories.list.options.update' | translate }}
         </button>
+        <button ion-button color="danger" (click)="deleteCategory(category)">
+          <ion-icon name="md-trash"></ion-icon>
+          {{ 'categories.list.options.remove' | translate }}
+        </button>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
