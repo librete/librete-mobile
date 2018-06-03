@@ -10,14 +10,12 @@
         <h2>{{ note.name }}</h2>
         <p>{{ note.category.name }}</p>
       </ion-item>
-      <ion-item-options side="right">
+      <ion-item-options side="right" class="list-options">
         <button ion-button color="primary" (click)="navigateToUpdatePage(note, item)">
           <ion-icon name="md-create"></ion-icon>
-          {{ 'notes.list.options.update' | translate }}
         </button>
         <button ion-button color="danger" (click)="deleteNote(note)">
           <ion-icon name="md-trash"></ion-icon>
-          {{ 'notes.list.options.remove' | translate }}
         </button>
       </ion-item-options>
     </ion-item-sliding>

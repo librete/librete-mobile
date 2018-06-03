@@ -10,14 +10,12 @@
         <h2>{{ category.name }}</h2>
         <p>{{ category.createdAt | date:'dd.MM HH:mm' }}</p>
       </ion-item>
-      <ion-item-options side="right">
+      <ion-item-options side="right" class="list-options">
         <button ion-button color="primary" (click)="navigateToUpdatePage(category, item)">
           <ion-icon name="md-create"></ion-icon>
-          {{ 'categories.list.options.update' | translate }}
         </button>
         <button ion-button color="danger" (click)="deleteCategory(category)">
           <ion-icon name="md-trash"></ion-icon>
-          {{ 'categories.list.options.remove' | translate }}
         </button>
       </ion-item-options>
     </ion-item-sliding>

@@ -46,11 +46,7 @@
   },
   "events": {
     "list": {
-      "title": "Events",
-      "options": {
-        "remove": "Delete",
-        "update": "Edit"
-      }
+      "title": "Events"
     },
     "detail": {
       "title": "Event details",
@@ -90,11 +86,7 @@
   },
   "notes": {
     "list": {
-      "title": "Notes",
-      "options": {
-        "remove": "Delete",
-        "update": "Edit"
-      }
+      "title": "Notes"
     },
     "detail": {
       "title": "Note details",
@@ -137,11 +129,7 @@
       }
     },
     "list": {
-      "title": "Tasks",
-      "options": {
-        "remove": "Delete",
-        "update": "Edit"
-      }
+      "title": "Tasks"
     },
     "detail": {
       "title": "Task details",
@@ -183,11 +171,7 @@
   },
   "categories": {
     "list": {
-      "title": "Categories",
-      "options": {
-        "remove": "Delete",
-        "update": "Edit"
-      }
+      "title": "Categories"
     },
     "detail": {
       "title": "Category details",
