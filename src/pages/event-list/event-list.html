@@ -15,14 +15,12 @@
           </span>
         </p>
       </ion-item>
-      <ion-item-options side="right">
+      <ion-item-options side="right" class="list-options">
         <button ion-button color="primary" (click)="navigateToUpdatePage(event, item)">
           <ion-icon name="md-create"></ion-icon>
-          {{ 'events.list.options.update' | translate }}
         </button>
         <button ion-button color="danger" (click)="deleteEvent(event)">
           <ion-icon name="md-trash"></ion-icon>
-          {{ 'events.list.options.remove' | translate }}
         </button>
       </ion-item-options>
     </ion-item-sliding>
