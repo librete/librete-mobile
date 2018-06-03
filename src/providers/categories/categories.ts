@@ -32,4 +32,57 @@ export class CategoriesProvider {
     });
   }
 
+  public createCategory(data: any) {
+    return new Promise((resolve, reject) => {
+      this._commonProvider.performRequest('categories/', 'POST', data).subscribe(
+        (data: any) => {
+          const jsonConvert: JsonConvert = new JsonConvert();
+          const category: Category = jsonConvert.deserialize(data, Category);
+          const categories: Array<Category> = this._categories.getValue();
+          categories.push(category);
+          resolve(category);
+        },
+        error => {
+          reject(error);
+        }
+      );
+    });
+  }
+
+  public updateCategory(url: string, data: any) {
+    return new Promise((resolve, reject) => {
+      this._commonProvider.performRequest(url, 'PUT', data).subscribe(
+        (data: any) => {
+          const jsonConvert: JsonConvert = new JsonConvert();
+          const category: Category = jsonConvert.deserialize(data, Category);
+          const categories: Array<Category> = this._categories.getValue();
+          const index = categories.findIndex(x => x.url === url);
+
+          categories[index] = Object.assign(categories[index], category);
+
+          resolve(category);
+        },
+        error => {
+          reject(error);
+        }
+      );
+    });
+  }
+
+  public deleteCategory(url: string) {
+    return new Promise((resolve, reject) => {
+      this._commonProvider.performRequest(url, 'DELETE').subscribe(
+        (data: any) => {
+          const categories: Array<Category> = this._categories.getValue();
+          const index = categories.findIndex(x => x.url === url);
+          categories.splice(index, 1);
+          resolve();
+        },
+        error => {
+          reject(error);
+        }
+      );
+    });
+  }
+
 }

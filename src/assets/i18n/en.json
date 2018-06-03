@@ -6,7 +6,8 @@
       "signUp": "Register",
       "events": "Events",
       "notes": "Notes",
-      "tasks": "Tasks"
+      "tasks": "Tasks",
+      "categories": "Categories"
     },
     "forms": {
       "errors": {
@@ -176,6 +177,38 @@
           "endDate": "Start Date",
           "description": "Description",
           "priority": "Priority"
+        }
+      }
+    }
+  },
+  "categories": {
+    "list": {
+      "title": "Categories",
+      "options": {
+        "remove": "Delete",
+        "update": "Edit"
+      }
+    },
+    "detail": {
+      "title": "Category details",
+      "createdAt": "Created on {{ date }} at {{ time }}",
+      "updatedAt": "Last update on {{ date }} at {{ time }}"
+    },
+    "create": {
+      "title": "Create new category",
+      "form": {
+        "submitButton" : "Save",
+        "fields": {
+          "name": "Name"
+        }
+      }
+    },
+    "update": {
+      "title": "Edit category",
+      "form": {
+        "submitButton" : "Save",
+        "fields": {
+          "name": "Name"
         }
       }
     }

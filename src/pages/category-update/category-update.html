@@ -1,0 +1,30 @@
+<ion-header>
+  <header [pageTitle]="'categories.update.title' | translate"></header>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <form [formGroup]="form" (ngSubmit)="updateCategory()">
+      <ion-item>
+        <ion-label floating>{{ 'categories.update.form.fields.name' | translate }}</ion-label>
+        <ion-input formControlName="name" id="name" type="text">
+        </ion-input>
+        <i class="icon ion-alert-circled error"></i>
+      </ion-item>
+      <div *ngIf="(name.dirty || isSubmitted) && name.invalid" class="form-error-message">
+        <div *ngIf="name.errors.required">
+          {{ 'common.forms.errors.required' | translate }}
+        </div>
+        <div *ngIf="name.errors.remote">
+          {{ name.errors.remote }}
+        </div>
+      </div>
+
+      <div padding>
+        <button ion-button block type="submit" class="submit-button" [disabled]="!form.valid">
+          {{ 'categories.update.form.submitButton' | translate }}
+        </button>
+      </div>
+    </form>
+  </ion-list>
+</ion-content>

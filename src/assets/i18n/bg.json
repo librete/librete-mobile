@@ -6,7 +6,8 @@
       "signUp": "Регистрация",
       "events": "Събития",
       "notes": "Бележки",
-      "tasks": "Задачи"
+      "tasks": "Задачи",
+      "categories": "Категории"
     },
     "forms": {
       "errors": {
@@ -176,6 +177,38 @@
           "endDate": "Крайна дата",
           "description": "Описание",
           "priority": "Приоритет"
+        }
+      }
+    }
+  },
+  "categories": {
+    "list": {
+      "title": "Категории",
+      "options": {
+        "remove": "Изтриване",
+        "update": "Промяна"
+      }
+    },
+    "detail": {
+      "title": "Детайли за категория",
+      "createdAt": "Създадена на {{ date }} в {{ time }}",
+      "updatedAt": "Последна промяна на {{ date }} в {{ time }}"
+    },
+    "create": {
+      "title": "Създаване на категория",
+      "form": {
+        "submitButton" : "Запазване",
+        "fields": {
+          "name": "Име"
+        }
+      }
+    },
+    "update": {
+      "title": "Промяна на категория",
+      "form": {
+        "submitButton" : "Запазване",
+        "fields": {
+          "name": "Име"
         }
       }
     }
