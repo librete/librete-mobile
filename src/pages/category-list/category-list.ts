@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { ItemSliding, NavController } from 'ionic-angular';
 
 import { Category } from '../../models/category';
 
 import { CategoryDetailPage } from '../category-detail/category-detail';
 import { CategoryCreatePage } from '../category-create/category-create';
+import { CategoryUpdatePage } from '../category-update/category-update';
 
 import { CategoriesProvider } from '../../providers/categories/categories';
 
@@ -31,6 +32,11 @@ export class CategoryListPage {
 
   public navigateToCreatePage() {
     this._navCtrl.push(CategoryCreatePage);
+  }
+
+  public navigateToUpdatePage(category: Category, item: ItemSliding) {
+    this._navCtrl.push(CategoryUpdatePage, { category: category });
+    item.close();
   }
 
 }
