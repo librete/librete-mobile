@@ -36,6 +36,7 @@ import { CategoryCreatePage } from '../pages/category-create/category-create';
 import { CategoryUpdatePage } from '../pages/category-update/category-update';
 
 import { CommonProvider } from '../providers/common/common';
+import { SettingsProvider } from '../providers/settings/settings';
 import { AuthProvider } from '../providers/auth/auth';
 import { EventsProvider } from '../providers/events/events';
 import { NotesProvider } from '../providers/notes/notes';
@@ -112,6 +113,7 @@ export function createTranslateLoader(http: HttpClient) {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DatePipe,
     CommonProvider,
+    SettingsProvider,
     AuthProvider,
     EventsProvider,
     NotesProvider,
