@@ -10,6 +10,7 @@ import { ENV } from '@app/env';
 import { HomePage } from '../pages/home/home';
 import { SignUpPage } from '../pages/sign-up/sign-up';
 import { SignInPage } from '../pages/sign-in/sign-in';
+import { SettingsPage } from '../pages/settings/settings';
 import { EventListPage } from '../pages/event-list/event-list';
 import { NoteListPage } from '../pages/note-list/note-list';
 import { TaskListPage } from '../pages/task-list/task-list';
@@ -25,6 +26,7 @@ import { IPage } from '../interfaces/page';
 })
 export class MyApp {
   @ViewChild(Nav) public nav: Nav;
+  public settingsPage = SettingsPage;
   private _env = ENV;
 
   rootPage: any;
