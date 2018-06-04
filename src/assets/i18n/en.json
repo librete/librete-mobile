@@ -4,6 +4,7 @@
       "home": "Home",
       "signIn": "Log in",
       "signUp": "Register",
+      "settings": "Settings",
       "events": "Events",
       "notes": "Notes",
       "tasks": "Tasks",
@@ -43,6 +44,9 @@
         }
       }
     }
+  },
+  "settings": {
+    "title": "Settings"
   },
   "events": {
     "list": {
