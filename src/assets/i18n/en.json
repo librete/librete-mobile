@@ -20,6 +20,10 @@
       }
     }
   },
+  "home": {
+    "welcome": "Welcome to Librete - Your ultimate personal organizer.",
+    "description": "Use Librete to manage your tasks, events and notes."
+  },
   "auth": {
     "signIn": {
       "title": "Log in",
