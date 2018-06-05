@@ -18,6 +18,7 @@ import { ComponentsModule } from '../components/components.module';
 import { HomePage } from '../pages/home/home';
 import { SignUpPage } from '../pages/sign-up/sign-up';
 import { SignInPage } from '../pages/sign-in/sign-in';
+import { SettingsPage } from '../pages/settings/settings';
 import { EventListPage } from '../pages/event-list/event-list';
 import { EventDetailPage } from '../pages/event-detail/event-detail';
 import { EventCreatePage } from '../pages/event-create/event-create';
@@ -53,6 +54,7 @@ export function createTranslateLoader(http: HttpClient) {
     HomePage,
     SignUpPage,
     SignInPage,
+    SettingsPage,
     EventListPage,
     EventDetailPage,
     EventCreatePage,
@@ -90,6 +92,7 @@ export function createTranslateLoader(http: HttpClient) {
     HomePage,
     SignUpPage,
     SignInPage,
+    SettingsPage,
     EventListPage,
     EventDetailPage,
     EventCreatePage,

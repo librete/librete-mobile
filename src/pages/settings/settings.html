@@ -1,0 +1,9 @@
+<ion-header>
+  <header [pageTitle]="'settings.title' | translate"></header>
+</ion-header>
+
+<ion-content padding>
+  <button ion-button *ngFor="let language of languages" (tap)="changeLanguage(language.code)">
+    {{ language.label }}
+  </button>
+</ion-content>
