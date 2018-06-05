@@ -18,6 +18,7 @@ import { ComponentsModule } from '../components/components.module';
 import { HomePage } from '../pages/home/home';
 import { SignUpPage } from '../pages/sign-up/sign-up';
 import { SignInPage } from '../pages/sign-in/sign-in';
+import { SettingsPage } from '../pages/settings/settings';
 import { EventListPage } from '../pages/event-list/event-list';
 import { EventDetailPage } from '../pages/event-detail/event-detail';
 import { EventCreatePage } from '../pages/event-create/event-create';
@@ -36,6 +37,7 @@ import { CategoryCreatePage } from '../pages/category-create/category-create';
 import { CategoryUpdatePage } from '../pages/category-update/category-update';
 
 import { CommonProvider } from '../providers/common/common';
+import { SettingsProvider } from '../providers/settings/settings';
 import { AuthProvider } from '../providers/auth/auth';
 import { EventsProvider } from '../providers/events/events';
 import { NotesProvider } from '../providers/notes/notes';
@@ -52,6 +54,7 @@ export function createTranslateLoader(http: HttpClient) {
     HomePage,
     SignUpPage,
     SignInPage,
+    SettingsPage,
     EventListPage,
     EventDetailPage,
     EventCreatePage,
@@ -89,6 +92,7 @@ export function createTranslateLoader(http: HttpClient) {
     HomePage,
     SignUpPage,
     SignInPage,
+    SettingsPage,
     EventListPage,
     EventDetailPage,
     EventCreatePage,
@@ -112,6 +116,7 @@ export function createTranslateLoader(http: HttpClient) {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DatePipe,
     CommonProvider,
+    SettingsProvider,
     AuthProvider,
     EventsProvider,
     NotesProvider,

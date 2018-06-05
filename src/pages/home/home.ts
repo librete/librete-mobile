@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+import { TranslateService } from '@ngx-translate/core';
+
+import { SettingsProvider } from '../../providers/settings/settings';
 import { CategoriesProvider } from '../../providers/categories/categories';
 
 @Component({
@@ -8,7 +11,20 @@ import { CategoriesProvider } from '../../providers/categories/categories';
 })
 export class HomePage {
 
-  constructor(_categoriesProvider: CategoriesProvider) {
+  constructor(
+    private _translateService: TranslateService,
+    private _settingsProvider: SettingsProvider,
+    private _categoriesProvider: CategoriesProvider
+  ) {
+
+    _settingsProvider.readSettings().then(
+      data => {
+        if (data && data.language) {
+          _translateService.use(data.language);
+        }
+      }
+    );
+
     _categoriesProvider.readCategories();
   }
 
