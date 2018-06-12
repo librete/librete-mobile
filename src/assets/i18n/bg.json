@@ -14,7 +14,7 @@
       "errors": {
         "required": "Това поле е задължително",
         "invalid": "Това поле е навалидно",
-        "minLength": "Това поле трябва да бъде поне {{ length }} символа",
+        "minLength": "Това поле трябва да бъде поне {length} символа",
         "pastDate": "Датата не може да бъде в миналото",
         "swappedDates": "Крайната дата не може да бъде преди началната"
       }
@@ -58,10 +58,10 @@
     },
     "detail": {
       "title": "Детайли за събитие",
-      "startDate": "Започва на {{ date }} от {{ time }}",
-      "endDate": "Приключва на {{ date }} в {{ time }}",
-      "createdAt": "Създадено на {{ date }} в {{ time }}",
-      "updatedAt": "Последна промяна на {{ date }} в {{ time }}"
+      "startDate": "Започва на {date} от {time}",
+      "endDate": "Приключва на {date} в {time}",
+      "createdAt": "Създадено на {date} в {time}",
+      "updatedAt": "Последна промяна на {date} в {time}"
     },
     "create": {
       "title": "Създаване на събитие",
@@ -98,8 +98,8 @@
     },
     "detail": {
       "title": "Детайли за бележка",
-      "createdAt": "Създадена на {{ date }} в {{ time }}",
-      "updatedAt": "Последна промяна на {{ date }} в {{ time }}"
+      "createdAt": "Създадена на {date} в {time}",
+      "updatedAt": "Последна промяна на {date} в {time}"
     },
     "create": {
       "title": "Създаване на бележка",
@@ -143,10 +143,10 @@
       "title": "Детайли за задача",
       "status": "Статус",
       "priority": "Приоритет",
-      "startDate": "Започва на {{ date }} от {{ time }}",
-      "endDate": "Приключва на {{ date }} в {{ time }}",
-      "createdAt": "Създадено на {{ date }} в {{ time }}",
-      "updatedAt": "Последна промяна на {{ date }} в {{ time }}"
+      "startDate": "Започва на {date} от {time}",
+      "endDate": "Приключва на {date} в {time}",
+      "createdAt": "Създадено на {date} в {time}",
+      "updatedAt": "Последна промяна на {date} в {time}"
     },
     "create": {
       "title": "Създаване на задача",
@@ -183,8 +183,8 @@
     },
     "detail": {
       "title": "Детайли за категория",
-      "createdAt": "Създадена на {{ date }} в {{ time }}",
-      "updatedAt": "Последна промяна на {{ date }} в {{ time }}"
+      "createdAt": "Създадена на {date} в {time}",
+      "updatedAt": "Последна промяна на {date} в {time}"
     },
     "create": {
       "title": "Създаване на категория",
