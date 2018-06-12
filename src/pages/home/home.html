@@ -9,4 +9,7 @@
   <p>
     {{ 'home.description' | translate }}
   </p>
+  <p *ngIf="stats">
+    {{ 'home.stats' | translate:stats }}
+  </p>
 </ion-content>

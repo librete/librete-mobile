@@ -14,7 +14,7 @@
       "errors": {
         "required": "This field is required",
         "invalid": "This field is invalid",
-        "minLength": "This field should be at least {{ length }} characters.",
+        "minLength": "This field should be at least {length} characters.",
         "pastDate": "Date cannot be in the past",
         "swappedDates": "End date cannot be before start date"
       }
@@ -22,7 +22,8 @@
   },
   "home": {
     "welcome": "Welcome to Librete - Your ultimate personal organizer.",
-    "description": "Use Librete to manage your tasks, events and notes."
+    "description": "Use Librete to manage your tasks, events and notes.",
+    "stats": "Currently you have {events} {events, plural, =1{event} other{events}}, {notes} {notes, plural, =1{note} other{notes}} and {tasks} {tasks, plural, =1{task} other{tasks}}."
   },
   "auth": {
     "signIn": {
@@ -58,10 +59,10 @@
     },
     "detail": {
       "title": "Event details",
-      "startDate": "Starts on {{ date }} at {{ time }}",
-      "endDate": "Ends on {{ date }} at {{ time }}",
-      "createdAt": "Created on {{ date }} at {{ time }}",
-      "updatedAt": "Last update on {{ date }} at {{ time }}"
+      "startDate": "Starts on {date} at {time}",
+      "endDate": "Ends on {date} at {time}",
+      "createdAt": "Created on {date} at {time}",
+      "updatedAt": "Last update on {date} at {time}"
     },
     "create": {
       "title": "Create new event",
@@ -98,8 +99,8 @@
     },
     "detail": {
       "title": "Note details",
-      "createdAt": "Created on {{ date }} at {{ time }}",
-      "updatedAt": "Last update on {{ date }} at {{ time }}"
+      "createdAt": "Created on {date} at {time}",
+      "updatedAt": "Last update on {date} at {time}"
     },
     "create": {
       "title": "Create new note",
@@ -143,10 +144,10 @@
       "title": "Task details",
       "status": "Status",
       "priority": "Priority",
-      "startDate": "Starts on {{ date }} at {{ time }}",
-      "endDate": "Ends on {{ date }} at {{ time }}",
-      "createdAt": "Created on {{ date }} at {{ time }}",
-      "updatedAt": "Last update on {{ date }} at {{ time }}"
+      "startDate": "Starts on {date} at {time}",
+      "endDate": "Ends on {date} at {time}",
+      "createdAt": "Created on {date} at {time}",
+      "updatedAt": "Last update on {date} at {time}"
     },
     "create": {
       "title": "Create new task",
@@ -183,8 +184,8 @@
     },
     "detail": {
       "title": "Category details",
-      "createdAt": "Created on {{ date }} at {{ time }}",
-      "updatedAt": "Last update on {{ date }} at {{ time }}"
+      "createdAt": "Created on {date} at {time}",
+      "updatedAt": "Last update on {date} at {time}"
     },
     "create": {
       "title": "Create new category",
