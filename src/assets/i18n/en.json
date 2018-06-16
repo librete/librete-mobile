@@ -23,7 +23,15 @@
   "home": {
     "welcome": "Welcome to Librete - Your ultimate personal organizer.",
     "description": "Use Librete to manage your tasks, events and notes.",
-    "stats": "Currently you have {events} {events, plural, =1{event} other{events}}, {notes} {notes, plural, =1{note} other{notes}} and {tasks} {tasks, plural, =1{task} other{tasks}}."
+    "stats": "Currently you have {events} {events, plural, =1{event} other{events}}, {notes} {notes, plural, =1{note} other{notes}} and {tasks} {tasks, plural, =1{task} other{tasks}}.",
+    "charts": {
+      "activity": {
+        "label": "Activity this year",
+        "events": "Events",
+        "notes": "Notes",
+        "tasks": "Tasks"
+      }
+    }
   },
   "auth": {
     "signIn": {

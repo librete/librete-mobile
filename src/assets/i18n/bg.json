@@ -23,7 +23,15 @@
   "home": {
     "welcome": "Добре дошли в Либрете - Вашият личен асистент.",
     "description": "Използвайте Либрете, за да управлявате своите задачи, събития и бележки.",
-    "stats": "В момента имате {events} {events, plural, =1{събитие} other{събития}}, {notes} {notes, plural, =1{бележка} other{бележки}} и {tasks} {tasks, plural, =1{задача} other{задачи}}."
+    "stats": "В момента имате {events} {events, plural, =1{събитие} other{събития}}, {notes} {notes, plural, =1{бележка} other{бележки}} и {tasks} {tasks, plural, =1{задача} other{задачи}}.",
+    "charts": {
+      "activity": {
+        "label": "Активност тази година",
+        "events": "Събития",
+        "notes": "Бележки",
+        "tasks": "Задачи"
+      }
+    }
   },
   "auth": {
     "signIn": {

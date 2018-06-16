@@ -12,4 +12,6 @@
   <p *ngIf="stats">
     {{ 'home.stats' | translate:stats }}
   </p>
+  <h3>{{ 'home.charts.activity.label' | translate }}</h3>
+  <canvas #activityCanvas></canvas>
 </ion-content>
