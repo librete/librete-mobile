@@ -14,7 +14,7 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-h2 {
+h2, h3 {
   color: color($colors, primary);
 }
 
