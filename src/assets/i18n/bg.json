@@ -24,6 +24,35 @@
     "welcome": "Добре дошли в Либрете - Вашият личен асистент.",
     "description": "Използвайте Либрете, за да управлявате своите задачи, събития и бележки.",
     "stats": "В момента имате {events} {events, plural, =1{събитие} other{събития}}, {notes} {notes, plural, =1{бележка} other{бележки}} и {tasks} {tasks, plural, =1{задача} other{задачи}}.",
+    "events": "Събития",
+    "notes": "Бележки",
+    "tasks": "Задачи",
+    "overview": {
+      "upcoming": {
+        "title": "Предстоящи",
+        "buttons": {
+          "events": "Събития",
+          "tasks": "Задачи"
+        },
+        "emptyTexts": {
+          "events": "Няма предстоящи събития",
+          "tasks": "Няма предстоящи задачи"
+        }
+      },
+      "latest": {
+        "title": "Последни",
+        "buttons": {
+          "events": "Събития",
+          "notes": "Бележки",
+          "tasks": "Задачи"
+        },
+        "emptyTexts": {
+          "events": "Няма събития",
+          "notes": "Няма бележки",
+          "tasks": "Няма задачи"
+        }
+      }
+    },
     "charts": {
       "activity": {
         "label": "Активност тази година",

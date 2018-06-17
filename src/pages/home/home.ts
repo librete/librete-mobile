@@ -1,7 +1,16 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { NavController } from 'ionic-angular';
 
 import { TranslateService } from '@ngx-translate/core';
 import { Chart } from 'chart.js';
+
+import { Event } from '../../models/event';
+import { Note } from '../../models/note';
+import { Task } from '../../models/task';
+
+import { EventDetailPage } from '../event-detail/event-detail';
+import { NoteDetailPage } from '../note-detail/note-detail';
+import { TaskDetailPage } from '../task-detail/task-detail';
 
 import { SettingsProvider } from '../../providers/settings/settings';
 import { EventsProvider } from '../../providers/events/events';
@@ -17,8 +26,16 @@ export class HomePage {
   @ViewChild('activityCanvas') activityCanvas: ElementRef;
 
   public stats: object;
+  public upcoming = 'events';
+  public latest = 'events';
+  public upcomingEvents: Array<Event>;
+  public upcomingTasks: Array<Task>;
+  public latestEvents: Array<Event>;
+  public latestNotes: Array<Note>;
+  public latestTasks: Array<Task>;
 
   constructor(
+    private _navCtrl: NavController,
     private _translateService: TranslateService,
     private _settingsProvider: SettingsProvider,
     private _eventsProvider: EventsProvider,
@@ -45,10 +62,33 @@ export class HomePage {
           value => {
             this._addStats();
             this._displayActivityChart('line');
+            this._displayOverview();
           }
         );
       }
     );
+  }
+
+  private get events() {
+    return this._eventsProvider.events.getValue();
+  }
+
+  private get notes() {
+    return this._notesProvider.notes.getValue();
+  }
+
+  private get tasks() {
+    return this._tasksProvider.tasks.getValue();
+  }
+
+  public navigateToDetailPage(item: Event | Note | Task) {
+    if (item instanceof Event) {
+      this._navCtrl.push(EventDetailPage, { event: item });
+    } else if (item instanceof Note) {
+      this._navCtrl.push(NoteDetailPage, { note: item });
+    } else {
+      this._navCtrl.push(TaskDetailPage, { task: item });
+    }
   }
 
   private _addStats() {
@@ -166,6 +206,38 @@ export class HomePage {
         datasets: datasets
       }
     });
+  }
+
+  private _displayOverview() {
+
+    function filter(items: Array<any>, date: Date, field: string) {
+      return items.filter(item => {
+        return (new Date(item[field]).getTime() > date.getTime());
+      });
+    }
+
+    function sort(items: Array<any>, field: string, descending = false) {
+      return items.sort((a: Event | Note | Task, b: Event | Note | Task) => {
+        if (a[field] > b[field]) {
+          return descending ? -1 : 1;
+        } else if (a[field] < b[field]) {
+          return descending ? 1 : -1;
+        }
+        return 0;
+      });
+    }
+
+    const currentDate = new Date();
+
+    const events = filter(this.events, currentDate, 'startDate');
+    this.upcomingEvents = sort(events, 'startDate').slice(0, 5);
+
+    const tasks = filter(this.tasks, currentDate, 'startDate');
+    this.upcomingTasks = sort(tasks, 'startDate').slice(0, 5);
+
+    this.latestEvents = sort(this.events, 'createdAt', true).slice(0, 5);
+    this.latestNotes = sort(this.notes, 'createdAt', true).slice(0, 5);
+    this.latestTasks = sort(this.tasks, 'createdAt', true).slice(0, 5);
   }
 
 }

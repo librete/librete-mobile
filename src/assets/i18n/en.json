@@ -24,6 +24,32 @@
     "welcome": "Welcome to Librete - Your ultimate personal organizer.",
     "description": "Use Librete to manage your tasks, events and notes.",
     "stats": "Currently you have {events} {events, plural, =1{event} other{events}}, {notes} {notes, plural, =1{note} other{notes}} and {tasks} {tasks, plural, =1{task} other{tasks}}.",
+    "overview": {
+      "upcoming": {
+        "title": "Upcoming",
+        "buttons": {
+          "events": "Events",
+          "tasks": "Tasks"
+        },
+        "emptyTexts": {
+          "events": "There are no upcoming events",
+          "tasks": "There are no upcoming tasks"
+        }
+      },
+      "latest": {
+        "title": "Latest",
+        "buttons": {
+          "events": "Events",
+          "tasks": "Tasks",
+          "notes": "Notes"
+        },
+        "emptyTexts": {
+          "events": "There are no events",
+          "tasks": "There are no tasks",
+          "notes": "There are no notes"
+        }
+      }
+    },
     "charts": {
       "activity": {
         "label": "Activity this year",
