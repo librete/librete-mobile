@@ -7,6 +7,7 @@ import { NoteDetailPage } from '../note-detail/note-detail';
 import { NoteCreatePage } from '../note-create/note-create';
 import { NoteUpdatePage } from '../note-update/note-update';
 
+import { CommonProvider } from '../../providers/common/common';
 import { NotesProvider } from '../../providers/notes/notes';
 
 @Component({
@@ -14,10 +15,13 @@ import { NotesProvider } from '../../providers/notes/notes';
   templateUrl: 'note-list.html',
 })
 export class NoteListPage {
+  public orderBy = 'createdAt';
+  public orderType = 'ascending';
 
   constructor(
     private _alertCtrl: AlertController,
     private _navCtrl: NavController,
+    private _commonProvider: CommonProvider,
     private _notesProvider: NotesProvider
   ) {
     _notesProvider.readNotes();
@@ -57,6 +61,10 @@ export class NoteListPage {
       ]
     });
     confirm.present();
+  }
+
+  public sortNotes() {
+    this._commonProvider.sort(this.notes, this.orderBy, this.orderType === 'ascending');
   }
 
 }

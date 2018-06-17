@@ -144,7 +144,17 @@
   },
   "notes": {
     "list": {
-      "title": "Бележки"
+      "title": "Бележки",
+      "ordering": {
+        "orderBy": {
+          "createdAt": "Дата на създаване",
+          "updatedAt": "Дата на промяна"
+        },
+        "orderType": {
+          "ascending": "Възходящ",
+          "descending": "Низходящ"
+        }
+      }
     },
     "detail": {
       "title": "Детайли за бележка",

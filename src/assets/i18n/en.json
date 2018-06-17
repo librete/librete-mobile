@@ -141,7 +141,17 @@
   },
   "notes": {
     "list": {
-      "title": "Notes"
+      "title": "Notes",
+      "ordering": {
+        "orderBy": {
+          "createdAt": "Date created",
+          "updatedAt": "Date updated"
+        },
+        "orderType": {
+          "ascending": "Ascending",
+          "descending": "Descending"
+        }
+      }
     },
     "detail": {
       "title": "Note details",
