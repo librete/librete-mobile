@@ -1,5 +1,34 @@
 <ion-header>
   <header [pageTitle]="'events.list.title' | translate"></header>
+  <ion-list class="ordering-options">
+    <ion-item class="ordering-option">
+      <ion-select [(ngModel)]="orderBy" (ionChange)="sortEvents()">
+        <ion-option value="createdAt">
+          {{ 'events.list.ordering.orderBy.createdAt' | translate }}
+        </ion-option>
+        <ion-option value="updatedAt">
+          {{ 'events.list.ordering.orderBy.updatedAt' | translate }}
+        </ion-option>
+        <ion-option value="startDate">
+          {{ 'events.list.ordering.orderBy.startDate' | translate }}
+        </ion-option>
+        <ion-option value="endDate">
+          {{ 'events.list.ordering.orderBy.endDate' | translate }}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="ordering-option">
+      <ion-select [(ngModel)]="orderType" (ionChange)="sortEvents()">
+        <ion-option value="ascending">
+          {{ 'events.list.ordering.orderType.ascending' | translate }}
+        </ion-option>
+        <ion-option value="descending">
+          {{ 'events.list.ordering.orderType.descending' | translate }}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 </ion-header>
 
 <ion-content>

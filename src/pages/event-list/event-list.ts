@@ -7,6 +7,7 @@ import { EventDetailPage } from '../event-detail/event-detail';
 import { EventCreatePage } from '../event-create/event-create';
 import { EventUpdatePage } from '../event-update/event-update';
 
+import { CommonProvider } from '../../providers/common/common';
 import { EventsProvider } from '../../providers/events/events';
 
 @Component({
@@ -14,10 +15,13 @@ import { EventsProvider } from '../../providers/events/events';
   templateUrl: 'event-list.html',
 })
 export class EventListPage {
+  public orderBy = 'createdAt';
+  public orderType = 'ascending';
 
   constructor(
     private _alertCtrl: AlertController,
     private _navCtrl: NavController,
+    private _commonProvider: CommonProvider,
     private _eventsProvider: EventsProvider
   ) {
     _eventsProvider.readEvents();
@@ -57,6 +61,10 @@ export class EventListPage {
       ]
     });
     confirm.present();
+  }
+
+  public sortEvents() {
+    this._commonProvider.sort(this.events, this.orderBy, this.orderType === 'ascending');
   }
 
 }

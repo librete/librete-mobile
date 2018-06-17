@@ -89,7 +89,19 @@
   },
   "events": {
     "list": {
-      "title": "Events"
+      "title": "Events",
+      "ordering": {
+        "orderBy": {
+          "createdAt": "Date created",
+          "updatedAt": "Date updated",
+          "startDate": "Start date",
+          "endDate": "End date"
+        },
+        "orderType": {
+          "ascending": "Ascending",
+          "descending": "Descending"
+        }
+      }
     },
     "detail": {
       "title": "Event details",
