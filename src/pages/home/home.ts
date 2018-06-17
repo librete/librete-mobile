@@ -81,6 +81,62 @@ export class HomePage {
     return this._tasksProvider.tasks.getValue();
   }
 
+  private get chartLabels() {
+    const currentYear = new Date().getFullYear();
+    const labels = [];
+
+    for (let i = 1; i < 13; i++) {
+      let month = String(i);
+      if (i < 10) {
+        month = '0' + month;
+      }
+      labels.push(`${month}.${currentYear}`);
+    }
+    return labels;
+  }
+
+  private get chartValues() {
+    let events = this.events;
+    let notes = this.notes;
+    let tasks = this.tasks;
+    const currentYear = new Date().getFullYear();
+
+    function filterByYear(items, year, field) {
+      return items.filter(item => {
+        return (new Date(item[field]).getFullYear() === year);
+      });
+    }
+
+    function groupByMonth(events, key) {
+      return events.reduce(function (accumulator, x) {
+        (accumulator[new Date(x[key]).getMonth() + 1] = accumulator[new Date(x[key]).getMonth() + 1] || []).push(x);
+        return accumulator;
+      }, {});
+    }
+
+    events = filterByYear(events, currentYear, 'startDate');
+    notes = filterByYear(notes, currentYear, 'createdAt');
+    tasks = filterByYear(tasks, currentYear, 'startDate');
+
+    const groupedData = {};
+    groupedData['events'] = groupByMonth(events, 'startDate');
+    groupedData['notes'] = groupByMonth(notes, 'createdAt');
+    groupedData['tasks'] = groupByMonth(tasks, 'startDate');
+
+    const values = {};
+    values['events'] = new Array(12).fill(0);
+    values['notes'] = new Array(12).fill(0);
+    values['tasks'] = new Array(12).fill(0);
+
+    for (const type in groupedData) {
+      const data = groupedData[type];
+      for (const key in data) {
+        values[type][key] = data[key].length;
+      }
+    }
+    return values;
+  }
+
   public navigateToDetailPage(item: Event | Note | Task) {
     if (item instanceof Event) {
       this._navCtrl.push(EventDetailPage, { event: item });
@@ -93,9 +149,9 @@ export class HomePage {
 
   private _addStats() {
     this.stats = {
-      'events': this._eventsProvider.events.getValue().length,
-      'notes': this._notesProvider.notes.getValue().length,
-      'tasks': this._tasksProvider.tasks.getValue().length
+      'events': this.events.length,
+      'notes': this.notes.length,
+      'tasks': this.tasks.length
     };
   }
 
@@ -140,62 +196,6 @@ export class HomePage {
     ];
 
     this._createChart(type, this.activityCanvas, this.chartLabels, chartDatasets);
-  }
-
-  private get chartLabels() {
-    const currentYear = new Date().getFullYear();
-    const labels = [];
-
-    for (let i = 1; i < 13; i++) {
-      let month = String(i);
-      if (i < 10) {
-        month = '0' + month;
-      }
-      labels.push(`${month}.${currentYear}`);
-    }
-    return labels;
-  }
-
-  private get chartValues() {
-    let events = this._eventsProvider.events.getValue();
-    let notes = this._notesProvider.notes.getValue();
-    let tasks = this._tasksProvider.tasks.getValue();
-    const currentYear = new Date().getFullYear();
-
-    function filterByYear(items, year, field) {
-      return items.filter(item => {
-        return (new Date(item[field]).getFullYear() === year);
-      });
-    }
-
-    function groupByMonth(events, key) {
-      return events.reduce(function (accumulator, x) {
-        (accumulator[new Date(x[key]).getMonth() + 1] = accumulator[new Date(x[key]).getMonth() + 1] || []).push(x);
-        return accumulator;
-      }, {});
-    }
-
-    events = filterByYear(events, currentYear, 'startDate');
-    notes = filterByYear(notes, currentYear, 'createdAt');
-    tasks = filterByYear(tasks, currentYear, 'startDate');
-
-    const groupedData = {};
-    groupedData['events'] = groupByMonth(events, 'startDate');
-    groupedData['notes'] = groupByMonth(notes, 'createdAt');
-    groupedData['tasks'] = groupByMonth(tasks, 'startDate');
-
-    const values = {};
-    values['events'] = new Array(12).fill(0);
-    values['notes'] = new Array(12).fill(0);
-    values['tasks'] = new Array(12).fill(0);
-
-    for (const type in groupedData) {
-      const data = groupedData[type];
-      for (const key in data) {
-        values[type][key] = data[key].length;
-      }
-    }
-    return values;
   }
 
   private _createChart(type, canvas, labels, datasets) {
