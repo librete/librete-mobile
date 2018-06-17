@@ -7,6 +7,7 @@ import { TaskDetailPage } from '../task-detail/task-detail';
 import { TaskCreatePage } from '../task-create/task-create';
 import { TaskUpdatePage } from '../task-update/task-update';
 
+import { CommonProvider } from '../../providers/common/common';
 import { TasksProvider } from '../../providers/tasks/tasks';
 
 @Component({
@@ -14,10 +15,13 @@ import { TasksProvider } from '../../providers/tasks/tasks';
   templateUrl: 'task-list.html',
 })
 export class TaskListPage {
+  public orderBy = 'createdAt';
+  public orderType = 'ascending';
 
   constructor(
     private _alertCtrl: AlertController,
     private _navCtrl: NavController,
+    private _commonProvider: CommonProvider,
     private _tasksProvider: TasksProvider
   ) {
     _tasksProvider.readTasks();
@@ -57,6 +61,10 @@ export class TaskListPage {
       ]
     });
     confirm.present();
+  }
+
+  public sortTasks() {
+    this._commonProvider.sort(this.tasks, this.orderBy, this.orderType === 'ascending');
   }
 
 }

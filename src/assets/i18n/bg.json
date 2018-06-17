@@ -197,7 +197,19 @@
       }
     },
     "list": {
-      "title": "Задачи"
+      "title": "Задачи",
+      "ordering": {
+        "orderBy": {
+          "createdAt": "Дата на създаване",
+          "updatedAt": "Дата на промяна",
+          "startDate": "Начална дата",
+          "endDate": "Крайна дата"
+        },
+        "orderType": {
+          "ascending": "Възходящ",
+          "descending": "Низходящ"
+        }
+      }
     },
     "detail": {
       "title": "Детайли за задача",

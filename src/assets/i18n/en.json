@@ -194,7 +194,19 @@
       }
     },
     "list": {
-      "title": "Tasks"
+      "title": "Tasks",
+      "ordering": {
+        "orderBy": {
+          "createdAt": "Date created",
+          "updatedAt": "Date updated",
+          "startDate": "Start date",
+          "endDate": "End date"
+        },
+        "orderType": {
+          "ascending": "Ascending",
+          "descending": "Descending"
+        }
+      }
     },
     "detail": {
       "title": "Task details",
