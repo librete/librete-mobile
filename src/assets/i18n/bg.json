@@ -92,7 +92,19 @@
   },
   "events": {
     "list": {
-      "title": "Събития"
+      "title": "Събития",
+      "ordering": {
+        "orderBy": {
+          "createdAt": "Дата на създаване",
+          "updatedAt": "Дата на промяна",
+          "startDate": "Начална дата",
+          "endDate": "Крайна дата"
+        },
+        "orderType": {
+          "ascending": "Възходящ",
+          "descending": "Низходящ"
+        }
+      }
     },
     "detail": {
       "title": "Детайли за събитие",
@@ -132,7 +144,17 @@
   },
   "notes": {
     "list": {
-      "title": "Бележки"
+      "title": "Бележки",
+      "ordering": {
+        "orderBy": {
+          "createdAt": "Дата на създаване",
+          "updatedAt": "Дата на промяна"
+        },
+        "orderType": {
+          "ascending": "Възходящ",
+          "descending": "Низходящ"
+        }
+      }
     },
     "detail": {
       "title": "Детайли за бележка",
@@ -175,7 +197,19 @@
       }
     },
     "list": {
-      "title": "Задачи"
+      "title": "Задачи",
+      "ordering": {
+        "orderBy": {
+          "createdAt": "Дата на създаване",
+          "updatedAt": "Дата на промяна",
+          "startDate": "Начална дата",
+          "endDate": "Крайна дата"
+        },
+        "orderType": {
+          "ascending": "Възходящ",
+          "descending": "Низходящ"
+        }
+      }
     },
     "detail": {
       "title": "Детайли за задача",

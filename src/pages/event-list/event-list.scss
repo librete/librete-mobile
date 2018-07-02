@@ -1,4 +1,21 @@
 page-event-list {
+  .ordering-options {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 0;
+    .ordering-option {
+      width: auto;
+      margin-top: 1px;
+      .item-inner {
+        border-bottom: 0;
+        padding-right: 0;
+      }
+    }
+    ion-select {
+      max-width: none;
+      padding: 0px 3px 0px 0px;
+    }
+  }
   .scroll-content {
     padding-top: 10px;
   }

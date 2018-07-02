@@ -4,6 +4,10 @@ import { Storage } from '@ionic/storage';
 
 import { ENV } from '@app/env';
 
+import { Event } from '../../models/event';
+import { Note } from '../../models/note';
+import { Task } from '../../models/task';
+
 @Injectable()
 export class CommonProvider {
   private _env = ENV;
@@ -88,6 +92,17 @@ export class CommonProvider {
   public toCamelCase(s) {
     return s.replace(/([\-_]\w)/g, function (m) {
       return m[1].toUpperCase();
+    });
+  }
+
+  public sort(items: Array<any>, field: string, descending = false) {
+    return items.sort((a: Event | Note | Task, b: Event | Note | Task) => {
+      if (a[field] > b[field]) {
+        return descending ? -1 : 1;
+      } else if (a[field] < b[field]) {
+        return descending ? 1 : -1;
+      }
+      return 0;
     });
   }
 

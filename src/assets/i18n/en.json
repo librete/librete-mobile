@@ -89,7 +89,19 @@
   },
   "events": {
     "list": {
-      "title": "Events"
+      "title": "Events",
+      "ordering": {
+        "orderBy": {
+          "createdAt": "Date created",
+          "updatedAt": "Date updated",
+          "startDate": "Start date",
+          "endDate": "End date"
+        },
+        "orderType": {
+          "ascending": "Ascending",
+          "descending": "Descending"
+        }
+      }
     },
     "detail": {
       "title": "Event details",
@@ -129,7 +141,17 @@
   },
   "notes": {
     "list": {
-      "title": "Notes"
+      "title": "Notes",
+      "ordering": {
+        "orderBy": {
+          "createdAt": "Date created",
+          "updatedAt": "Date updated"
+        },
+        "orderType": {
+          "ascending": "Ascending",
+          "descending": "Descending"
+        }
+      }
     },
     "detail": {
       "title": "Note details",
@@ -172,7 +194,19 @@
       }
     },
     "list": {
-      "title": "Tasks"
+      "title": "Tasks",
+      "ordering": {
+        "orderBy": {
+          "createdAt": "Date created",
+          "updatedAt": "Date updated",
+          "startDate": "Start date",
+          "endDate": "End date"
+        },
+        "orderType": {
+          "ascending": "Ascending",
+          "descending": "Descending"
+        }
+      }
     },
     "detail": {
       "title": "Task details",
