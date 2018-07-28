@@ -1,7 +1,7 @@
 <ion-menu [content]="content">
   <ion-content>
     <ion-list>
-      <ion-item menuClose class="menu-item" *ngFor="let page of pages" (tap)="openPage(page.component)">
+      <ion-item menuClose class="menu-item" *ngFor="let page of pages" (click)="openPage(page.component)">
         <ion-icon color="primary" name="{{ page.icon }}"></ion-icon>
         <span ion-text color="primary">{{ page.title | translate }}</span>
       </ion-item>
@@ -9,7 +9,7 @@
   </ion-content>
 
   <ion-footer>
-    <ion-item menuClose class="menu-item" color="grey" (tap)="openPage(settingsPage)">
+    <ion-item menuClose class="menu-item" color="grey" (click)="openPage(settingsPage)">
       <ion-icon color="primary" name="md-options"></ion-icon>
       <span ion-text color="primary">{{ 'common.menu.settings' | translate }}</span>
     </ion-item>
