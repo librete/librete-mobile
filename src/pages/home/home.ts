@@ -28,11 +28,11 @@ export class HomePage {
   public stats: object;
   public upcoming = 'events';
   public latest = 'events';
-  public upcomingEvents: Array<Event>;
-  public upcomingTasks: Array<Task>;
-  public latestEvents: Array<Event>;
-  public latestNotes: Array<Note>;
-  public latestTasks: Array<Task>;
+  public upcomingEvents: Array<Event> = [];
+  public upcomingTasks: Array<Task> = [];
+  public latestEvents: Array<Event> = [];
+  public latestNotes: Array<Note> = [];
+  public latestTasks: Array<Task> = [];
 
   constructor(
     private _navCtrl: NavController,

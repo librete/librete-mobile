@@ -28,25 +28,29 @@
 
   <div [ngSwitch]="upcoming" class="segment-content">
     <ion-list *ngSwitchCase="'events'">
-      <div *ngIf="upcomingEvents">
+      <div *ngIf="upcomingEvents.length; else noUpcomingEvents">
         <ion-item *ngFor="let event of upcomingEvents" (tap)="navigateToDetailPage(event)">
           <h2>{{ event.name }}</h2>
         </ion-item>
       </div>
-      <ion-item *ngIf="!upcomingEvents">
-        {{ 'home.overview.upcoming.emptyTexts.events' | translate }}
-      </ion-item>
+      <ng-template #noUpcomingEvents>
+        <ion-item class="smaller">
+          {{ 'home.overview.upcoming.emptyTexts.events' | translate }}
+        </ion-item>
+      </ng-template>
     </ion-list>
 
     <ion-list *ngSwitchCase="'tasks'">
-      <div *ngIf="upcomingTasks">
+      <div *ngIf="upcomingTasks.length; else noUpcomingTasks">
         <ion-item *ngFor="let task of upcomingTasks" (tap)="navigateToDetailPage(task)">
           <h2>{{ task.name }}</h2>
         </ion-item>
       </div>
-      <ion-item *ngIf="!upcomingTasks">
-        {{ 'home.overview.upcoming.emptyTexts.tasks' | translate }}
-      </ion-item>
+      <ng-template #noUpcomingTasks>
+        <ion-item>
+          {{ 'home.overview.upcoming.emptyTexts.tasks' | translate }}
+        </ion-item>
+      </ng-template>
     </ion-list>
   </div>
 
@@ -65,34 +69,40 @@
 
   <div [ngSwitch]="latest" class="segment-content">
     <ion-list *ngSwitchCase="'events'">
-      <div *ngIf="latestEvents">
+      <div *ngIf="latestEvents.length; else noLatestEvents">
         <ion-item *ngFor="let event of latestEvents" (tap)="navigateToDetailPage(event)">
           <h2>{{ event.name }}</h2>
         </ion-item>
       </div>
-      <ion-item *ngIf="!latestEvents">
-        {{ 'home.overview.latest.emptyTexts.events' | translate }}
-      </ion-item>
+      <ng-template #noLatestEvents>
+        <ion-item>
+          {{ 'home.overview.latest.emptyTexts.events' | translate }}
+        </ion-item>
+      </ng-template>
     </ion-list>
     <ion-list *ngSwitchCase="'notes'">
-      <div *ngIf="latestNotes">
+      <div *ngIf="latestNotes.length else noLatestNotes">
         <ion-item *ngFor="let note of latestNotes" (tap)="navigateToDetailPage(note)">
           <h2>{{ note.name }}</h2>
         </ion-item>
       </div>
-      <ion-item *ngIf="!latestNotes">
-        {{ 'home.overview..latest.emptyTexts.notes' | translate }}
-      </ion-item>
+      <ng-template #noLatestNotes>
+        <ion-item>
+          {{ 'home.overview.latest.emptyTexts.notes' | translate }}
+        </ion-item>
+      </ng-template>
     </ion-list>
     <ion-list *ngSwitchCase="'tasks'">
-      <div *ngIf="latestTasks">
+      <div *ngIf="latestTasks.length; else noLatestTasks">
         <ion-item *ngFor="let task of latestTasks" (tap)="navigateToDetailPage(task)">
           <h2>{{ task.name }}</h2>
         </ion-item>
       </div>
-      <ion-item *ngIf="!latestTasks">
-        {{ 'home.overview.latest.emptyTexts.events' | translate }}
-      </ion-item>
+      <ng-template #noLatestTasks>
+        <ion-item>
+          {{ 'home.overview.latest.emptyTexts.tasks' | translate }}
+        </ion-item>
+      </ng-template>
     </ion-list>
   </div>
 
