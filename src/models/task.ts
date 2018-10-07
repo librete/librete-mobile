@@ -47,7 +47,7 @@ export class Task {
   public static get statusOptions() {
     return [
       { name: 'active', label: 'tasks.common.statuses.active' },
-      { name: 'finished', label: 'tasks.common.statues.finished' }
+      { name: 'finished', label: 'tasks.common.statuses.finished' }
     ];
   }
 
