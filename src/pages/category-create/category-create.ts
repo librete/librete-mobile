@@ -28,23 +28,27 @@ export class CategoryCreatePage {
     return this.form.get('name');
   }
 
-  public createCategory() {
-    this.isSubmitted = true;
-    this._categoriesProvider.createCategory(this.form.value).then(
-      data => {
-        this._navCtrl.push(CategoryDetailPage, {'category': data});
-      },
-      error => {
-        for (let key in error.error) {
-          key = this._commonProvider.toCamelCase(key);
-          if (this.form.get(key)) {
-            this.form.get(key).setErrors({
-              remote: error.error[key]
-            });
+  public createCategory(): Promise<boolean> {
+    return new Promise(resolve => {
+      this.isSubmitted = true;
+      this._categoriesProvider.createCategory(this.form.value).then(
+        data => {
+          this._navCtrl.push(CategoryDetailPage, {'category': data});
+          resolve();
+        },
+        error => {
+          for (let key in error.error) {
+            key = this._commonProvider.toCamelCase(key);
+            if (this.form.get(key)) {
+              this.form.get(key).setErrors({
+                remote: error.error[key]
+              });
+            }
           }
+          resolve();
         }
-      }
-    );
+      );
+    });
   }
 
   private _createForm() {
