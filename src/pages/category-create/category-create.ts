@@ -24,10 +24,6 @@ export class CategoryCreatePage {
     this._createForm();
   }
 
-  public get categories() {
-    return this._categoriesProvider.categories.getValue();
-  }
-
   public get name() {
     return this.form.get('name');
   }
