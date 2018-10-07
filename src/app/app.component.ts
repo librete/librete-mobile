@@ -47,23 +47,10 @@ export class MyApp {
     });
 
     _translateService.setDefaultLang(this._env.language);
-
-    _commonProvider.readAuthenticationData().then(
-      data => {
-        this._authProvider.refreshToken().subscribe(
-          data => {
-            this._commonProvider.setAuthenticationData(data);
-            this.rootPage = this._commonProvider.isAuthenticated ? HomePage : SignInPage;
-          },
-          error => {
-            this.rootPage = SignInPage;
-          }
-        );
-      }
-    );
+    this.determineAuthenticationStatus();
   }
 
-  public get pages() {
+  public get pages(): Array<IPage> {
     let pageList: Array<IPage>;
     if (this._commonProvider.isAuthenticated) {
       pageList = [
@@ -84,6 +71,26 @@ export class MyApp {
 
   public openPage(page) {
     this.nav.setRoot(page);
+  }
+
+  public determineAuthenticationStatus(): Promise<boolean> {
+    return new Promise(resolve => {
+      this._commonProvider.readAuthenticationData().then(
+        data => {
+          this._authProvider.refreshToken().subscribe(
+            data => {
+              this._commonProvider.setAuthenticationData(data);
+              this.rootPage = this._commonProvider.isAuthenticated ? HomePage : SignInPage;
+              resolve(true);
+            },
+            error => {
+              this.rootPage = SignInPage;
+              resolve(false);
+            }
+          );
+        }
+      );
+    });
   }
 
 }
