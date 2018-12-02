@@ -11,7 +11,7 @@
         <p>{{ category.createdAt | date:'dd.MM HH:mm' }}</p>
       </ion-item>
       <ion-item-options side="right" class="list-options">
-        <button ion-button color="primary" (click)="navigateToUpdatePage(category, item)">
+        <button ion-button color="primary" id="updatePageButton" (click)="navigateToUpdatePage(category, item)">
           <ion-icon name="md-create"></ion-icon>
         </button>
         <button ion-button color="danger" (click)="deleteCategory(category)">

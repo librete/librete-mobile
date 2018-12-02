@@ -56,6 +56,7 @@ export class CategoryListPage {
         }
       ]
     });
+
     confirm.present();
   }
 
