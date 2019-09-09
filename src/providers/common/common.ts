@@ -64,7 +64,7 @@ export class CommonProvider {
       url = `${this._env.apiUrl}/${url}`;
     }
     const data = JSON.stringify(requestData);
-    const headers = this._getHeaders(requestMethod);
+    const headers = this._getHeaders();
     const options = {
       headers: headers
     };
@@ -106,7 +106,7 @@ export class CommonProvider {
     });
   }
 
-  private _getHeaders(requestMethod: string) {
+  private _getHeaders() {
     let headers: HttpHeaders = new HttpHeaders();
 
     headers = headers.append('Content-Type', 'application/json');
